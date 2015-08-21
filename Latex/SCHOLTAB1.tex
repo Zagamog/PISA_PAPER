@@ -1,0 +1,65 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - school characteristics}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+PRIVATESCL & Private school & 0.1714 & 41182 & 0.0832 & 4882 \\ 
+& dummy variable & (0.3768) &  & (0.2762) &  \\ 
+SC02Q02 & Funding for school & 25.7233 & 34621 & 16.6104 & 4848 \\ 
+& from student fees & (36.0117) &  & (26.3564) &  \\ 
+DUM\_VILLAGE & School located & 0.1403 & 41347 & 0.4584 & 4882 \\ 
+& in a village & (0.3473) &  & (0.4983) &  \\ 
+TOWN & School located & 0.4508 & 41347 & 0.3101 & 4882 \\ 
+& in a town & (0.4976) &  & (0.4626) &  \\ 
+CITY & School located & 0.4089 & 41347 & 0.2315 & 4882 \\ 
+& in a city & (0.4916) &  & (0.4218) &  \\ 
+CLSIZE & Average class size & 35.013 & 40771 & 42.5043 & 4882 \\ 
+& &  (9.764) &  & (8.7236) &  \\ 
+SCHSIZE & Number of enrolled & 1057.0332 & 35062 & 1302.9009 & 4882 \\ 
+& students at school & (924.2422) &  & (648.6821) &  \\ 
+PCGIRLS & Proportion of & 0.49 & 36342 & 0.5282 & 4882 \\ 
+& girls at school & (0.2597) &  & (0.0801) &  \\ 
+SCHSEL & School selectivity/ & 2.3061 & 41286 & 2.8454 & 4882 \\ 
+& student admission policies & (0.7991) &  & (0.4044) &  \\ 
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
+\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
+\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
+\multicolumn{6}{l}{different at the 5\% significance level.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

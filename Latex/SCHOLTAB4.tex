@@ -1,0 +1,53 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - school climate}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+STUDCLIM & Student-related aspects & 0.0485 & 40973 & 0.0418 & 4874 \\ 
+& of school climate & (1.1642) &  & (0.6849) &  \\ 
+TEACCLIM & Teacher-related aspects & -0.1997 & 40973 & -0.0873 & 4874 \\ 
+& of school climate & (1.1474) &  & (0.7125) &  \\ 
+TCMORALE & Teacher morale & 0.0376 & 41336 & -0.2941 & 4882 \\ 
+& and enthusiasm & (1.0541) &  & (0.8579) &  \\ 
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
+\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
+\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
+\multicolumn{6}{l}{different at the 5\% significance level, except STUDCLIM.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

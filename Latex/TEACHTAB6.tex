@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - cognitive activation}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+STU\_FEEDB & Seeking written feed- &  0.7105 & 40788 & 0.8419 & 4882 \\ 
+& back from students & (0.4536) &  & (0.3649) &  \\ 
+CLSMAN \textit{(r)} & Teacher classroom & 0.2394 & 25753 & 0.2163 & 3252 \\ 
+& management & (0.905) &  & (0.7761) &  \\ 
+DISCLIMA \textit{(r)} & Disciplinary climate &  -0.0243 & 26242 & 0.3747 & 3254 \\ 
+& in class & (0.9055) &  & (0.6926) &  \\
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
+\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
+\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
+\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
+\multicolumn{6}{l}{except CLSMAN.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

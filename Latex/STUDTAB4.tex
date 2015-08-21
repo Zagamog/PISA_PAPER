@@ -1,0 +1,53 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - student experience in mathematics}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+			 
+ EXAPPLM \textit{(r)} & Experience with & 0.1111 & 26133 & -0.2418 & 3243 \\ 
+ & applied math tasks & (1.06) &  & (0.7624) &  \\ 
+ EXPUREM \textit{(r)} & Experience with pure & -0.1384 & 25973 & 0.1587 & 3244 \\ 
+ & math tasks & (0.9809) &  & (0.8076) &  \\ 
+ FAMCONC \textit{(r)} & Familiarity with & -0.5441 & 25832 & 0.4297 & 3231 \\ 
+ & math concepts & (0.8768) &  & (0.9057) &  \\ 
+
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to students in the rotated}\\   
+\multicolumn{6}{l}{booklet. For a more detailed description of variables, please see Table xx. Items marked}\\    
+\multicolumn{6}{l}{with \textit{(r)} are taken from the rotated student questionnaire. The variable means of}\\
+\multicolumn{6}{l}{Dev7 and Vietnam are statistically different at the 5\% significance level.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

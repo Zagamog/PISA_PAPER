@@ -1,0 +1,72 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - teacher quality}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+	TCFOCST & Teacher focus & 0.4975 & 41370 & 0.1402 & 4882 \\ 
+	& & (1.0056) &  & (0.8377) &  \\ 
+	SC35Q02 & Professional development & 40.5068 & 39550 & 49.0086 & 4762 \\ 
+	& in math in last 3 months & (40.8546) &  & (45.1706) &  \\ 
+	TCH\_MENT & Teacher mentoring & 0.8566 & 40734 & 0.9859 & 4882 \\ 
+	& as quality assurance & (0.3505) &  & (0.1181) &  \\ 
+	MTSUP \textit{(r)} & Mathematics supportive & 0.4778 & 25918 & 0.3685 & 3247 \\ 
+	& teaching style & (0.9613) &  & (0.774) &  \\ 
+	STUDREL \textit{(r)} & Teacher student & 0.3794 & 25870 & 0.0186 & 3253 \\ 
+	& relations & (1.0178) &  & (0.8883) &  \\ 
+	TCHQUAL\_DIFF \textit{(r)} & with different teacher & 0.5249 & 24986 & 0.363 & 3231 \\ 
+	& student would work harder & (0.4994) &  & (0.481) &  \\  
+	TCH\_INCENTV & teacher appraisal led &  -0.0317 & 41394 & 0.2687 & 4882 \\ 
+	& to gratification & (1.0301) &  & (0.6336) &  \\ 
+
+	\multicolumn{6}{l}{\textit{Quality assurance of mathematics teachers through ...}} \\[0.5em]
+	TCM\_STUASS & test or assessment &  0.8762 & 41110 & 0.9818 & 4882 \\ 
+	& of student achievement & (0.3293) &  & (0.1338) &  \\ 
+	TCM\_PEER & teacher peer review & 0.7916 & 41095 & 0.8382 & 4882 \\ 
+	& of lectures, methods etc & (0.4061) &  & (0.3683) &  \\ 
+	TCM\_OBSER & principal or senior & 0.8015 & 41170 & 0.9785 & 4882 \\ 
+	& staff observations & (0.3989) &  & (0.1451) &  \\ 
+	TCM\_INSPE & obersavtion of classes & 0.5882 & 41020 & 0.8664 & 4882 \\ 
+	& external inspector & (0.4922) &  & (0.3402) &  \\ 
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
+\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
+\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
+\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
+\multicolumn{6}{l}{except PROPQUAL.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

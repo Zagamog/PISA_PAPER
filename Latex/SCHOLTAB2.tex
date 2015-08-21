@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - school resources}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+RATCMP15 & Available computers & 0.3909 & 39490 & 0.2216 & 4875 \\ 
+& for 15-year-olds & (0.5476) &  & (0.3411) &  \\ 
+COMPWEB & Ratio of computers & 0.7556 & 37446 & 0.7795 & 3634 \\ 
+& connected to internet & (0.3578) &  & (0.3109) &  \\ 
+SCMATEDU & Quality of school & -0.8145 & 41373 & -0.4941 & 4882 \\ 
+& educational resources & (1.1538) &  & (0.9718) &  \\ 
+SCMATBUI & Quality of & -0.6322 & 41221 & -0.3988 & 4882 \\ 
+& physical infrastructure & (1.1113) &  & (1.0161) &  \\ 
+EXC1\_BAND & School offers & 0.471 & 40044 & 0.1678 & 4882 \\ 
+& Band, orchestra or choir & (0.4992) &  & (0.3737) &  \\ 
+EXC2\_PLAY & School offers &  0.5928 & 40122 & 0.8509 & 4882 \\ 
+& schoo play/musical & (0.4913) &  & (0.3562) &  \\ 
+EXC3\_NEWS & School offers & 0.5373 & 39617 & 0.5088 & 4882 \\ 
+& yearbook/newspaper & (0.4986) &  & (0.5) &  \\ 
+EXC4\_VOLU & School offers & 0.827 & 40240 & 0.83 & 4882 \\ 
+& volunteering/service activ. & (0.3782) &  & (0.3757) &  \\ 
+EXC5\_MCLUB & School offers & 0.453 & 40154 & 0.2687 & 4882 \\ 
+& mathematics club & (0.4978) &  & (0.4434) &  \\ 
+EXC6\_MATHCOMP & School offers & 0.6268 & 40215 & 0.8032 & 4882 \\ 
+& Mathematics competition & (0.4837) &  & (0.3977) &  \\ 
+EXC7\_CHESS & School offers & 0.3437 & 39969 & 0.2302 & 4882 \\ 
+& chess club & (0.475) &  & (0.421) &  \\ 
+EXC8\_ICTCB & School offers & 0.4899 & 39752 & 0.1749 & 4882 \\ 
+& IT focused club & (0.4999) &  & (0.3799) &  \\ 
+EXC9\_ARTCB & School offers & 0.6774 & 40017 & 0.4585 & 4848 \\ 
+& art club/activities & (0.4675) &  & (0.4983) &  \\ 
+EXC10\_SPORT & School offers & 0.9321 & 40581 & 0.992 & 4882 \\ 
+& sporting activities & (0.2516) &  & (0.089) &  \\ 
+EXC11\_UNICORN & School offers & 0.7152 & 40002 & 0.9629 & 4882 \\ 
+& 'country specific item' & (0.4513) &  & (0.189) &  \\ 
+SCL\_EXTR\_CL & School offers & 0.6538 & 40869 & 0.9584 & 4882 \\ 
+& additional math classes & (0.4757) &  & (0.1997) &  \\ 
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
+\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
+\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
+\multicolumn{6}{l}{different at the 5\% significance level, except EXC4\_VOLU.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+

@@ -1,0 +1,58 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+\begin{table}[H]
+	\footnotesize
+	\def\arraystretch{0.9}
+	\centering
+	\caption{Summary statistics - pedagogical/teaching practices in Mathematics}
+\begin{tabulary}{1.0\textwidth}{L L C C C C}
+	\hline\hline \\
+	\multicolumn{2}{c}{}
+	& \multicolumn{2}{c}{Dev7 countries}
+	& \multicolumn{2}{c}{Vietnam}	\\
+	\hline & & & & & & 
+	Variable & Description & MS & Valid N &  MS & Valid N \\
+	\hline \\
+
+COMP\_USE & Math policy - use of & 0.4345 & 40800 & 0.6447 & 4815 \\ 
+& computers in class & (0.4957) &  & (0.4787) &  \\ 
+TXT\_BOOK & Math policy - & 0.7905 & 40557 & 0.7855 & 4882 \\ 
+& same textbook & (0.4069) &  & (0.4105) &  \\ 
+STD\_CUR & Maths policy - & 0.8705 & 40595 & 0.949 & 4882 \\ 
+& standardized curriculum & (0.3358) &  & (0.22) &  \\ 
+TCHBEHTD \textit{(r)}& Teacher oriented & 0.4973 & 26433 & 0.2964 & 3254 \\ 
+& inctruction method & (1.0798) &  & (0.8099) &  \\ 
+TCHBEHSO \textit{(r)} & Student oriented & 0.7921 & 26358 & 0.2969 & 3248 \\ 
+& instruction method & (0.9545) &  & (0.819) &  \\ 
+				
+\hline \\
+\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
+\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
+\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
+\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
+\multicolumn{6}{l}{except TXT\_BOOK.}\\
+
+\end{tabulary}
+\end{table}
+	
+	
+\end{document}
+
