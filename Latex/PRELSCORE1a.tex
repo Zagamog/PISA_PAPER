@@ -1,0 +1,44 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+
+\begin{document}
+	\begin{table}[htbp]
+		\footnotesize
+		\def\arraystretch{0.9}
+		\centering
+		\caption{The estimated test scores for Vietnam and Dev7 countries}
+		\begin{tabular}{lcccccc}
+    \toprule
+    \midrule
+          & \multicolumn{2}{c}{Math} & \multicolumn{2}{c}{Reading} & \multicolumn{2}{c}{Science} \\ \cline{2-7} \\
+          & Mean (s.e.) & N     & Mean (s.e.) & N     & Mean (s.e.) & N \\
+          \hline \\
+    Vietnam & 511.34 & 4959  & 508.22 & 4959  & 528.42 & 4959 \\
+          & (4.84) &       & (4.40) &       & (4.31) &  \\
+    Developing 7 & 383.29 & 43524 & 405.06 & 43524 & 393.86 & 43524 \\
+          & (2.50) &       & (2.46) &       & (2.25) &  \\
+         \hline \\
+         \multicolumn{7}{l}{Notes: The entries are means and standard errors of PISA data on the full sample,} \\
+        \multicolumn{7}{l}{applying student weight. Student weights are provided in the data set. Standard errors}\\
+         \multicolumn{7}{l}{in parentheses. The means comparison is coded with the intsvy package.} \\
+      
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+\end{document}
