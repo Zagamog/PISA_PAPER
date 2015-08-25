@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+
+\begin{table}[htbp]
+\footnotesize
+	\def\arraystretch{0.9}
+  \centering
+  \caption{The estimated test score gap between Vietnam and Dev7 countries}
+    \begin{tabular}{lccc}
+     \toprule
+     \midrule
+     & \multicolumn{1}{c}{Math} & \multicolumn{1}{c}{Reading} & \multicolumn{1}{c}{Science} \\
+     \hline \\
+     Intercept & 328.29 & 403.06 & 393.86 \\
+     & (2.5) & (2.46) & (2.25) \\
+     Vietnam & 128.05 & 105.16 & 134.56 \\
+     & (27.21) & (5.03) & (4.91) \\ 
+     R-squared & 27.21 & 19.61 & 30.75 \\
+     Number of observations &  & 48,483 &\\
+     \hline \\
+     \multicolumn{4}{l}{Notes: The dependent variable is Mathematics, Reading} \\
+     \multicolumn{4}{l}{or Science score (all 5 plausible values). Regressions are} \\
+     \multicolumn{4}{l}{coded with the intsvy package. The unit of observation is a} \\
+     \multicolumn{4}{l}{student. Student weights are provided in the data set} \\
+     \multicolumn{4}{l}{(W\_FSTUWT). Standard errors in parentheses.} \\
+      
+        \end{tabular}%
+        \label{tab:addlabel}%
+    \end{table}%
+    
+\end{document}
