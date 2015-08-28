@@ -318,6 +318,122 @@ R269 <- pisa.reg.pv(pvlabel="READ",
 R269 # OUTREAD increases
 # VIETNAM 56.71
 
+# Above is the increasing student variables
+
+R275 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTREAD","LHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R275 # OUTREAD increases, LHRS decreases
+#VIETNAM 56.50
+
+R276 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTREAD","LHRS","MHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R276 # OUTREAD increases, LHRS decreases, MHRS increases
+#VIETNAM 59.29
+
+R277 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTREAD","LHRS","MHRS","SHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R277 # # OUTREAD increases, LHRS decreases, MHRS increases, SHRS increases
+#VIETNAM 60.62
+
+R278 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTREAD","LHRS","MHRS","SHRS","ST72Q01"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R278 # LHRS decreases, MHRS increases, SHRS increases, ST72Q01 decreases
+#VIETNAM 58.72
+
+# Let's try all gap decreasing variables:
+
+R279 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","LHRS","ST72Q01"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R279
+# VIETNAM 52.04 
+
+write.csv(R279, "READ_rot2.csv")
+
+
+# So let's quickly test the gap increasing variables and then we are done with this set
+
+R280 <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","VOLUMOM","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_CUR","STU_FEEDB",
+                        "TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTREAD","MHRS","SHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8r,export=FALSE)
+R280
+# VIETNAM 58.45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################################### OLD ONES with OUTREAD_NONE, OUTREAD_LESS2,.... ###########################
+
 R270 <- pisa.reg.pv(pvlabel="READ", 
                     x=c("VIETNAM",
                         "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",

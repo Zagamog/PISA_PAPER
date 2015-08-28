@@ -264,10 +264,11 @@ DEVCON8z$QUAL_RECORD[DEVCON8z$SC39Q03==2] <- 0
 #ST55Q03
 #________________________________________________________________________________________________________
 # First I have to generate a series of dummy variables 
-DEVCON8z$OUTSCIE_NONE <- ifelse(DEVCON8z$ST55Q03==1,1,0)
-DEVCON8z$OUTSCIE_LESS2   <- ifelse(DEVCON8z$ST55Q03==2,1,0)
-DEVCON8z$OUTSCIE_2TO4   <- ifelse(DEVCON8z$ST55Q03==3,1,0)
-DEVCON8z$OUTSCIE_4TO6   <- ifelse(DEVCON8z$ST55Q03==4,1,0)
+DEVCON8z$OUTSCIE[DEVCON8z$ST55Q03==1] <- 0
+DEVCON8z$OUTSCIE[DEVCON8z$ST55Q03==2] <- 1
+DEVCON8z$OUTSCIE[DEVCON8z$ST55Q03==3] <- 3
+DEVCON8z$OUTSCIE[DEVCON8z$ST55Q03==4] <- 5
+DEVCON8z$OUTSCIE[DEVCON8z$ST55Q03==5] <- 7
 
 # LMINS, MMINS, SMINS
 #________________________________________________________________________________________________________
@@ -306,6 +307,100 @@ R383 <- pisa.reg.pv(pvlabel="SCIE",
                     data=DEVCON8z,export=FALSE)
 R383 
 # VIETNAM: 84.94
+
+R384 <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTSCIE"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8z,export=FALSE)
+R384 # OUTSCIE decreases
+# VIETNAM: 83.51
+
+write.csv(R384, "SCIE_rot2.csv")
+
+# Let's move on to the Teacher variables:
+
+R385 <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTSCIE","LHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8z,export=FALSE)
+R385 # OUTSCIE decreases, LHRS increases
+# VIETNAM: 83.52
+
+R386 <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTSCIE","LHRS","MHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8z,export=FALSE)
+R386 # OUTSCIE decreases, LHRS increases, MHRS increase
+# VIETNAM: 86.28
+
+R387 <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","OUTSCIE","LHRS","MHRS","SHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8z,export=FALSE)
+R387 # OUTSCIE decreases, LHRS increases, MHRS increase, SHRS increases
+# VIETNAM: 88.51 
+
+# All gap increasing variables: 
+
+R388 <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("VIETNAM",
+                        "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
+                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
+                        "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
+                        "QUAL_RECORD","SCHSEL","TEACCLIM","LHRS","MHRS","SHRS"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8z,export=FALSE)
+R388 # VIETNAM: 89.44
+
+# All gap decreasing variables: R384
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################### FOR LATER, initiatl regressions with OUTSCIE_NONE, etc #########################
 
 R384 <- pisa.reg.pv(pvlabel="SCIE", 
                     x=c("VIETNAM",

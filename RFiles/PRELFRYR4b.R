@@ -332,6 +332,8 @@ R369 <- pisa.reg.pv(pvlabel="SCIE",
 R369
 # VIETNAM 80.09
 
+write.csv(R369, "SCIE_stu_ped_teach_school.csv")
+
 # The gap decreasing student-related variables:
 R370 <- pisa.reg.pv(pvlabel="SCIE", 
                     x=c("VIETNAM",
@@ -341,6 +343,8 @@ R370 <- pisa.reg.pv(pvlabel="SCIE",
                     data=DEVCON8x,export=FALSE)
 R370
 #VIETNAM: 94.84 
+
+write.csv(R370, "SCIE_stu.csv")
 
 # The gap decreasing student and teacher variables:
 R371 <- pisa.reg.pv(pvlabel="SCIE", 
@@ -363,6 +367,8 @@ R372 <- pisa.reg.pv(pvlabel="SCIE",
                     data=DEVCON8x,export=FALSE)
 R372
 #VIETNAM: 92.98
+
+write.csv(R372, "SCIE_stu_ped_teach.csv")
 
 ######################################## Gap increasing variables #################################################
 

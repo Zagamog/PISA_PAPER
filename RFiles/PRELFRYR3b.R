@@ -367,6 +367,8 @@ R254
 #TEACCLIM         -1.97       2.92   -0.67
 #R-squared        43.09       2.36   18.24
 
+write.csv(R254, "READ_stu_teach_ped_school.csv")
+
 # The gap decreasing student-related variables:
 
 R255 <- pisa.reg.pv(pvlabel="READ", 
@@ -377,6 +379,8 @@ R255 <- pisa.reg.pv(pvlabel="READ",
                     data=DEVCON8p,export=FALSE)
 R255
 #VIETNAM: 68.54 
+
+write.csv(R255, "READ_stu.csv")
 
 # The gap decreasing student and teacher variables:
 
@@ -401,6 +405,8 @@ R257 <- pisa.reg.pv(pvlabel="READ",
                     data=DEVCON8p,export=FALSE)
 R257
 #VIETNAM: 65.75
+
+write.csv(R257, "READ_stu_teach_ped.csv")
 
 ######################################## Gap increasing variables #################################################
 

@@ -302,6 +302,8 @@ R379 <- pisa.reg.pv(pvlabel="SCIE",
 R379 # PERSEV decreases
 # VIETNAM: 84.54
 
+write.csv(R379, "SCIE_rot1.csv")
+
 R380 <- pisa.reg.pv(pvlabel="SCIE", 
                     x=c("VIETNAM",
                         "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",

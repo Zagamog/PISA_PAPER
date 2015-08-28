@@ -147,7 +147,7 @@ T1b <- DEVCON8a[, c("VIETNAM","ST04Q01","ST05Q01","REPEAT","ST08Q01","ST115Q01",
 N1 <- NROW(na.omit(T1b)) 
 N1 #16764
 N0-N1 #31719 NA's
-DEVCON8zaa <- DEVCON8a[complete.cases(T1b),]
+DEVCON8za <- DEVCON8a[complete.cases(T1b),]
 
 # Let's prepare the relevant student variables again:
 
@@ -460,6 +460,8 @@ R404 <- pisa.reg.pv(pvlabel="SCIE",
                     data=DEVCON8za,export=FALSE)
 R404
 # VIETNAM: 81.08
+
+write.csv(R404, "SCIE_rot3.csv")
 
 # All gap increasing variables (Students & Teachers): same as R401
 

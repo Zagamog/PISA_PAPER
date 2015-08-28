@@ -454,6 +454,8 @@ R291 <- pisa.reg.pv(pvlabel="READ",
 R291
 # VIETNAM 52.72
 
+write.csv(R291, "READ_rot3.csv")
+
 # All Gap increasing variables (Students & Teachers) sames as R288:
 
 R292 <- pisa.reg.pv(pvlabel="READ", 

@@ -306,6 +306,9 @@ R264 <- pisa.reg.pv(pvlabel="READ",
 R264 # PERSEV decreases
 # VIETNAM: 58.43
 
+write.csv(R264, "READ_rot1.csv")
+
+
 R265 <- pisa.reg.pv(pvlabel="READ", 
                     x=c("VIETNAM",
                         "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
