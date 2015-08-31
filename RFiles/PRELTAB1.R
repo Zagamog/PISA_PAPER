@@ -345,7 +345,7 @@ Count <- function(x) base::length(which(complete.cases(x) == TRUE))
 ### The DEV7 countries:
 
 # We generate an extract from the DEVCON8a set with all variables we used in our regressions
-DEV7stu1a <- DEVCON8a[VIETNAM==0, .(FEMALE ,  PRESCHOOL ,  REPEAT ,  ST08Q01 ,  ST09Q01 ,  ST115Q01 ,  HISEI ,
+DEV7stu1a <- DEVCON8a[VIETNAM==0, .(FEMALE , AGE, PRESCHOOL ,  REPEAT ,  ST08Q01 ,  ST09Q01 ,  ST115Q01 ,  HISEI ,
                                     MISCED ,  WEALTH ,  CULTPOS ,  HEDRES ,  BOOK_N, MATWKETH, OUTMATH,
                                     OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                     SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
@@ -374,10 +374,10 @@ as.matrix(blix) -> blax # I have to convert blix into a matrix so I can cbind it
 flax1stu<- cbind(mt1,blax) # Now I have the format I need with extra elements I have to delete
 setnames(flax1stu,c("V1"),c("Valid N"))
 
-seq <- seq(2,94,by=2) # I will need to use 2,112 for the actual version as there are 47 variables
+seq <- seq(2,96,by=2) # I will need to use 2,112 for the actual version as there are 47 variables
 
 flax1stu[c(2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,
-           72,74,76,78,80,82,84,86,88,90,92,94),
+           72,74,76,78,80,82,84,86,88,90,92,94,96),
          c("Variable","Valid N"):=""] # this eliminates the values
 
 flax1stu[, MS:=as.character(MS)]
@@ -387,7 +387,7 @@ flax1stu[c(seq),MS:=paste0("(",MS,")")]
 
 # We generate a Vietnam extract from the DEVCON8a set with all variables we used in our regressions
 
-VNstu1a <- DEVCON8a[VIETNAM==1, .(FEMALE ,  PRESCHOOL ,  REPEAT ,  ST08Q01 ,  ST09Q01 ,  ST115Q01 ,  HISEI ,
+VNstu1a <- DEVCON8a[VIETNAM==1, .(FEMALE ,  AGE, PRESCHOOL ,  REPEAT ,  ST08Q01 ,  ST09Q01 ,  ST115Q01 ,  HISEI ,
                                   MISCED ,  WEALTH ,  CULTPOS ,  HEDRES ,  BOOK_N, MATWKETH, OUTMATH,
                                   OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                   SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
@@ -417,7 +417,7 @@ flax2stu<- cbind(mt1,blax) # Now I have the format I need with extra elements I 
 setnames(flax2stu,c("Variable","V1"),c("Variable1","Valid N"))
 
 flax2stu[c(2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,
-           72,74,76,78,80,82,84,86,88,90,92,94),
+           72,74,76,78,80,82,84,86,88,90,92,94,96),
          c("Variable1","Valid N"):=""] # this eliminates the values
 
 flax2stu[, MS:=as.character(MS)]

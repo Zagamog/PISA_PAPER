@@ -338,7 +338,7 @@ mean1A <- t(sapply(DEVCON8a[c("FEMALE", "PRESCHOOL", "REPEAT", "ST08Q01", "ST09Q
                               "EXAPPLM","EXPUREM","FAMCONC","LHRS","MHRS","SHRS",
                               "BKGR_FAMPROB","SCMAT","ANXMAT",
                               "BELONG","ATSCHL","ATTLNACT","ATT_CONTROL","MTSUP","STUDREL","TCHQUAL_DIFF","TCHBEHTD",
-                              "TCHBEHSO","TCHBEHFA","COGACT","CLSMAN","DISCLIMA","ST72Q01")], function (x)
+                              "TCHBEHSO","TCHBEHFA","COGACT","CLSMAN","DISCLIMA","ST72Q01","AGE")], function (x)
   unlist(t.test(x~DEVCON8a$VIETNAM, paired=FALSE,weight="W_FSTUWT")[c("estimate","p.value","statistic")])))
 mean1A
                               
