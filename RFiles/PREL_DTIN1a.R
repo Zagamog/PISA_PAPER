@@ -10,7 +10,7 @@
 
 # Load raw data STUDENT and SCHOOL 2012 PISA data downloaded from Internet
 # And generate a master data file called DEVCON8a,rda that 
-# has data from Vietnam and 7 devloping countries in PISA 2012
+# has data from Vietnam and 7 devloping countries in PISA
 
 # The following code tries to unravel the secret of Vietnam's outstanding performance on the PISA 2012 assessment. 
 # It presents an analytical comparison of possible explanatory factors (as assessed within the PISA 2012 test) 
@@ -55,8 +55,23 @@ library(lme4)# To run mixed-effects models using Eigen and S4
 # OECD-PISA Report: "PISA 2012 Results: What Makes a School Successful?" (Volume IV, Chapter 3, Table IV.3.2)
 # Original data downloaded from: http://pisa2012.acer.edu.au/downloads.php (txt files, spss or sas)
 
-student.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
-school.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
+# student.rda <- read.dta("C:/Country/Vietnam/Data/PISA/RDATA/stu.rdata")
+# school.rda <- read.dta("C:/Country/Vietnam/Data/PISA/RDATA/sch.rdata")
+
+
+load("C:/Country/Vietnam/Data/PISA/RDATA/stu.rdata")
+load("C:/Country/Vietnam/Data/PISA/RDATA/sch.rdata")
+
+# I actually already had the data in rdata format, but for 
+# consistency renamed to .rda (command not shown)
+
+
+# We need generic data command here instead of above 
+# which is specific to a local machine 
+
+load("student.rda")
+load("school.rda") 
+
 
 # Please refer to the questionnaires, codebooks and the technical manual (pages 396-398) about the specific
 # variables included in the data files and their abbreviations  
