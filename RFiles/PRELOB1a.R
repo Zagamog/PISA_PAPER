@@ -23,7 +23,7 @@ load("DEVCON8.rda")
 
 # PISA_DEV7 <- subset(DEVCON8,CNT==c("ALB","COL","IDN","JOR","PER","THA","TUN"))
 # does not work, only gives 6217 observations, this cannot be the case, rather, it should 
-# be 48483 - 4959 (Vietnam) = 43524 observations, so lets do the countries individually and then 'rbind'
+# be 48483 - 4959 (Vietnam) = 43524 observations, so lets do the countries individually and 'rbind'
 
 PISA_VN <- subset(DEVCON8,CNT==c("VNM")) # 4959 observations
 
