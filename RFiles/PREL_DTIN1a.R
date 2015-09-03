@@ -6,7 +6,7 @@
 # Prepared by Elisabeth Sedmik on Wednesday, June 24 2015
 # Based on code by Suhas D. Parandekar
 
-# Revised by SUhas on 07/31/2015
+# Revised by SUhas on 09/02/2015
 
 # Load raw data STUDENT and SCHOOL 2012 PISA data downloaded from Internet
 # And generate a master data file called DEVCON8a,rda that 
@@ -43,6 +43,8 @@ library(dplyr)# For varioys data manipulation
 library(psych)# For rescaling variables to given mean and sd
 library(sm)# for locally smoothed regressions and density estimation
 library(lme4)# To run mixed-effects models using Eigen and S4
+library(data.table) # For enhanced dataframe faster processing
+library(dplyr) # For faster data crunching
 
 # Please be aware that many packages (eg. tables, intsvy) require additional packages to run. When trying to load
 # the package, R will tell you which ones are missing. Overall you may need to download around 40 packages.
@@ -59,19 +61,29 @@ library(lme4)# To run mixed-effects models using Eigen and S4
 # school.rda <- read.dta("C:/Country/Vietnam/Data/PISA/RDATA/sch.rdata")
 
 
-load("C:/Country/Vietnam/Data/PISA/RDATA/stu.rdata")
-load("C:/Country/Vietnam/Data/PISA/RDATA/sch.rdata")
+# load("C:/Country/Vietnam/Data/PISA/RDATA/stu.rdata")
+# load("C:/Country/Vietnam/Data/PISA/RDATA/sch.rdata")
 
 # I actually already had the data in rdata format, but for 
 # consistency renamed to .rda (command not shown)
 
+# save(sch.rda, file="C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/sch.rda")
+# save(stu.rda, file="C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/stu.rda")
+
+# save(SCH12_CO_VN, file="C:/Country/Vietnam/Data/PISA/RDATA/PISA-2012/SCH12_CO_VN.rda")
 
 # We need generic data command here instead of above 
 # which is specific to a local machine 
 
-load("student.rda")
-load("school.rda") 
 
+# Convert to datatable 
+
+schDT.rda <- data.table(sch.rda)
+stuDT.rda <- data.table(stu.rda)
+
+
+save(schDT.rda, file="C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/schDT.rda")
+save(stuDT.rda, file="C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/stuDT.rda")
 
 # Please refer to the questionnaires, codebooks and the technical manual (pages 396-398) about the specific
 # variables included in the data files and their abbreviations  
@@ -422,6 +434,10 @@ READ0
 # to have the masterfile (DEVCON8) as a back-up. 
 
 save(DEVCON8a, file = "C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/DEVCON8a.rda") 
+
+# convert into datatable and save
+DEVCON8aDT <- data.table(DEVCON8a)
+save(DEVCON8aDT, file = "C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8aDT.rda") 
 
 
 #############################################################################################################
