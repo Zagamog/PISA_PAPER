@@ -277,15 +277,15 @@ ST57Q06 \textit{(r)} & Out-of-school time & 2.588 & 21338 & 1.8029 & 3079 \\
 	\end{tabulary}
 \end{table}
 
-Vivamus elementum, dolor suscipit elementum rutrum, lorem tellus fermentum diam, venenatis ultricies orci urna a ex. Duis aliquam placerat velit, luctus venenatis mi hendrerit vel. In eu risus et ligula molestie iaculis.
+\subsection{Student attitudes towards mathematics}
 
-\subsection{Student Attitude}
+PISA applications in each round have a focus on one of the subjects and in PISA 2012 the focus subject was mathematics. Mathematics happens to be the subject where the score difference is highest between Vietnam and Dev7 countries. The PISA questionnaire for students includes a very interesting series of questions regarding student's perceptions of their abilities, their effort and their reported practices. The details of these questions can be found in the PISA Technical Manual. Typically, each question includes a set of likert scaled items to which the student provides a discrete response on a four point agree-disagree scale. These responses then are combined under specified algorithms to provide an index value. For instance, there is a question to which the response is meant to measure a student's MATWKETH or `mathematics work ethic'. Students either agree or disagree with a set of 9 items on a 4 point likert scale - strongly disagree, disagree, agree and strongly disagree. The items include items such as ``I work hard on my mathematics homework'',  and ``I listen in mathematics class'', ``I keep my mathematics work well organized''. In the case of this example, when a student agrees or strongly agrees with a positive statement, or disagrees/strongly disagrees with a negative statement, he or she would tend to be deemed to have a stronger work ethic towards mathematics. The raw data from the likert scale is converted into an index using IRT scaling procedures, so that the mean for OECD countries is 0 and standard deviation is 1. Table 3 indicates a most interesting finding regarding a range of such indices from the PISA database.
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - student attitude}}
+	\caption{\textbf{Student self-perception regarding mathematical ability and student effort}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -294,51 +294,34 @@ Vivamus elementum, dolor suscipit elementum rutrum, lorem tellus fermentum diam,
 		\hline & & & & & & 
 		Variable & Description & MS & Valid N &  MS & Valid N \\
 		\hline \\
-	\multicolumn{6}{l}{\textbf{Student Attitude towards Mathematics}}	\\ [0.3em]
-	\hline \\			 
-	INSTMOT \textit{(r)} & Instrumental & 0.4253 & 26566 & 0.3683 & 3220 \\ 
-	& motivation for math & (0.8558) &  & (0.7289) &  \\ [0.3em]
-	INTMAT \textit{(r)} & Interest in & 0.7212 & 26634 & 0.6927 & 3219 \\ 
-	& mathematics & (0.8533) &  & (0.6636) &  \\ [0.3em]
+	\multicolumn{6}{l}{\textbf{Items susceptible to 'bragging' tag }}	\\ [0.3em]
+	\hline \\		
+   MATWKETH \textit{(r)} & Mathematics & 0.4514 & 26140 & -0.0014 & 3217 \\ 
+	& work ethic & (0.9782) &  & (0.6915) &  \\ [0.3em]	
 	SUBNORM \textit{(r)} & Subjective norms & 0.716 & 26509 & -0.0923 & 3220 \\ 
 	& in mathematics & (1.165) &  & (0.8395) &  \\ [0.3em]
-	MATHEFF \textit{(r)} & Self-Efficacy & -0.2269 & 26457 & -0.2655 & 3217 \\ 
-	& in mathemtatics & (0.8516) &  & (0.6363) &  \\ [0.3em]
-	
-	FAILMAT \textit{(r)} & Attributions to & 0.083 & 26155 & 0.0895 & 3214 \\ 
-	& failure in math & (1.0312) &  & (0.6319) &  \\ [0.3em]
-	MATINTFC \textit{(r)} & Mathematics & 0.092 & 24827 & 0.3285 & 3181 \\ 
-	& intentions & (0.9837) &  & (1.0964) &  \\ [0.3em]
-	MATBEH \textit{(r)} & Mathematics & 0.8764 & 25899 & 0.6757 & 3211 \\ 
-	& behaviour & (0.9697) &  & (0.6408) &  \\ [0.3em]
-	PERSEV \textit{(r)} & Perseverance & 0.3387 & 25710 & 0.4475 & 3211 \\ 
-	& in problem solving & (0.9605) &  & (0.8767) &  \\ [0.3em]
 	OPENPS \textit{(r)} & Openness to & 0.1949 & 25612 & -0.6125 & 3207 \\ 
 	& problem solving & (0.9787) &  & (0.8708) &  \\ [0.3em]
 	SCMAT \textit{(r)} & Self-concept of & 0.1673 & 26222 & -0.1896 & 3249 \\ 
 	&  own math skills & (0.8101) &  & (0.5903) &  \\ [0.3em]
+	\multicolumn{6}{l}{\textbf{Items with less implications on modesty}}	\\ [0.3em]
+	\hline \\		
+	PERSEV \textit{(r)} & Perseverance & 0.3387 & 25710 & 0.4475 & 3211 \\ 
+	& in problem solving & (0.9605) &  & (0.8767) &  \\ [0.3em]
 	ANXMAT \textit{(r)} & Mathematics & 0.3995 & 26275 & 0.2115 & 3248 \\ 
 	& Anxiety & (0.7724) &  & (0.6354) &  \\ [0.3em]
-	BELONG \textit{(r)} & Sense of & 0.0511 & 25785 & -0.2574 & 3253 \\ 
-	& belonging to school & (0.9428) &  & (0.7032) &  \\ [0.3em]
-	\hline \\
-	\multicolumn{6}{l}{\textbf{Student Attitude towards School}}	\\ [0.3em]
-	\hline \\		
-	ATSCHL \textit{(r)} & Attitude - school & 0.1616 & 25563 & 0.143 & 3246 \\ 
-	& learning is useful  & (0.9986) &  & (0.8648) &  \\ [0.3em]
-	ATTLNACT \textit{(r)} & Attitude - Trying hard & 0.1233 & 25368 & -0.535 & 3248 \\ 
-	& at school pays off & (0.964) &  & (0.8212) &  \\ [0.3em]
-	ATT\_CONTROL \textit{(r)} & Perceived control & 0.8507 & 25106 & 0.6608 & 3228 \\ 
-	& over grades & (0.3564) &  & (0.4735) &  \\ [0.3em]
+	MATINTFC \textit{(r)} & Mathematics & 0.092 & 24827 & 0.3285 & 3181 \\ 
+	& intentions & (0.9837) &  & (1.0964) &  \\ [0.3em]
 		\hline \\
-		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to students in the rotated booklet.}\\   
-		\multicolumn{6}{l}{For a more detailed description of variables, please see Table xx. Items marked with \textit{(r)} are}\\    
-		\multicolumn{6}{l}{taken from the rotated student questionnaire. The variable means of Dev7 and Vietnam are}\\
-		\multicolumn{6}{l}{statistically different at the 5\% significance level, except FAILMAT and ATTSCHL.}\\	
+		\multicolumn{6}{l}{Notes: For the full set of results, please consult the github repository for this paper}\\	
 \end{tabulary}
 \end{table}
 
-Quisque pulvinar at lorem vel lobortis. Duis tempor, sem in dignissim facilisis, libero nisi convallis mi, ac dictum lectus eros nec lacus.
+The upper panel in Table 3 indicates a set of indices where the scores for  Vietnamese students are lower than the scores for Dev7 students. For example, the score for MATWKETH is 0.45 for Dev7 and 0 for Vietnam. The variable SUBNORM is supposed to measure subjective norms regarding mathematics. This construct relates to a student's perceptions regarding how other people in the student's life value mathematics. It includes items such as ``my friends enjoy taking mathematics tests'' and ``my parents believe it's important for me to study mathematics.'' Presumably, when this measure is high, the student has a high subjective norm for mathematics. Table 3 shows the resulting mean for Dev7 countries is 0.72 and the value for Vietnam is -0.09. The index SCMAT includes items such as ``I learn mathematics quickly'' and ``I have always believed that mathematics is one of my best subjects''. Vietnamese students, who scored more than 1 standard deviation above the Dev7 students on the PISA math test, scored half a standard deviation lower on SCMAT. What is going on here ?
+
+This mini-mystery within the overall mystery can possibly be resolved by looking at all the indices. There was a set of indices  with low performance difference between Dev7 and Vietnam and they do not shed much light on the seemingly contradictory result reported in the upper panel on Table 3. The lower panel of Table 3 reports on indices where the balance tips on the other side - these are indices where Vietnamese students performed better than the Dev7 students. The three indices here bear close examination. PERSEV consists of items that purport to capture perseverance with a task or a problem to resolve; ANXMAT is a negative index (less is better) that deals with mathematics anxiety (for example an item is ``I get very nervous doing mathematics problems''); MATINTFC relates to future mathematics intention, including items such as ``I am planning on majoring in a subject in college that requires lot of mathematics''. 
+
+One possible explanation, as indicated in the heading of the Table 3 panels, is that Vietnamese students are bought up in a culture that stresses the importance of modesty and humility as a pathway to learning. They may find it difficult to say great things about themselves, because of cultural norms against bragging or boasting. The lower panel in Table 3, on the other hand includes items that are less prone for an immodest interpretation. To say that you are not afraid of mathematics may not be perceived as bragging. And in this context, the Vietnamese students are less anxious and more confident about the the future of mathematics in their life.\footnote{It will be straightforward to examine this hypothesis more closely by performing an IRT scaling of the underlying items for the indices. We can then test for differences between Vietnam and the Dev7 countries in values of the  location parameters linking the items to the index. Systematic differences will tend to support the hypothesis laid out here.}
 
 \subsection{Student Experience in Mathematics}
 These are all student self-reported items, asked in rotational part 2. 
