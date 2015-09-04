@@ -3,6 +3,8 @@
 # Prepared by Suhas Monday, August 10, 2015
 # and Elisbeth Sedmik
 
+# Revised by Suhas Thursday, Sept 3, 2015
+
 # Comparison of means (p value, t-stats) to be used in addition to ALLTAB1a.R, to determine which
 # variable means of Vietnam and Dev7 are statistically different at teh 5% level 
 
@@ -121,7 +123,7 @@ DEVCON8a$TCH_MENT[DEVCON8a$SC39Q08==2] <- 0
 
 #SC31Q01 - SC31Q07
 #________________________________________________________________________________________________________________
-SC31OUT.rda <- read.csv("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/SC31DATOUT.csv")
+SC31OUT.rda <- read.csv("C:/Country/Vietnam/Data/PISA/MS-Excel/SC31DATOUT.csv")
 DEVCON8a <- merge(DEVCON8a,SC31OUT.rda,by="NEWID")
 DEVCON8a$TCH_INCENTV <- rescale(DEVCON8a$WMLE_SC31, mean = 0, sd = 1,df=FALSE)
 
@@ -335,7 +337,7 @@ mean1A <- t(sapply(DEVCON8a[c("FEMALE", "PRESCHOOL", "REPEAT", "ST08Q01", "ST09Q
                               "OUTMATH",
                               "OUTREAD",
                               "OUTSCIE","ST57Q01","ST57Q02","ST57Q03","ST57Q04","ST57Q05","ST57Q06",
-                              "EXAPPLM","EXPUREM","FAMCONC","LHRS","MHRS","SHRS",
+                              "EXAPPLM","EXPUREM","FAMCON","FAMCONC","LHRS","MHRS","SHRS",
                               "BKGR_FAMPROB","SCMAT","ANXMAT",
                               "BELONG","ATSCHL","ATTLNACT","ATT_CONTROL","MTSUP","STUDREL","TCHQUAL_DIFF","TCHBEHTD",
                               "TCHBEHSO","TCHBEHFA","COGACT","CLSMAN","DISCLIMA","ST72Q01","AGE")], function (x)
@@ -449,6 +451,7 @@ write.csv(mean1A, "mean1A.csv")
 #OUTSCIE_4TO6                 0.08674564             1.344774e-01  4.550201e-14  -7.5728470
 #EXAPPLM                      0.11105148            -2.417840e-01 2.014615e-117  23.6692266
 #EXPUREM                     -0.13841464             1.586954e-01  1.764117e-79 -19.2555281
+#FAMCON                       0.25593149             1.224724e-01  5.672082e-21   9.4320681
 #FAMCONC                     -0.54408873             4.297122e-01  0.000000e+00 -57.8182293
 #LHRS                         3.59901324             3.220697e+00  3.454297e-49  14.8930959
 #MHRS                         3.89597956             3.787778e+00  2.148719e-04   3.7037855

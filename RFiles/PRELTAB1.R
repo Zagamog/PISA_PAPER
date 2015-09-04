@@ -349,7 +349,7 @@ DEV7stu1a <- DEVCON8a[VIETNAM==0, .(FEMALE , AGE, PRESCHOOL ,  REPEAT ,  ST08Q01
                                     MISCED ,  WEALTH ,  CULTPOS ,  HEDRES ,  BOOK_N, MATWKETH, OUTMATH,
                                     OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                     SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
-                                    ATT_CONTROL, EXAPPLM, EXPUREM, FAMCONC, PARPRESSURE,  
+                                    ATT_CONTROL, EXAPPLM, EXPUREM, FAMCON, FAMCONC, PARPRESSURE,  
                                     TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, BKGR_FAMPROB)]
 
 DEV7stu1b1 <- summarise_each(DEV7stu1a, funs(mean(.,na.rm=TRUE)))
@@ -391,7 +391,7 @@ VNstu1a <- DEVCON8a[VIETNAM==1, .(FEMALE ,  AGE, PRESCHOOL ,  REPEAT ,  ST08Q01 
                                   MISCED ,  WEALTH ,  CULTPOS ,  HEDRES ,  BOOK_N, MATWKETH, OUTMATH,
                                   OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                   SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
-                                  ATT_CONTROL, EXAPPLM, EXPUREM, FAMCONC, PARPRESSURE,  
+                                  ATT_CONTROL, EXAPPLM, EXPUREM, FAMCON, FAMCONC, PARPRESSURE,  
                                   TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, BKGR_FAMPROB)]
 
 VNstu1b1 <- summarise_each(VNstu1a, funs(mean(.,na.rm=TRUE)))
