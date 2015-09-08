@@ -223,6 +223,7 @@ An examination of fixed students characteristics (gender and age) does not show 
 \end{tabulary}
 \end{table}
 The finding regarding PRESCHOOL and REPEAT indicates the possible importance of the trajectory of the student prior to High School. Repetition rates are difficult as comparative indicators of system quality because of the variations across countries in curriculum and standards, but REPEAT is another interesting variable to keep in mind as a possible clue to the mystery of Vietnam's PISA performance. As in some other East Asian cultures, Vietnamese children are expected by their parents to study hard. Though Mark Twain in Vietnamese translation is quite a best seller for young readers in Vietnam, truancy from school is not perceived benovelently by parents.\footnote{A cultural explanation is possibly quite important in explaining Vietnam's anomalous PISA results, though the PISA dataset may only be able to measure the possible effects of culture rather than measuring cultural differences. Literature from the World Values Survey, that does seek to measure cultural differences, indicates that Vietnam is a positive outlier on discipline and authority orientation\cite{DaltonOng05}.} Table 1 indicates a consistently lower truancy rate for the three variables used - the question refers to the past week \textbf{(to confirm)} and Vietnamese students are less likely to be late for school, have fewer days of unexcused absence and skip fewer classes. 
+[XXXX Note TCHQUAL\_DIFF better with different teacher & 0.5249 NN 0.363 student would have worked harderXXXX]
 
 The final set of variables in Table 1 concern parental background and wealth at the students home, including cultural resources and books at home which may work to stimulate cognitive development. The PISA database includes a number of indices to measure aspects such as weath and possessions. These indices are based on underlying data regarding occupations and possessions. The scaling of raw data to indices is described in detail in the PISA technical report \cite{OECD2014a}. For HISEI, the parents occupation status, the OECD mean is 50 and the OECD standard deviation is 15. Table 1 shows that the HISEI for Dev7 parents at 40.42 was much higher than 26.60 for Vietnamese parents. MISCED refers to the International Standard Classification of Education (ISCED) developed by UNESCO. Table 1 shows that the average level of mother's education for Dev7 was just over 3, meaning Upper Secondary education, while for Vietnam the mean was just over 2, meaning Lower Secondary education. The WEALTH index is set for an OECD mean of zero and standard deviation of 1. Dev 7 countries wealth level was -1.5 and Vietnam's was -2.1, consistent with the data regarding occupational classification and mother's education. These findings indicate the close correlation of these variables with GDP per capita. The more interesting finding concerns the indices CULTPOS and HEDRES, which have OECD mean 0 and s.d. 1, and the number of books. CULTPOS includes classical literature, books of poetry and works of art. HEDRES includes reference books and books to help with school work as well as a study desk and 'a quiet place to study'. These three variables are also in line with per capita income - with the Dev7 mean being lower than the OECD mean, and Vietname being lower than Dev7. So one explanation regarding Vietnam's PISA performance can probably be ruled out - it does not seem likely that Vietnamese households spend disproportionately higher amount of their incomes on acquiring possessions that would give their children an edge in life. Books and other education related articles are owned by Vietnamese households to the same extent as any other households. 
 
@@ -322,7 +323,7 @@ One possible explanation, as indicated in the heading of the Table 3 panels, is 
 
 \subsection{Content of Mathematics Instruction}
 
-In addition to beliefs and perceptions of students regarding mathematics in general, PISA also seeks to investigate more closely the issue of content of mathematics instruction. PISA incorporates a very interesting approach to avoid or minimize the bragging or over-claiming problem referred to in the previous sub-section. The index FAMCON is constructed out of a response to a question about mathematical concepts for which students are asked ``How familiar are you with the following items?'' The list of items includes items such as `Linear Equation', `Quadratic Function'  and `Cosine.' The list of items also includes three nonsensical items or pseudo-concepts that sound fancy: `Proper Number',`Subjunctive Scaling' and Declarative Fraction'. These items are termed as FOIL, and are used as trick items to calibrate the response for over-claiming on part of the students. The index without correction is presented as FAMCON, and the index with correction is presented as FAMCONC. It is quite fascinating that with FAMCON, the uncorrected version, Dev7 students come out 'better' than Vietnam students mean of 0.26 as compared to 0.12. Unfortunately, it appears that this also included familiarity with non-existent items like 'subjunctive scaling' - or bragging. With the corrected version, FAMCONC, the Vietnamese students turn out to do much better, with a mean value of 0.43 as compared to Dev7 mean of -0.54. 
+In addition to beliefs and perceptions of students regarding mathematics in general, PISA also seeks to investigate more closely the issue of content of mathematics instruction. PISA incorporates a very interesting approach to avoid or minimize the bragging or over-claiming problem referred to in the previous sub-section. The index FAMCON is constructed out of a response to a question about mathematical concepts for which students are asked ``How familiar are you with the following items?'' The list of items includes items such as `Linear Equation', `Quadratic Function'  and `Cosine.' The list of items also includes three nonsensical items or pseudo-concepts that sound fancy: `Proper Number',`Subjunctive Scaling' and Declarative Fraction'. These items are termed as FOIL, and are used as trick items to calibrate the response for over-claiming on part of the students. The index without correction is presented as FAMCON, and the index with correction is presented as FAMCONC. It is quite fascinating that with FAMCON, the uncorrected version, Dev7 students come out apparently better than Vietnam students mean of 0.26 as compared to 0.12. Unfortunately, it appears that this also included familiarity with non-existent items like `subjunctive scaling' - or bragging. With the corrected version, FAMCONC, the Vietnamese students turn out to do much better, with a mean value of 0.43 as compared to Dev7 mean of -0.54. 
 
 \begin{table}[H]
 	\tiny
@@ -355,13 +356,15 @@ In addition to beliefs and perceptions of students regarding mathematics in gene
 
 The index EXAPPLM asks students about their experience during school work with examples of applied mathematics problems. Similarily, the index EXPUEM refers to experience with examples of pure mathematics. Not surprisingly, Vietnam students indicate a lower performance on EXAPPLM and a higher performance on EXPUREM.\footnote{It has been a long standing issue that Vietnamese students are expected to learn a curriculum that is more crammed than the international norm, but has more of theory and abstract mathematics rather than applied mathematics.See \cite{NguyenTran13} and \cite{Le07}.} To the extent that the PISA mathematics test almost by definition tends towards pure rather than applications in real life, the figures help to understand Vietnam's performance.
 
-\subsection{Home Support} 
+\subsection{Parental Support at School} 
+
+The publication of the bestseller book \cite{Chua11} ``Battle Hymn of the Tiger Mother'' in 2011 ignited a firestorm of controversy. The book gave prominence in the popular culture to a vast academic literature regarding parenting styles and about the perceived higher performance of children from Asian immigrant families in the US and other western countries.One of the ways that parents influence children's education outcome is through the interaction that parents have with their child's teachers and others at school. The PISA data includes a question that asks about parental expectations.This question (SC24) includes a statement ``There is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.'' The\footnote{\cite{HsienXie14} investigate in detail the data from a set of longitudinal surveys that cover thousands of children over a long period starting from their early childhood through high school. As part of the explanation of the superior performance of Asian immigrant children, the authors report that ``Asian students report greater parental expectations of academic success.'' }  Table 4 indicates a higher level of PARPRESSURE for Vietnam as compared to Dev7.  Another question (SC25) asks school principals about the proportion of parents that take part in a set of 12 activities. While the question does not specify which parent (or both) may be involved, the variables have been named after the mother for ease of exposition. 
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - student experience in mathematics}}
+	\caption{\textbf{Parental Support at School}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -374,6 +377,8 @@ The index EXAPPLM asks students about their experience during school work with e
 		& pressure & (0.4421) &  & (0.4863) &  \\  [0.3em]
 		TIGERMOM & Parent initiates - &  52.4472 & 41394 & 62.4183 & 4882 \\ 
 		& progress discussion & (38.097) &  & (41.3743) &  \\ [0.3em]
+		DUTYMOM & Teacher initiates - &  66.9737 & 41394 & 68.5543 & 4882 \\ 
+		& progress discussion & (36.727) &  & (37.4796) &  \\ [0.3em]
 		VOLUMOM & Parent Participation - & 35.2134 & 41394 & 38.3623 & 4882 \\ 
 		& Volunteering & (38.8428) &  & (39.9773) &  \\ [0.3em]
 		TEACHMOM & Parent Participation - & 12.1764 & 41394 & 38.2821 & 4882 \\ 
@@ -382,8 +387,6 @@ The index EXAPPLM asks students about their experience during school work with e
 		& Fundraising & (35.2134) &  & (44.0376) &  \\ [0.3em]
 		COUNCILMOM & Parent Participation - & 36.4546 & 41394 & 23.1174 & 4882 \\ 
 		& School government & (37.2252) &  & (36.4406) &  \\[0.3em]
-		BKGR\_FAMPROB \textit{(r)} & Home problems - & 0.4705 & 25038 & 0.264 & 3231 \\ 
-		& deter effort in school & (0.4991) &  & (0.4409) &  \\[0.3em]
 		\hline \\
 		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to students in the rotated booklet}\\   
 		\multicolumn{6}{l}{and the general (non-rotated) booklet. For a more detailed description of variables, please see}\\    
@@ -392,17 +395,17 @@ The index EXAPPLM asks students about their experience during school work with e
 	\end{tabulary}
 	\end{table}
 
-Nunc feugiat nisi sit amet elit condimentum iaculis. Nunc porttitor purus non semper tristique. Curabitur ac convallis nunc, at maximus orci.
+TIGERMOM refers to the reported proportion of parents who discussed their child's behavior or the child's progress ``on their own initiative'', to differentiate from cases where parents might have done so on the initiative of the teacher, termed as DUTYMOM. Table 4 shows a slightly higher number on DUTYMOM for Vietnamese parents compared to Dev7, but a greater difference, more than ten percentage points for TIGERMOM. VOLUMOM refers to parents volunteering in various non-academic activities, such as field trips or carpentry and yard work. Vietnamese parents appear to have slight advantage with regard to VOLUMOM, buta much  higher advantage when considering TEACHMOM, which refers to parents volunteering as assistants to the teacher - 12.18\% compared to 38.28\%. Vietnamese parents also appear to be much more active in fund raising, from the values for FUNDMOM, though they may have less formal influence through school committees. 
 
-\section{What teacher and teaching/pedagogical practices related factors explains the achivevement gap of Vietnam ?}
+\subsection{Teachers Characteristics and Management} 
 
-\subsection{Teachers - Characteristics and Quantitative Measures} 
+Conventional measures regarding student-teacher ratio and teacher certification show some advantage for Vietnam over Dev7 as shown in Table 6.  
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - teacher characteristics and quantitative measures}}
+	\caption{\textbf{Teacher characteristics and management}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -411,91 +414,47 @@ Nunc feugiat nisi sit amet elit condimentum iaculis. Nunc porttitor purus non se
 		\hline & & & & & & 
 		Variable & Description & MS & Valid N &  MS & Valid N \\
 		\hline \\
-		STRATIO & Student-teacher ratio & 19.715 & 33742 & 18.9656 & 4743 \\ 
-		& & (9.4135) &  & (5.5255) &  \\ [0.3em]
+		\multicolumn{6}{l}{\textbf{Teacher numbers and teacher management}}	\\ [0.3em]
+		\hline \\ 
 		PROPCERT & Proportion of & 0.6757 & 35130 & 0.7961 & 4586 \\ 
 		& certified teacher & (0.4042) &  & (0.3978) &  \\ [0.3em]
-		PROPQUAL & Proportion of teachers & 0.8756 & 36319 & 0.8775 & 4708 \\ 
-		& with ISCED 5A & (0.2181) &  & (0.2758) &  \\ [0.3em]
 		SMRATIO & Mathematics & 188.1791 & 33985 & 120.9773 & 4777 \\ 
 		& teacher-student ratio & (158.6256) &  & (43.6092) &  \\ [0.3em]
-		TCSHORT & Shortage of & 0.4846 & 41077 & 0.4249 & 4882 \\ 
-		& teaching staff & (1.2627) &  & (1.1636) &  \\ [0.3em]
-		LHRS \textit{(r)} & Taught hours of & 3.599 & 22177 & 3.2207 & 2870 \\ 
-		& 'test language' &(1.9887) &  & (1.1576) &  \\ [0.3em]
-		SHRS \textit{(r)} & Taught hours of & 3.7566 & 21701 & 3.9597 & 2473 \\ 
-		& science & (2.5078) &  & (2.5484) &  \\ [0.3em]
-		MHRS \textit{(r)} & Taught hours of & 3.896 & 21913 & 3.7878 & 2850 \\ 
-		& mathematics & (2.0335) &  & (1.3764) &  \\ [0.3em]
-		\hline \\
-		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
-		\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
-		\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
-		\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
-		\multicolumn{6}{l}{except PROPQUAL.}\\
-	\end{tabulary}
-	\end{table}
-
-Maecenas ullamcorper massa nec faucibus cursus. Aenean porttitor augue nec rhoncus bibendum. Cras venenatis, ex et commodo consequat, sem arcu suscipit lacus, id efficitur odio purus non felis.
-
-\subsection{Teachers - Quality} 
-
-\begin{table}[H]
-	\tiny
-	\def\arraystretch{0.9}
-	\centering
-	\caption{\textbf{Summary statistics - teacher quality}}
-	\begin{tabulary}{1.0\textwidth}{L L C C C C}
-		\hline\hline \\
-		\multicolumn{2}{c}{}
-		& \multicolumn{2}{c}{Dev7 countries}
-		& \multicolumn{2}{c}{Vietnam}	\\
-		\hline & & & & & & 
-		Variable & Description & MS & Valid N &  MS & Valid N \\
-		\hline \\
-		TCFOCST & Teacher focus & 0.4975 & 41370 & 0.1402 & 4882 \\ 
-		& & (1.0056) &  & (0.8377) &  \\ [0.3em]
 		SC35Q02 & Professional development & 40.5068 & 39550 & 49.0086 & 4762 \\ 
 		& in math in last 3 months & (40.8546) &  & (45.1706) &  \\ [0.3em]
-		TCH\_MENT & Teacher mentoring & 0.8566 & 40734 & 0.9859 & 4882 \\ 
-		& as quality assurance & (0.3505) &  & (0.1181) &  \\ [0.3em]
-		MTSUP \textit{(r)} & Mathematics supportive & 0.4778 & 25918 & 0.3685 & 3247 \\ 
 		& teaching style & (0.9613) &  & (0.774) &  \\ [0.3em]
 		STUDREL \textit{(r)} & Teacher student & 0.3794 & 25870 & 0.0186 & 3253 \\ 
 		& relations & (1.0178) &  & (0.8883) &  \\ [0.3em]
-		TCHQUAL\_DIFF \textit{(r)} & with different teacher & 0.5249 & 24986 & 0.363 & 3231 \\ 
-		& student would work harder & (0.4994) &  & (0.481) &  \\  [0.3em]
-		TCH\_INCENTV & teacher appraisal led &  -0.0317 & 41394 & 0.2687 & 4882 \\ 
-		& to gratification & (1.0301) &  & (0.6336) &  \\ 	[0.3em]
+		TCH\_INCENTV & Teacher appraisal  &  -0.0317 & 41394 & 0.2687 & 4882 \\ 
+		& linked to incentives & (1.0301) &  & (0.6336) &  \\ 	[0.3em]
 		\hline \\
-		\multicolumn{6}{l}{\textbf{Quality assurance of mathematics teachers through ...}}	\\ [0.3em]
+		\multicolumn{6}{l}{\textbf{Quality assurance of mathematics teachers through \ldots}}	\\ [0.3em]
 		\hline \\ 
-		TCM\_STUASS & test or assessment &  0.8762 & 41110 & 0.9818 & 4882 \\ 
-		& of student achievement & (0.3293) &  & (0.1338) &  \\ [0.3em]
-		TCM\_PEER & teacher peer review & 0.7916 & 41095 & 0.8382 & 4882 \\ 
+		TCH\_MENT & Teacher mentoring & 0.8566 & 40734 & 0.9859 & 4882 \\ 
+		& as quality assurance & (0.3505) &  & (0.1181) &  \\ [0.3em]
+		TCM\_PEER & Teacher peer review & 0.7916 & 41095 & 0.8382 & 4882 \\ 
 		& of lectures, methods etc & (0.4061) &  & (0.3683) &  \\ [0.3em]
-		TCM\_OBSER & principal or senior & 0.8015 & 41170 & 0.9785 & 4882 \\ 
+		TCM\_OBSER & Principal or senior & 0.8015 & 41170 & 0.9785 & 4882 \\ 
 		& staff observations & (0.3989) &  & (0.1451) &  \\ [0.3em]
-		TCM\_INSPE & obersavtion of classes & 0.5882 & 41020 & 0.8664 & 4882 \\ 
+		TCM\_INSPE & Observation of classes & 0.5882 & 41020 & 0.8664 & 4882 \\ 
 		& external inspector & (0.4922) &  & (0.3402) &  \\ [0.3em]
 		\hline \\
 		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
 		\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
-		\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
-		\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
-		\multicolumn{6}{l}{except PROPQUAL.}\\	
 	\end{tabulary}
 	\end{table}
 
-Praesent malesuada et mi id cursus. Nam elit enim, molestie ac nulla vel, bibendum sollicitudin ex. Suspendisse sit amet erat vitae mauris fermentum tincidunt in at nulla.
+The student-teacher ratio overall is not much different at about 20 students per teacher, but there are more specialized mathematics teachers in Vietnam, as shown by the values for SMRATIO (121 in Vietnam compared to 188 for Dev7). There is a higher percentage of certified teachers in Vietnam, and higher reported professional development in mathematics (SC35Q02). A very interesting variable from a policy point of view regards incentives for teachers. School principals were questioned to what extent performance appraisal or other forms of feedback  are related to incentives for teachers in seven different forms, from salary and bonus to public recognition and greater job responsibilities. The answers were on a 4 point scale: `No change', `A small change', 'A moderate change' and 'A large change'. We converted the rating into a Rasch index, scaled to an OECD mean of 0 and standard deviation of 1. The mean for Dev7 for this index, TCH\_INCENTV was -0.03 for Dev7 and 0.27 for Vietnam, indicating greater presence of teacher incentives in Vietnam. The final set of variables in Table 6 deal with the way that quality assurance regarding teacher performance is carried out, with help of a mentor, peer, supervisor and external inspector. These variables indicate a higher prevalence of oversight for teachers in Vietnam, with the difference being greatest for external inspections (86.64\% in Vietnam compared to 58.82\% in Dev7 countries). 
 
-\subsection{Pedagogical/Teaching practices} 
+\subsection{Pedagogical practices} 
+
+Pedaogical practices are an outcome of a complex interaction between curriculum and other policy, economic possibilities and the cultural and historical context. It is difficult to trace differences in these practices in a quantitative survey.\footnote{For an interesting recent qualitative study that seeks to emulate the TIMSS video study for Vietnam, see \cite{Phuong14}.} Table 7 presents a few variables that seek to capture variation in pedagogical practices. Table 7 indicates the higher prevalence of national policies in Vietnam regarding the use of computers in the classroom and the use of a standardized curriculum that specifies what has to be taught each month. There is no difference with regard to the use of a single textbook. There is some difference in the use of formative student assessment, with slightly higher percentage of use of assessments to monitor teachers and schools. COGACT is an OECD-PISA index variable based on response to student reports regarding classroom practices such as teacher requiring students to reflect on a problem or develop procedures rather than practice given procedures. This variables show much lower level of cognitive activation in Vietnam (-0.33) compared to 0.30 for Dev7. In the final set of classroom management variables, an interesting variation can be seen in DISCLIMA, an index variable that measures disciplinary climate in class, and is higher for Vietnam (0.38) as compared to Dev7 (-0.02).
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - pedagogical/teaching practices}}
+	\caption{\textbf{Pedagogical practices}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -504,7 +463,7 @@ Praesent malesuada et mi id cursus. Nam elit enim, molestie ac nulla vel, bibend
 		\hline & & & & & & 
 		Variable & Description & MS & Valid N &  MS & Valid N \\
 	\hline \\
-	\multicolumn{6}{l}{\textbf{Practices in Mathematics}}	\\ [0.3em]
+	\multicolumn{6}{l}{\textbf{Policies applied}}	\\ [0.3em]
 	\hline \\ 
 	COMP\_USE & Math policy - use of & 0.4345 & 40800 & 0.6447 & 4815 \\ 
 	& computers in class & (0.4957) &  & (0.4787) &  \\ [0.3em]
@@ -512,31 +471,13 @@ Praesent malesuada et mi id cursus. Nam elit enim, molestie ac nulla vel, bibend
 	& same textbook & (0.4069) &  & (0.4105) &  \\ [0.3em]
 	STD\_CUR & Maths policy - & 0.8705 & 40595 & 0.949 & 4882 \\ 
 	& standardized curriculum & (0.3358) &  & (0.22) &  \\ [0.3em]
-	TCHBEHTD \textit{(r)}& Teacher oriented & 0.4973 & 26433 & 0.2964 & 3254 \\ 
-	& inctruction method & (1.0798) &  & (0.8099) &  \\ [0.3em]
-	TCHBEHSO \textit{(r)} & Student oriented & 0.7921 & 26358 & 0.2969 & 3248 \\ 
-	& instruction method & (0.9545) &  & (0.819) &  \\ [0.3em]
 	\hline \\
-	\multicolumn{6}{l}{\textbf{Fromative assessment used to}}	\\ [0.3em]
+	\multicolumn{6}{l}{\textbf{Fromative assessment used to \ldots }}	\\ [0.3em]
 	\hline \\ 
-	ASS\_PROG & inform parents & 0.9695 & 40708 & 0.9928 & 4882 \\ 
-	& about childs progress & (0.172) &  & (0.0844) &  \\ [0.3em]
-	ASS\_PROM & decide on students? & 0.8988 & 40483 & 0.9508 & 4882 \\ 
-	& retention or promotion & (0.3016) &  & (0.2162) &  \\ [0.3em]
-	ASS\_INSTR & group students for & 0.6648 & 40316 & 0.7378 & 4882 \\ 
-	&  instructional purposes & (0.4721) &  & (0.4399) &  \\ [0.3em]
-	ASS\_NAT & compare school to & 0.7008 & 40493 & 0.8785 & 4882 \\ 
-	& national performance & (0.4579) &  & (0.3267) &  \\ [0.3em]
 	ASS\_SCH & monitor the schools & 0.9111 & 40555 & 0.9799 & 4882 \\ 
 	& yearly progress & (0.2846) &  & (0.1403) &  \\ [0.3em]
 	ASS\_TCH & make judgements on & 0.7764 & 40400 & 0.9912 & 4882 \\ 
 	& teachers' effectiveness & (0.4166) &  & (0.0934) &  \\ [0.3em]
-	ASS\_CUR & identify improvements & 0.9017 & 40586 & 0.9127 & 4882 \\ 
-	& in the curriculum & (0.2977) &  & (0.2822) &  \\ [0.3em]
-	ASS\_OTH & compare school with & 0.661 & 40386 & 0.866 & 4882 \\ 
-	& other schools & (0.4734) &  & (0.3406) &  \\ [0.3em]
-	TCHBEHFA \textit{(r)} & help students perform &  0.4634 & 26245 & 0.005 & 3246 \\ 
-	& better & (0.9934) &  & (0.79) &  \\ [0.3em]
 	\hline \\
 	\multicolumn{6}{l}{\textbf{Cognitive Activation in Mathematics}}	\\ [0.3em]
 	\hline \\ 
@@ -555,24 +496,19 @@ Praesent malesuada et mi id cursus. Nam elit enim, molestie ac nulla vel, bibend
 		\hline \\
 		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools) and}\\    
 		\multicolumn{6}{l}{students in the rotated booklet. For a more detailed description of variables, please see}\\
-		\multicolumn{6}{l}{Table xx. Items marked with \textit{(r)} are taken from the rotated student questionnaire. The}\\
-		\multicolumn{6}{l}{variable means of Dev7 and Vietnam are statistically different at the 5\% significance level,}\\
-		\multicolumn{6}{l}{except TXT\_BOOK.}\\
 		
 	\end{tabulary}
 	\end{table}
 
-Suspendisse non justo et diam bibendum pulvinar. Sed id tortor posuere, rhoncus justo at, facilisis arcu. Duis eleifend fermentum tortor, eget laoreet sem varius ac.
-
-\section{What school related factors explains the achivevement gap of Vietnam ?}
-
 \subsection{School Characteristics} 
+
+Table 8 indicates interesting basic differences between Vietnam and Dev7 school characteristics. Vietnamese schools are about half as likely to be private schools (8\% compared to 17\%) and less dependent on funding from student fees (in Vietnam, student fees account ofr 17\% of the school's financing as compared to 26\% for Dev7. One very useful comparison comes from a question regarding the geographic location of high schools. The percentage of schools reported in a VILLAGE (defined in PISA as population center below 3,000 inhabitants, was 46\% in Vietnam as compared to 14\% for Dev7. With CITY, defined as pouplation above 100,000 inhabitants, we find only 23\% Vietnamese schools as compared to 41\% for Dev7. 
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - school characteristics}}
+	\caption{\textbf{School characteristics}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -580,12 +516,11 @@ Suspendisse non justo et diam bibendum pulvinar. Sed id tortor posuere, rhoncus 
 		& \multicolumn{2}{c}{Vietnam}	\\
 		\hline & & & & & & 
 		Variable & Description & MS & Valid N &  MS & Valid N \\
-		\hline \\
 PRIVATESCL & Private school & 0.1714 & 41182 & 0.0832 & 4882 \\ 
 & dummy variable & (0.3768) &  & (0.2762) &  \\ [0.3em]
 SC02Q02 & Funding for school & 25.7233 & 34621 & 16.6104 & 4848 \\ 
 & from student fees & (36.0117) &  & (26.3564) &  \\ [0.3em]
-DUM\_VILLAGE & School located & 0.1403 & 41347 & 0.4584 & 4882 \\ 
+VILLAGE & School located & 0.1403 & 41347 & 0.4584 & 4882 \\ 
 & in a village & (0.3473) &  & (0.4983) &  \\ [0.3em]
 TOWN & School located & 0.4508 & 41347 & 0.3101 & 4882 \\ 
 & in a town & (0.4976) &  & (0.4626) &  \\ [0.3em]
@@ -595,13 +530,8 @@ CLSIZE & Average class size & 35.013 & 40771 & 42.5043 & 4882 \\
 & &  (9.764) &  & (8.7236) &  \\ [0.3em]
 SCHSIZE & Number of enrolled & 1057.0332 & 35062 & 1302.9009 & 4882 \\ 
 & students at school & (924.2422) &  & (648.6821) &  \\ [0.3em]
-PCGIRLS & Proportion of & 0.49 & 36342 & 0.5282 & 4882 \\ 
+PCGIRLS & Proportion of & 0.4900 & 36342 & 0.5282 & 4882 \\ 
 & girls at school & (0.2597) &  & (0.0801) &  \\ [0.3em]
-ST72Q01 \textit{(r)} & Class size & 31.0133 & 23946 & 41.0018 & 2735 \\ 
-& in 'test language' &  (9.3337) &  & (5.4001) &  \\[0.3em]
-SCHSEL & School selectivity/ & 2.3061 & 41286 & 2.8454 & 4882 \\ 
-& student admission policies & (0.7991) &  & (0.4044) &  \\ [0.3em]
-
 \hline \\
 \multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). ST72Q01 is}\\    
 \multicolumn{6}{l}{taken from the rotated questionnaire administered to students. For a more detailed description of}\\
@@ -610,15 +540,17 @@ SCHSEL & School selectivity/ & 2.3061 & 41286 & 2.8454 & 4882 \\
 	\end{tabulary}
 	\end{table}
 
-Proin elementum egestas tortor, at lacinia ligula. Donec condimentum, enim id imperdiet euismod, metus enim blandit arcu, ullamcorper vehicula orci nisi auctor sapien. 
+The average class size in Vietnam is higher, with 43 students compared to 35 students in Dev7 countries, and the schools in Vietnam are bigger, with average enrollment of 1,303 students as compared to 1,057 in Dev7. There is also a slightly higher percentage of girls in the schools in Vietnam. 
 
-\subsection{School Resources} 
+\subsection{School Resources and Management} 
+
+The comparison of Vietnam and Dev7 regarding school resources shows a mixed picture (Table 9). The schools in Vietnam have lower number of computers per student (0.22) compared to 0.39 for Dev7. However, the ratio of computers connected to the internet is slightly higher in Vietnam (78\% compared to 76\%). Indices on quality of school educational resources (SCMATEDU) show Vietnam with -0.4941 and Dev7 with 0.8145, and similar difference for quality of physical infrastructure at the school (SCMATBUI). There is also a higher proportion of schools that offer additional math classes. These differences indicate that Vietnam has put in a priority for investment in Basic Education that compensates to some extent for its income disadvantage compared to the Dev7. With regard to extra-curricular activities, there is likewise a mixed picture. Not all extra-curricular activities are shows in Table 9, but some indicate lower prevalence in Vietnam as compared to Dev7 - for instance school band and math club (not shown, with similar pattern are chess club, IT club, art club). Some activities have higher prevalence in Vietnam - school play/musical, mathematics competition, and sports (not shown). It would appear that even for extra-curricular activities, the prevalence of more serious activities or activities that require greater effort or competition are more prevalent in Vietnam as compared to Dev7. 
 
 \begin{table}[H]
 	\tiny
 	\def\arraystretch{0.9}
 	\centering
-	\caption{\textbf{Summary statistics - school resources}}
+	\caption{\textbf{School resources and Management}}
 	\begin{tabulary}{1.0\textwidth}{L L C C C C}
 		\hline\hline \\
 		\multicolumn{2}{c}{}
@@ -627,6 +559,9 @@ Proin elementum egestas tortor, at lacinia ligula. Donec condimentum, enim id im
 		\hline & & & & & & 
 		Variable & Description & MS & Valid N &  MS & Valid N \\
 		\hline \\
+	\hline \\
+	\multicolumn{6}{l}{\textbf{Resource quantity and quality}}	\\ [0.3em]
+	\hline \\ 
 		RATCMP15 & Available computers & 0.3909 & 39490 & 0.2216 & 4875 \\ 
 		& for 15-year-olds & (0.5476) &  & (0.3411) &  \\ [0.3em]
 		COMPWEB & Ratio of computers & 0.7556 & 37446 & 0.7795 & 3634 \\ 
@@ -635,55 +570,25 @@ Proin elementum egestas tortor, at lacinia ligula. Donec condimentum, enim id im
 		& educational resources & (1.1538) &  & (0.9718) &  \\ [0.3em]
 		SCMATBUI & Quality of & -0.6322 & 41221 & -0.3988 & 4882 \\ 
 		& physical infrastructure & (1.1113) &  & (1.0161) &  \\ [0.3em]
-		EXC1\_BAND & School offers & 0.471 & 40044 & 0.1678 & 4882 \\ 
+		SCL\_EXTR\_CL & School offers & 0.6538 & 40869 & 0.9584 & 4882 \\ 
+		& additional math classes & (0.4757) &  & (0.1997) &  \\ [0.3em]
+\hline \\
+\multicolumn{6}{l}{\textbf{Extra-curriculars}}	\\ [0.3em]
+\hline \\ 
+		EXC1\_BAND & School offers & 0.4710 & 40044 & 0.1678 & 4882 \\ 
 		& Band, orchestra or choir & (0.4992) &  & (0.3737) &  \\ [0.3em]
 		EXC2\_PLAY & School offers &  0.5928 & 40122 & 0.8509 & 4882 \\ 
 		& schoo play/musical & (0.4913) &  & (0.3562) &  \\ [0.3em]
-		EXC3\_NEWS & School offers & 0.5373 & 39617 & 0.5088 & 4882 \\ 
-		& yearbook/newspaper & (0.4986) &  & (0.5) &  \\ [0.3em]
-		EXC4\_VOLU & School offers & 0.827 & 40240 & 0.83 & 4882 \\ 
-		& volunteering/service activ. & (0.3782) &  & (0.3757) &  \\ [0.3em]
 		EXC5\_MCLUB & School offers & 0.453 & 40154 & 0.2687 & 4882 \\ 
 		& mathematics club & (0.4978) &  & (0.4434) &  \\ [0.3em]
 		EXC6\_MATHCOMP & School offers & 0.6268 & 40215 & 0.8032 & 4882 \\ 
 		& Mathematics competition & (0.4837) &  & (0.3977) &  \\ [0.3em]
-		EXC7\_CHESS & School offers & 0.3437 & 39969 & 0.2302 & 4882 \\ 
-		& chess club & (0.475) &  & (0.421) &  \\ [0.3em]
-		EXC8\_ICTCB & School offers & 0.4899 & 39752 & 0.1749 & 4882 \\ 
-		& IT focused club & (0.4999) &  & (0.3799) &  \\ [0.3em]
-		EXC9\_ARTCB & School offers & 0.6774 & 40017 & 0.4585 & 4848 \\ 
-		& art club/activities & (0.4675) &  & (0.4983) &  \\ [0.3em]
 		EXC10\_SPORT & School offers & 0.9321 & 40581 & 0.992 & 4882 \\ 
 		& sporting activities & (0.2516) &  & (0.089) &  \\ [0.3em]
-		EXC11\_UNICORN & School offers & 0.7152 & 40002 & 0.9629 & 4882 \\ 
-		& 'country specific item' & (0.4513) &  & (0.189) &  \\ [0.3em]
-		SCL\_EXTR\_CL & School offers & 0.6538 & 40869 & 0.9584 & 4882 \\ 
-		& additional math classes & (0.4757) &  & (0.1997) &  \\ [0.3em]
 		\hline \\
-		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
-		\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
-		\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
-		\multicolumn{6}{l}{different at the 5\% significance level, except EXC4\_VOLU.}\\	
-	\end{tabulary}
-	\end{table}
-
-Morbi vitae mi lobortis, aliquet nulla id, semper lorem. Mauris lacinia elit sagittis neque interdum, eu viverra dui lobortis. Vivamus sollicitudin velit eget efficitur eleifend.
-
-\subsection{School Leadership}
-
-\begin{table}[H]
-	\tiny
-	\def\arraystretch{0.9}
-	\centering
-	\caption{\textbf{Summary statistics - school leadership}}
-	\begin{tabulary}{1.0\textwidth}{L L C C C C}
-		\hline\hline \\
-		\multicolumn{2}{c}{}
-		& \multicolumn{2}{c}{Dev7 countries}
-		& \multicolumn{2}{c}{Vietnam}	\\
-		\hline & & & & & & 
-		Variable & Description & MS & Valid N &  MS & Valid N \\
-		\hline \\
+\hline \\
+\multicolumn{6}{l}{\textbf{Leadership accountability and autonomy}}	\\ [0.3em]
+\hline \\ 
 		SCORE\_PUBLIC & Achievement data & 0.345 & 40965 & 0.7567 & 4882 \\ 
 		& posted publicly & (0.4754) &  & (0.4291) &  \\ [0.3em]
 		SCORE\_AUTHRITS & Achievement data & 0.8003 & 41139 & 0.8282 & 4778 \\ 
@@ -694,54 +599,21 @@ Morbi vitae mi lobortis, aliquet nulla id, semper lorem. Mauris lacinia elit sag
 		& in admin. decisions & (1.4457) &  & (0.5188) &  \\ [0.3em]
 		LEADCOM & Communicating and acting & 0.2387 & 41252 & 0.0894 & 4882 \\ 
 		& on defined school goals & (1.1105) &  & (0.6744) &  \\ [0.3em]
-		LEADINST & Promotion of & 0.0899 & 41219 & -0.0549 & 4882 \\ 
-		& instructional leadership & (1.0724) &  & (0.946) &  \\ [0.3em]
-		LEADPD & Promotion of solving & 0.244 & 41219 & -0.0587 & 4882 \\ 
-		& classroom problems & (1.0851) &  & (0.861) &  \\ [0.3em]
-		LEADTCH & Teacher participation & 0.3233 & 41125 & -0.2914 & 4882 \\ 
-		& in leadership & (1.1356) &  & (0.9077) &  \\ [0.3em]
-		QUAL\_RECORD & Systematic recording of & 0.8865 & 40941 & 0.9818 & 4882 \\ 
-		& data for quality assurance & (0.3172) &  & (0.1338) &  \\ [0.3em]
-		\hline \\
-		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
-		\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
-		\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
-		\multicolumn{6}{l}{different at the 5\% significance level.}\\
-	\end{tabulary}
-	\end{table}
-
-Aenean malesuada nisi nunc, rhoncus auctor neque molestie porta. Sed eget placerat ipsum, in finibus velit. Integer hendrerit augue at est elementum pulvinar.
-
-\subsection{School Climate}
-
-\begin{table}[H]
-	\tiny
-	\def\arraystretch{0.9}
-	\centering
-	\caption{\textbf{Summary statistics - school climate}}
-	\begin{tabulary}{1.0\textwidth}{L L C C C C}
-		\hline\hline \\
-		\multicolumn{2}{c}{}
-		& \multicolumn{2}{c}{Dev7 countries}
-		& \multicolumn{2}{c}{Vietnam}	\\
-		\hline & & & & & & 
-		Variable & Description & MS & Valid N &  MS & Valid N \\
-		\hline \\
 		STUDCLIM & Student-related aspects & 0.0485 & 40973 & 0.0418 & 4874 \\ 
 		& of school climate & (1.1642) &  & (0.6849) &  \\ [0.3em]
 		TEACCLIM & Teacher-related aspects & -0.1997 & 40973 & -0.0873 & 4874 \\ 
 		& of school climate & (1.1474) &  & (0.7125) &  \\ [0.3em]
-		TCMORALE & Teacher morale & 0.0376 & 41336 & -0.2941 & 4882 \\ 
-		& and enthusiasm & (1.0541) &  & (0.8579) &  \\[0.3em]
-		\hline \\
+\hline \\
 		\multicolumn{6}{l}{Notes: The variables relate to the questionnaires administered to principals (schools). For a more}\\    
 		\multicolumn{6}{l}{detailed description of variables, please see Table xx. Items marked with \textit{(r)} are taken from}\\
 		\multicolumn{6}{l}{the rotated student questionnaire. The variable means of Dev7 and Vietnam are statistically}\\
-		\multicolumn{6}{l}{different at the 5\% significance level, except STUDCLIM.}\\	
-	\end{tabulary}
+		\end{tabulary}
 	\end{table}
 
-Aenean fermentum ut turpis in varius. Mauris dapibus sapien sed ante fermentum, ut fringilla purus mattis. Ut bibendum ex non orci ullamcorper, vitae elementum lacus tristique. 
+With regard to school leadership and autonomy, there appears to be less autonomy and more accountability in Vietnam. The index variable SCHAUTON indicates a Dev7 mean of -0.2542 that is higher than the Vietnam mean of -1.0419 (recall that indices are set to OECD mean of zero). Teachers in Vietnam have lower chances to particpate in school management - TCHPARTI indicates Dev7 mean of  -0.2169 compared to 1.6445 for Vietnam. Principals are more likely in Dev7 to say that they communicate and act on information (LEADCOM), but there is much higher prevalence of public posting of school achievement data (SCORE\_PUBLIC). Interestingly, even Dev7 countries have high level of tracking of achievement data by authorities (80\% of schools report this). Finally, with regard to the school climate, indices described further in the PISA documentation, STUDCLIM (student climate) is roughly even between Vietnam and Dev7, but TEACCLIM (teacher climate), that incluses variables such as teacher absenteeism and teacher expectations of students is higher for Vietnam. 
+
+\subsection{Preliminary conclusion from comparison of endowments}
+
 
 \section{Estimating the Vietnamese Test Score differential for a set of eight developing countries}
 
@@ -1185,6 +1057,7 @@ Primary education in Vietnam: Extra classes and
 outcomes \emph{International Education Journal}, 2005, 6(5), 626-634.
 
 \bibitem[Dang 2007]{Hai-Anh07}
+Hai-Anh Dang
 The determinants and impact of private tutoring classes in Vietnam
 \emph{Economics of Education Review} 2007 26:684–699
 
@@ -1197,6 +1070,22 @@ Tuan Anh Le
 Danh Nam Nguyen and Trung Tran
 Recommendations for Mathematics Curriculum Development in Vietnam,
 \emph{Proceedings of the 6th International Conference on Educational Reform (ICER 2013): ASEAN Education in the 21st Century} \href{https://www.researchgate.net/publication/263077203_Recommendations_for_mathematics_curriculum_development_in_Vietnam}{Nguyen and Tran 2013 Conference Paper} 
+
+\bibitem[Chua 2011]{Chua11}
+Amy Chua
+\emph{Battle Hymn of the Tiger Mother} 2011 Penguin Press, New York
+
+\bibitem[Hsin and Xie, 2014]{HsinXie14}
+Amy Hsin and Yu Xie
+Explaining Asian Americans’ academic advantage over whites
+\emph{Proceedings of the National Academy of Sciences}, May 2014
+111 (23) 8416-8421; \href{http://www.pnas.org/cgi/doi/10.1073/pnas.1406402111}{Hsin and Xie, PNAS 2014}
+
+
+\bibitem[Vu Dinh Phuong, 2014]{Phuong14}
+Vu Dinh Phuong
+\emph{Using Video Study to Investigate Eighth-grade Mathematics Classrooms in Vietnam}, Doctoral Dissertation, 2014, Universit\"at Potsdam 
+\href{https://publishup.uni-potsdam.de/frontdoor/index/index/docId/6999}{Doctoral Dissertation Vu Dinh Phuong 2014}
 
 
 \end{thebibliography}

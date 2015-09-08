@@ -95,6 +95,10 @@ DEVCON8a$FUNDMOM <-  DEVCON8a$SC25Q11
 #COUNCILMOM
 DEVCON8a$COUNCILMOM <- DEVCON8a$SC25Q10
 
+#DUTYMOM
+DEVCON8a$DUTYMOM  <- DEVCON8a$SC25Q02+DEVCON8a$SC25Q04
+DEVCON8a$DUTYMOM[DEVCON8a$DUTYMOM>100] <- 100 
+
 # Teacher variables 
 
 #SC30Q01, SC30Q02, SC30Q03, SC30Q04
@@ -319,7 +323,7 @@ DEVCON8a$TCHQUAL_DIFF <- DEVCON8a$DIFFTCH_SA+DEVCON8a$DIFFTCH_A
 
 mean1A <- t(sapply(DEVCON8a[c("FEMALE", "PRESCHOOL", "REPEAT", "ST08Q01", "ST09Q01", "ST115Q01", "HISEI",
                               "MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N", "PARPRESSURE", "PCGIRLS",
-                              "TIGERMOM", "VOLUMOM", "TEACHMOM", "FUNDMOM", "COUNCILMOM",
+                              "TIGERMOM", "VOLUMOM", "TEACHMOM", "FUNDMOM", "COUNCILMOM","DUTYMOM",
                               "STRATIO", "PROPCERT", "PROPQUAL",
                               "SMRATIO","TCSHORT","TCFOCST","TCM_STUASS","TCM_PEER","TCM_OBSER","TCM_INSPE",
                               "TCH_INCENTV","SC35Q02","TCH_MENT",
@@ -366,6 +370,7 @@ write.csv(mean1A, "mean1A.csv")
 #TEACHMOM                    12.17643716             3.828206e+01  0.000000e+00 -43.1136747
 #FUNDMOM                     23.07844084             5.960221e+01  0.000000e+00 -55.8809921
 #COUNCILMOM                  36.45455138             2.311739e+01 5.383959e-123  24.1308383
+#DUTYMOM                     66.97372808             6.855426e+01  5.244857e-03  -2.7926137
 #STRATIO                     19.71504749             1.896565e+01  3.894310e-15   7.8717247
 #PROPCERT                     0.67570675             7.960587e-01  5.458745e-80 -19.2316892
 #PROPQUAL                     0.87556086             8.774751e-01  6.469628e-01  -0.4580108

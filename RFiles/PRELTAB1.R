@@ -3,6 +3,7 @@
 # Prepared by Suhas Monday, August 10, 2015
 # and Elisabeth Sedmik
 
+
 # Creating the stargazer output for the means between Vietnam and DEV7 countries
 
 # Contains variables separated by sections (students, teachers, ped.practice, schools, rotated part 1
@@ -111,6 +112,10 @@ DEVCON8a$FUNDMOM <-  DEVCON8a$SC25Q11
 #COUNCILMOM
 DEVCON8a$COUNCILMOM <- DEVCON8a$SC25Q10
 
+#DUTYMOM
+DEVCON8a$DUTYMOM  <- DEVCON8a$SC25Q02+DEVCON8a$SC25Q04
+DEVCON8a$DUTYMOM[DEVCON8a$DUTYMOM>100] <- 100 
+
 # Teacher variables 
 
 #SC30Q01, SC30Q02, SC30Q03, SC30Q04
@@ -139,7 +144,7 @@ DEVCON8a$TCH_MENT[DEVCON8a$SC39Q08==2] <- 0
 
 #SC31Q01 - SC31Q07
 #________________________________________________________________________________________________________________
-SC31OUT.rda <- read.csv("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/SC31DATOUT.csv")
+SC31OUT.rda <- read.csv("C:/Country/Vietnam/Data/PISA/MS-Excel/SC31DATOUT.csv")
 DEVCON8a <- merge(DEVCON8a,SC31OUT.rda,by="NEWID")
 DEVCON8a$TCH_INCENTV <- rescale(DEVCON8a$WMLE_SC31, mean = 0, sd = 1,df=FALSE)
 
@@ -350,7 +355,7 @@ DEV7stu1a <- DEVCON8a[VIETNAM==0, .(FEMALE , AGE, PRESCHOOL ,  REPEAT ,  ST08Q01
                                     OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                     SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
                                     ATT_CONTROL, EXAPPLM, EXPUREM, FAMCON, FAMCONC, PARPRESSURE,  
-                                    TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, BKGR_FAMPROB)]
+                                    TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, DUTYMOM, BKGR_FAMPROB)]
 
 DEV7stu1b1 <- summarise_each(DEV7stu1a, funs(mean(.,na.rm=TRUE)))
 DEV7stu1b2 <- summarise_each(DEV7stu1a,funs(sd(.,na.rm=TRUE)))
@@ -385,6 +390,8 @@ flax1stu[c(seq),MS:=paste0("(",MS,")")]
 
 ### Vietnam: 
 
+# NEED TO FIX MISSING PARENTHESES AS I ADDED DUTYMOM LATER
+
 # We generate a Vietnam extract from the DEVCON8a set with all variables we used in our regressions
 
 VNstu1a <- DEVCON8a[VIETNAM==1, .(FEMALE ,  AGE, PRESCHOOL ,  REPEAT ,  ST08Q01 ,  ST09Q01 ,  ST115Q01 ,  HISEI ,
@@ -392,7 +399,7 @@ VNstu1a <- DEVCON8a[VIETNAM==1, .(FEMALE ,  AGE, PRESCHOOL ,  REPEAT ,  ST08Q01 
                                   OUTREAD, OUTSCIE, ST57Q01, ST57Q02, ST57Q03, ST57Q04, ST57Q05, ST57Q06, INSTMOT, INTMAT,
                                   SUBNORM, MATHEFF, FAILMAT, MATINTFC, MATBEH, PERSEV, OPENPS, SCMAT, ANXMAT, BELONG, ATSCHL, ATTLNACT,
                                   ATT_CONTROL, EXAPPLM, EXPUREM, FAMCON, FAMCONC, PARPRESSURE,  
-                                  TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, BKGR_FAMPROB)]
+                                  TIGERMOM,  VOLUMOM,  TEACHMOM,  FUNDMOM,  COUNCILMOM, DUTYMOM,BKGR_FAMPROB)]
 
 VNstu1b1 <- summarise_each(VNstu1a, funs(mean(.,na.rm=TRUE)))
 VNstu1b2 <- summarise_each(VNstu1a,funs(sd(.,na.rm=TRUE)))
