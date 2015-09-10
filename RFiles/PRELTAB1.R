@@ -691,7 +691,88 @@ flaxscu$Variable1 <- NULL
 
 print(xtable(flaxscu),include.rownames = FALSE) # this generates the latex table input
 
+###################################### THE ADDITIONAL VARIABLES PART ###########################
 
+# Creates a means table for the variables that are used in the regression but not in the previous
+# sections of the means tables
+
+### The DEV7 countries:
+
+# We generate an extract from the DEVCON8a set with all variables we used in our regressions
+DEV7tch1a <- DEVCON8a[VIETNAM==0, .(TCSHORT, TCFOCST, TCM_STUASS, ASS_PROG, ASS_PROM, ASS_NAT, ASS_CUR,
+                                    EXC11_UNICORN, LEADINST, QUAL_RECORD, SCHSEL)]
+
+DEV7tch1b1 <- summarise_each(DEV7tch1a, funs(mean(.,na.rm=TRUE)))
+DEV7tch1b2 <- summarise_each(DEV7tch1a,funs(sd(.,na.rm=TRUE)))
+DEV7tch1b3 <- summarise_each(DEV7tch1a,funs(Count(.)))
+
+DEV7tch1b1
+DEV7tch1b2
+DEV7tch1b3
+
+t1 <- rbind(round(DEV7tch1b1,4),round(DEV7tch1b2,4))
+mt1 <- melt(t1)
+mt1
+setnames(mt1,c("variable","value"), c("Variable", "MS"))
+mt1[2,.(Variable)]
+
+# Now to add the third column of "Count" output and eliminate the extra entries (even numbered in 1st and 3rd column)
+s <- DEV7tch1b3 # just to use easier name
+
+blix <- c(rep(s,each=2)) # generates doubled values
+as.matrix(blix) -> blax # I have to convert blix into a matrix so I can cbind it to mt1
+flax1tch<- cbind(mt1,blax) # Now I have the format I need with extra elements I have to delete
+setnames(flax1tch,c("V1"),c("Valid N"))
+
+seq <- seq(2,22,by=2) # I will need to use 2,38 for the actual version as there are 19 variables
+
+flax1tch[c(2,4,6,8,10,12,14,16,18,20,22),
+         c("Variable","Valid N"):=""] # this eliminates the values
+
+flax1tch[, MS:=as.character(MS)]
+flax1tch[c(seq),MS:=paste0("(",MS,")")]
+
+### Vietnam: 
+
+# We generate a Vietnam extract from the DEVCON8a set with all variables we used in our regressions
+
+VNtch1a <- DEVCON8a[VIETNAM==1, .(TCSHORT, TCFOCST, TCM_STUASS, ASS_PROG, ASS_PROM, ASS_NAT, ASS_CUR,
+                                  EXC11_UNICORN, LEADINST, QUAL_RECORD, SCHSEL)]
+
+VNtch1b1 <- summarise_each(VNtch1a, funs(mean(.,na.rm=TRUE)))
+VNtch1b2 <- summarise_each(VNtch1a,funs(sd(.,na.rm=TRUE)))
+VNtch1b3 <- summarise_each(VNtch1a,funs(Count(.)))
+
+VNtch1b1
+VNtch1b2
+VNtch1b3
+
+t1 <- rbind(round(VNtch1b1,4),round(VNtch1b2,4))
+mt1 <- melt(t1)
+mt1
+setnames(mt1,c("variable","value"), c("Variable", "MS"))
+mt1[2,.(Variable)]
+
+# Now to add the third column of "Count" output and eliminate the extra entries (even numbered in 1st and 3rd column)
+s <- VNtch1b3 # just to use easier name
+
+blix <- c(rep(s,each=2)) # generates doubled values
+as.matrix(blix) -> blax # I have to convert blix into a matrix so I can cbind it to mt1
+flax2tch<- cbind(mt1,blax) # Now I have the format I need with extra elements I have to delete
+setnames(flax2tch,c("Variable","V1"),c("Variable1","Valid N"))
+
+flax2tch[c(2,4,6,8,10,12,14,16,18,20,22),
+         c("Variable1","Valid N"):=""] # this eliminates the values
+
+flax2tch[, MS:=as.character(MS)]
+flax2tch[c(seq),MS:=paste0("(",MS,")")]
+
+# Combining DEV7 countries and Vietnam:
+
+flaxtch <- cbind(flax1tch,flax2tch)
+flaxtch$Variable1 <- NULL
+
+print(xtable(flaxtch),include.rownames = FALSE) # this generates the latex table input
 
 
 
