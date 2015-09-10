@@ -1,0 +1,80 @@
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+
+	\begin{table}[htbp]
+		\footnotesize
+		\def\arraystretch{1}
+		\def\tabcolsep{4}
+		\centering
+		\caption{The estimated impact of 'Vietnam' on Mathematics PISA test scores}
+     \begin{tabular}{lrlrlrlrlrl}
+     	\toprule
+     	\midrule
+     	& \multicolumn{10}{c}{Mathematics} \\
+		\cline{2-11} \\
+     	Variables & \multicolumn{2}{c}{(1)} & \multicolumn{2}{c}{(2)} & \multicolumn{2}{c}{(3)} & \multicolumn{2}{c}{(4)} & \multicolumn{2}{c}{(5)} \\
+     	\hline
+     	&       &       &       &       &       &       &       &       &       &  \\
+     	VIETNAM & 128.05 & (5.65) & 108.91 & (5.32) & 97.46 & (5.48) & 95.13 & (5.87) & 77.26 & (7.84) \\[0.2em]
+     	PRESCHOOL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 45.86 & (3.92) & 40.54 & (3.95) & 39.21 & (4.09) & 24.90 & (3.80) \\[0.2em]
+     	REPEAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -50.57 & (2.59) & -47.55 & (2.56) & -45.05 & (3.19) & -36.96 & (3.00) \\[0.2em]
+     	ST08Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -8.59 & (1.20) & -8.41 & (1.18) & -8.38 & (1.33) & -7.84 & (1.32) \\[0.2em]
+     	ST115Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -4.94 & (1.70) & -4.57 & (1.73) & -6.10 & (1.80) & -5.40 & (1.86) \\[0.2em]
+     	BOOK\_N & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.09  & (0.01) & 0.08  & (0.01) & 0.07  & (0.01) \\[0.2em]
+     	PARPRESSURE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.73 & (5.01) & 12.51 & (4.78) & 10.02 & (4.40) \\[0.2em]
+     	FUNDMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.27  & (0.06) & 0.24  & (0.06) & 0.19  & (0.07) \\[0.2em]
+     	COUNCILMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.14 & (0.06) & -0.18 & (0.06) & -0.10 & (0.07) \\[0.2em]
+     	DUTYMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.07 & (0.06) & -0.12 & (0.07) & -0.10 & (0.07) \\[0.2em]
+     	PROPCERT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 16.08 & (5.50) & 16.32 & (6.87) \\[0.2em]
+     	SMRATIO & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.01 & (0.01) & -0.03 & (0.01) \\[0.2em]
+     	TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.91 & (1.97) & 2.24  & (1.87) \\[0.2em]
+     	TCFOCST & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.30  & (2.19) & -1.45 & (1.88) \\[0.2em]
+     	TCM\_STUASS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.85 & (7.45) & -0.18 & (7.85) \\[0.2em]
+     	TCM\_PEER & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.53 & (6.59) & -5.61 & (5.65) \\[0.2em]
+     	TCH\_INCENTV & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.92 & (2.73) & -2.75 & (2.72) \\[0.2em]
+     	ASS\_PROG & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.51 & (15.51) & -22.58 & (8.04) \\[0.2em]
+     	ASS\_PROM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 7.60  & (6.11) & 14.09 & (5.80) \\[0.2em]
+     	ASS\_SCH & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.51  & (6.51) & 0.51  & (7.31) \\[0.2em]
+     	STU\_FEEDB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.66  & (5.27) & 2.20  & (5.07) \\[0.2em]
+     	PCGIRLS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 14.59 & (13.65) \\[0.2em]
+     	COMP\_USE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.57 & (5.30) \\[0.2em]
+     	TXT\_BOOK & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.51 & (7.05) \\[0.2em]
+     	TOWN  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.53 & (3.76) \\[0.2em]
+     	CLSIZE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.81  & (0.23) \\[0.2em]
+     	COMPWEB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 15.28 & (6.31) \\[0.2em]
+     	SCMATEDU & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.58  & (2.94) \\[0.2em]
+     	SCMATBUI & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.46  & (2.45) \\[0.2em]
+     	EXC2\_PLAY & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 8.69  & (3.96) \\[0.2em]
+     	EXC6\_MATHCOMP & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.70 & (5.37) \\[0.2em]
+     	EXC10\_SPORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -5.65 & (9.15) \\[0.2em]
+     	EXC11\_UNICORN & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.81  & (5.59) \\[0.2em]
+     	SCL\_EXTR\_CL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.90 & (5.08) \\[0.2em]
+     	SCORE\_PUBLIC & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.10 & (4.75) \\[0.2em]
+     	QUAL\_RECORD & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.99  & (6.77) \\[0.2em]
+     	SCHSEL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.57  & (3.29) \\[0.2em]
+     	R2    & \multicolumn{2}{c}{27.21} & \multicolumn{2}{c}{37.24} & \multicolumn{2}{c}{40.03} & \multicolumn{2}{c}{43.15} & \multicolumn{2}{c}{43.93} \\[0.2em]
+     	N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{c}{44046} & \multicolumn{2}{c}{30051} & \multicolumn{2}{c}{25612} \\[0.2em]
+     	\bottomrule
+        \\
+    
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+\end{document}
