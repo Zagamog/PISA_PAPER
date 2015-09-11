@@ -264,10 +264,279 @@ R1
 
 # All coefficients added = 119.46
 # SDIFF_SYS+SDIFF_END = 117.94
+# looks ok
 
+################################### Let's try with some other variables ############################
 
+### Trying with the ones that have the largest mean difference (see Master Excel file!)
+### I take all first 20 variables (non-rotated, rot2, and rot3, except rot1 to keep the sample size large enough)
 
+#DISCLIMA
+#---TCH_INCENTV
+#TCMORALE
+#TCHPARTI
+#BELONG
+#ATTLNACT
+#(OPENPS - rotated1) not taken
+#EXAPPLM
+#SCHAUTON
+#(MATINTFC - rotated1) not taken
+#---DUM_VILLAGE
+#EXPUREM
+#---TEACHMOM
+#SCMAT
+#COGACT
+#LEADTCH
+#FAMCONC
+#LEADINST
+#---FUNDMOM
+#ST57Q04
+#LEADPD
 
+load("DEVCON8.rda")
+
+# Variable creation
+SC31OUT.rda <- read.csv("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/SC31DATOUT.csv")
+DEVCON8 <- merge(DEVCON8,SC31OUT.rda,by="NEWID")
+DEVCON8$TCH_INCENTV <- rescale(DEVCON8$WMLE_SC31, mean = 0, sd = 1,df=FALSE)
+DEVCON8$DUM_VILLAGE <- ifelse(DEVCON8$SC03Q01==1,1,0)
+DEVCON8$TEACHMOM <- DEVCON8$SC25Q08
+DEVCON8$FUNDMOM <-  DEVCON8$SC25Q11
+
+PISA_VN <- subset(DEVCON8,CNT==c("VNM")) # 
+PISA_AL <- subset(DEVCON8,CNT==c("ALB")) # 
+PISA_CO <- subset(DEVCON8,CNT==c("COL")) # 
+PISA_ID <- subset(DEVCON8,CNT==c("IDN")) # 
+PISA_JO <- subset(DEVCON8,CNT==c("JOR")) # 
+PISA_PE <- subset(DEVCON8,CNT==c("PER")) # 
+PISA_TH <- subset(DEVCON8,CNT==c("THA")) #
+PISA_TU <- subset(DEVCON8,CNT==c("TUN")) #
+PISA_DEV7 <- rbind(PISA_AL,PISA_CO,PISA_ID,PISA_JO,PISA_PE,PISA_TH,PISA_TU)
+
+######## For Science #############
+
+R_CS <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_DEV7,
+                    export=FALSE)
+
+R_VS <- pisa.reg.pv(pvlabel="SCIE", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_VN,
+                    export=FALSE)
+
+DF_BETA_CS <- subset(R_CS, select="Estimate")  # as dataframe
+
+BETA_CS <- R_CS[1:21,1] # as matrix (minus one, not to get the R squared in it)
+BETA_VS <- R_VS[1:21,1]
+
+# Now for the X_ part
+spec1 <- c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+           "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+           "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+           "LEADCOM","LEADPD","ST57Q04")
+
+X_CSj <- apply(PISA_CO[,spec1], 2, mean, na.rm = TRUE)
+
+X_VSj <- apply(PISA_VN[,spec1], 2, mean, na.rm = TRUE)
+
+X_CS <- append(1,X_CSj)
+X_VS <- append(1,X_VSj)
+
+# SPEC 1
+
+SDIFF_SYS1 <- (BETA_VS - BETA_CS)
+SDIFF_SYS <- (X_CS)%*%(SDIFF_SYS1)
+
+SDIFF_END1 <- (X_VS - X_CS)
+SDIFF_END <- SDIFF_END1%*%BETA_VS
+
+# SPEC 2
+
+SDIFFJ_SYS1 <- (BETA_CS-BETA_VS)
+SDIFFJ_SYS <- (X_VS)%*%(SDIFFJ_SYS1)
+
+SDIFFJ_END1 <- (X_VS - X_CS)
+SDIFFJ_END <- (SDIFFJ_END1)%*%(BETA_CS)
+
+R_CS
+R_VS
+
+SDIFF_SYS
+SDIFF_END
+
+SDIFFJ_SYS
+SDIFFJ_END
+
+#SDIFF_SYS
+#[,1]
+#[1,] 103.2862
+#SDIFF_END
+#[,1]
+#[1,] 18.41548
+ 
+#SDIFFJ_SYS
+#[,1]
+#[1,] -105.6397
+#SDIFFJ_END
+#[,1]
+#[1,] 16.06199
+
+#################### For Math  ##############
+
+R_CS <- pisa.reg.pv(pvlabel="MATH", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_DEV7,
+                    export=FALSE)
+
+R_VS <- pisa.reg.pv(pvlabel="MATH", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_VN,
+                    export=FALSE)
+
+DF_BETA_CS <- subset(R_CS, select="Estimate")  # as dataframe
+
+BETA_CS <- R_CS[1:21,1] # as matrix (minus one, not to get the R squared in it)
+BETA_VS <- R_VS[1:21,1]
+
+# Now for the X_ part
+spec1 <- c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+           "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+           "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+           "LEADCOM","LEADPD","ST57Q04")
+
+X_CSj <- apply(PISA_CO[,spec1], 2, mean, na.rm = TRUE)
+
+X_VSj <- apply(PISA_VN[,spec1], 2, mean, na.rm = TRUE)
+
+X_CS <- append(1,X_CSj)
+X_VS <- append(1,X_VSj)
+
+# SPEC 1
+
+SDIFF_SYS1 <- (BETA_VS - BETA_CS)
+SDIFF_SYS <- (X_CS)%*%(SDIFF_SYS1)
+
+SDIFF_END1 <- (X_VS - X_CS)
+SDIFF_END <- SDIFF_END1%*%BETA_VS
+
+# SPEC 2
+
+SDIFFJ_SYS1 <- (BETA_CS-BETA_VS)
+SDIFFJ_SYS <- (X_VS)%*%(SDIFFJ_SYS1)
+
+SDIFFJ_END1 <- (X_VS - X_CS)
+SDIFFJ_END <- (SDIFFJ_END1)%*%(BETA_CS)
+
+R_CS
+R_VS
+
+SDIFF_SYS
+SDIFF_END
+
+SDIFFJ_SYS
+SDIFFJ_END
+
+#SDIFF_SYS
+#[,1]
+#[1,] 100.8055
+#SDIFF_END
+#[,1]
+#[1,] 19.83437
+ 
+#SDIFFJ_SYS
+#[,1]
+#[1,] -102.298
+#SDIFFJ_END
+#[,1]
+#[1,] 18.34189
+
+#################### For Reading  ##############
+
+R_CS <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_DEV7,
+                    export=FALSE)
+
+R_VS <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+                        "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+                        "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+                        "LEADCOM","LEADPD","ST57Q04"), 
+                    data=PISA_VN,
+                    export=FALSE)
+
+DF_BETA_CS <- subset(R_CS, select="Estimate")  # as dataframe
+
+BETA_CS <- R_CS[1:21,1] # as matrix (minus one, not to get the R squared in it)
+BETA_VS <- R_VS[1:21,1]
+
+# Now for the X_ part
+spec1 <- c("DISCLIMA","TCH_INCENTV","TCMORALE","TCHPARTI","BELONG",
+           "ATTLNACT","EXAPPLM","SCHAUTON","DUM_VILLAGE","EXPUREM",
+           "TEACHMOM","SCMAT","COGACT","LEADTCH","FAMCONC","LEADINST","FUNDMOM",
+           "LEADCOM","LEADPD","ST57Q04")
+
+X_CSj <- apply(PISA_CO[,spec1], 2, mean, na.rm = TRUE)
+
+X_VSj <- apply(PISA_VN[,spec1], 2, mean, na.rm = TRUE)
+
+X_CS <- append(1,X_CSj)
+X_VS <- append(1,X_VSj)
+
+# SPEC 1
+
+SDIFF_SYS1 <- (BETA_VS - BETA_CS)
+SDIFF_SYS <- (X_CS)%*%(SDIFF_SYS1)
+
+SDIFF_END1 <- (X_VS - X_CS)
+SDIFF_END <- SDIFF_END1%*%BETA_VS
+
+# SPEC 2
+
+SDIFFJ_SYS1 <- (BETA_CS-BETA_VS)
+SDIFFJ_SYS <- (X_VS)%*%(SDIFFJ_SYS1)
+
+SDIFFJ_END1 <- (X_VS - X_CS)
+SDIFFJ_END <- (SDIFFJ_END1)%*%(BETA_CS)
+
+R_CS
+R_VS
+
+SDIFF_SYS
+SDIFF_END
+
+SDIFFJ_SYS
+SDIFFJ_END
+
+#SDIFF_SYS
+#[,1]
+#[1,] 65.50407
+#SDIFF_END
+#[,1]
+#[1,] 25.1789
+ 
+#SDIFFJ_SYS
+#[,1]
+#[1,] -69.03493
+#SDIFFJ_END
+#[,1]
+#[1,] 21.64805
 
 
 
