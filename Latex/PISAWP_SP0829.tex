@@ -40,6 +40,7 @@
 \usepackage{lscape}
 % \usepackage{rotating}
 \usepackage{epstopdf}
+\usepackage{color, colortbl}
 
 \setcounter{MaxMatrixCols}{30}
 \newtheorem{theorem}{Theorem}
@@ -69,6 +70,14 @@
 \makeatother
 \geometry{left=1in,right=1in,top=1.00in,bottom=1.0in}
 \setlength{\parskip}{0.5em} 
+
+% \definecolor{name}{system}{definition}
+\definecolor{Gray}{gray}{0.9}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{PaleGreen}{rgb}{0.807843137,1,0.807843137}
+\definecolor{NavajoWhite}{rgb}{1,0.870588235,0.678431373}
+\definecolor{Yellow}{rgb}{1,1,0}
+
 
 \begin{document}
 
@@ -158,7 +167,7 @@ The Fryer and Levitt method deepens the understanding from mean comparisons, but
 Even a multi-variate regression approach only proves correlation with nothing more than a hint regarding causation, and so far we have only one year (2012) of PISA data for Vietnam. PISA 2015 data will be available in 2016 and analytical approaches closer to establishing causality can be attempted. Even with the caveat regarding causality, there are useful policy related conclusions that we can derive from the analysis presented in this paper - learning for Vietnam, with regard to areas of strengths and weaknesses; and learning for other countries that may wish to emulate aspects of Vietnam's performance. There is a veritable industry of papers regarding Finland's PISA performance, directed mostly towards other OECD countries with lower scores, for instance United States. Vietnam's superlative performance points to a similar future stream of research, with the added advantage of relevance for developing countries. Section 5 provides concluding ideas that might be amongst the first of many more such ideas from future investigations of Vietnam's performance. 
 
 
-\section{Endowment Differences regarding Student, Family, Teachers and Schools}
+\section{Endowment Differences}
 
 \subsection{Student Characteristics}
 
@@ -224,7 +233,7 @@ Table 1 begins an exploration of differences in mean values between Vietnam and 
 \end{table}
 The finding regarding PRESCHOOL and REPEAT indicates the possible importance of the trajectory of the student prior to High School. Repetition rates are difficult as comparative indicators of system quality because of the variations across countries in curriculum and standards, but REPEAT is another interesting variable to keep in mind as a possible clue to the mystery of Vietnam's PISA performance. As in some other East Asian cultures, Vietnamese children are expected by their parents to study hard. Though Mark Twain in Vietnamese translation is quite a best seller for young readers in Vietnam, truancy from school is not perceived benovelently by parents.\footnote{A cultural explanation is possibly quite important in explaining Vietnam's anomalous PISA results, though the PISA dataset may only be able to measure the possible effects of culture rather than measuring cultural differences. Literature from the World Values Survey, that does seek to measure cultural differences, indicates that Vietnam is a positive outlier on discipline and authority orientation\cite{DaltonOng05}.} Table 1 indicates a consistently lower truancy rate for the three variables used - the question refers to the past week \textbf{(to confirm)} and Vietnamese students are less likely to be late for school, have fewer days of unexcused absence and skip fewer classes.\footnote{In the student's questionnaire, there is a telling question - student's have to agree or disagree on a four point Likert scale to the statement ``If I had different teachers, I would try harder at school.''. Converted into an index, the mean for Vietnam at 0.363 is lower than that for Dev7 at 0.525. This suggests a tendency in Vietnamese students for greater self-responsibility.} 
 
-The final set of variables in Table 1 concern parental background and wealth at the students home, including cultural resources and books at home which may work to stimulate cognitive development. The PISA database includes a number of indices to measure aspects such as weath and possessions. These indices are based on underlying data regarding occupations and possessions. The scaling of raw data to indices is described in detail in the PISA technical report \cite{OECD2014a}. For HISEI, the parents occupation status, the OECD mean is 50 and the OECD standard deviation is 15. Table 1 shows that the HISEI for Dev7 parents at 40.42 was much higher than 26.60 for Vietnamese parents. MISCED refers to the International Standard Classification of Education (ISCED) developed by UNESCO. Table 1 shows that the average level of mother's education for Dev7 was just over 3, meaning Upper Secondary education, while for Vietnam the mean was just over 2, meaning Lower Secondary education. The WEALTH index is set for an OECD mean of zero and standard deviation of 1. Dev 7 countries wealth level was -1.5 and Vietnam's was -2.1, consistent with the data regarding occupational classification and mother's education. These findings indicate the close correlation of these variables with GDP per capita. The more interesting finding concerns the indices CULTPOS and HEDRES, which have OECD mean 0 and s.d. 1, and the number of books. CULTPOS includes classical literature, books of poetry and works of art. HEDRES includes reference books and books to help with school work as well as a study desk and 'a quiet place to study'. These three variables are also in line with per capita income - with the Dev7 mean being lower than the OECD mean, and Vietname being lower than Dev7. So one explanation regarding Vietnam's PISA performance can probably be ruled out - it does not seem likely that Vietnamese households spend disproportionately higher amount of their incomes on acquiring possessions that would give their children an edge in life. Books and other education related articles are owned by Vietnamese households to the same extent as any other households. 
+The final set of variables in Table 1 concern parental background and wealth at the students home, including cultural resources and books at home which may work to stimulate cognitive development. The PISA database includes a number of indices to measure aspects such as weath and possessions. These indices are based on underlying data regarding occupations and possessions. The scaling of raw data to indices is described in detail in the PISA technical report \cite{OECD2014a}. For HISEI, the parents occupation status, the OECD mean is 50 and the OECD standard deviation is 15. Table 1 shows that the HISEI for Dev7 parents at 40.42 was much higher than 26.60 for Vietnamese parents. MISCED refers to the International Standard Classification of Education (ISCED) developed by UNESCO. Table 1 shows that the average level of mother's education for Dev7 was just over 3, meaning Upper Secondary education, while for Vietnam the mean was just over 2, meaning Lower Secondary education. The WEALTH index is set for an OECD mean of zero and standard deviation of 1. Dev 7 countries wealth level was -1.5 and Vietnam's was -2.1, consistent with the data regarding occupational classification and mother's education. These findings indicate the close correlation of these variables with GDP per capita. The more interesting finding concerns the indices CULTPOS and HEDRES, which have OECD mean 0 and s.d. 1, and the number of books. CULTPOS includes classical literature, books of poetry and works of art. HEDRES includes reference books and books to help with school work as well as a study desk and 'a quiet place to study'. These three variables are also in line with per capita income - with the Dev7 mean being lower than the OECD mean, and Vietname being lower than Dev7. So one explanation regarding Vietnam's PISA performance can probably be ruled out - it does not seem likely that Vietnamese households spend disproportionately higher amount of their incomes on acquiring possessions such as books and other objects that would give their children an edge in life.
 
 \subsection{Student Effort}
 
@@ -357,7 +366,7 @@ The index EXAPPLM asks students about their experience during school work with e
 
 \subsection{Parental Support at School} 
 
-The publication of the bestseller book \cite{Chua11} ``Battle Hymn of the Tiger Mother'' in 2011 ignited a firestorm of controversy. The book gave prominence in the popular culture to a vast academic literature regarding parenting styles and about the perceived higher performance of children from Asian immigrant families in the US and other western countries.One of the ways that parents influence children's education outcome is through the interaction that parents have with their child's teachers and others at school. The PISA data includes a question that asks about parental expectations.This question (SC24) includes a statement ``There is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.'' The\footnote{\cite{HsienXie14} investigate in detail the data from a set of longitudinal surveys that cover thousands of children over a long period starting from their early childhood through high school. As part of the explanation of the superior performance of Asian immigrant children, the authors report that ``Asian students report greater parental expectations of academic success.'' }  Table 4 indicates a higher level of PARPRESSURE for Vietnam as compared to Dev7.  Another question (SC25) asks school principals about the proportion of parents that take part in a set of 12 activities. While the question does not specify which parent (or both) may be involved, the variables have been named after the mother for ease of exposition. 
+The publication of the bestseller book \cite{Chua11} ``Battle Hymn of the Tiger Mother'' in 2011 ignited a firestorm of controversy. The book gave prominence in the popular culture to a vast academic literature regarding parenting styles and about the perceived higher performance of children from Asian immigrant families in the US and other western countries.One of the ways that parents influence children's education outcome is through the interaction that parents have with their child's teachers and others at school. The PISA data includes a question that asks about parental expectations.This question (SC24) includes a statement ``There is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.''\footnote{\cite{HsinXie14} investigate in detail the data from a set of longitudinal surveys that cover thousands of children over a long period starting from their early childhood through high school. As part of the explanation of the superior performance of Asian immigrant children, the authors report that ``Asian students report greater parental expectations of academic success.'' }  Table 4 indicates a higher level of PARPRESSURE for Vietnam as compared to Dev7.  Another question (SC25) asks school principals about the proportion of parents that take part in a set of 12 activities. While the question does not specify which parent (or both) may be involved, the variables have been named after the mother for ease of exposition. 
 
 \begin{table}[H]
 	\tiny
@@ -627,16 +636,18 @@ In summary of the mean comparisons between Vietnam and Dev7 students, we do find
 Overall, across these four domains of information, it seems likely that the PISA dataset is able to detect significant cultural differences between the context of Vietnam and Dev7 countries. There appears to be some influence of policy, with student achievement assessment and teacher incentives, and higher levels of centralized controls, but the effectiveness of such policies is also likely tied to cultural factors. Unlike the `World Values Survey' the set of PISA instruments is not suited to clearly identify cultural differences, for instance through responses regarding beliefs, attitudes and practices defined so as to discriminate between cultures. While mean differences provide interesting hints, they are essentially bi-variate correlations. In order to tell us more about the correlations, which ones are more important than others, and whether indeed some unobservable 'Vietnamese culture' variable may be a plausible explanation, we need to unravel the mystery further through a study of multi-variate correlations. We do this first using the Fryer-Levitt approach.
 
 
-\section{Estimating the Vietnamese Test Score differential for a set of eight developing countries}
+\section{Regression Approach I: Fryer-Levitt}
 
-Table 13, 14 and 15 present a series of estimates of the "Vietnam" test score differential for the PISA test taken in 2012 by Vietnam and seven other developing countries with a GDP per capita below \$10.000. The specifications estimated are of the form
+We are now ready to continue unravelling the secret a bit further by deepening our analytical approach beyond a mere comparison of means. We adopt a simple methodology that is easy to understand and interpret. Our approach closely follows \cite{FryerLevitt04} who sought to explain the achievement gap for Black children in the US. For the results presented in this section, we pool the student level data from Vietnam and Dev7 countries. Recall that Dev7 stands for the 7 developing countries in the PISA dataset for 2012 with a per capita income below the cut-off of US\$10,000. The reason for focussing on developing countries is because we want to have a common support with regard to a country's wealth. If a rich country shows outstanding results, perhaps it may be of interest to other rich countries which do not do so well, but it is hardly of great interest to a poor country. But if a poor country does very well, and stands out from the pack of poor countries that mostly do poorly in PISA, readers from poor countries want to know what can explain such a phenomenon, since it clearly cannot be the wealth of the country (as captured albeit imperfectly by per capita GDP). We start by looking at Mathematics, with the identical approach being used for the three PISA subjects. 
 
-\[PISATESTSCORE_{i} = VIETNAM_{i} + X_{i} + \epsilon_{i}\]
+\subsection{Mathematics}
 
-where \textit{i} indexes students. VIETNAM captures the differential between Vietnam and the other seven developing countries score, given the vector of other covariates, denoted X. This vector varies across columns in Tables 13,14 and 15, following our estimation of student, teacher/pedagogical practices and school related factors. As one moves to the right in the table, the set of covariates steadily grows, adding factors in accordance with our schematic outline previously described. In addition, columns (5), (6) and (7) of each of these tables contain additional specifications from the three rotated student questionnaires. Due to the restrictive nature of the rotated design of the PISA student questionnaire, we could only combine each one of the three rotated questionnaire individually with the non-rotated questions to still maintain a meaningfully large sample. All specified variables were tested in single sequential, additive regressions to decrease the Vietnam differential. In all instances, the estimation is done using the student weight (W\_FSTUW), provided in the data set. The first column of tables 13, 14 and 15 present the difference in score means, not including any covariates. This is equivalent to the raw test score gaps reported earlier. All following specifications represent a vector of characteristics that we identified via sequential, additive regressions to result in a smaller VIETNAM regressor, when we added these one-by-one in each regression. This presents a decrease in the "Vietnam" test score differential and offers valuable insights into the endowment factors that led to the strong performance of Vietnam in the 2012 PISA round. Our approach follows closely \cite{FryerLevitt04}, that tried to explain the black-white racial test score gap in the first two years of school. Specification (2) adds the 'gap decreasing' student characteristics, column (3) the 'gap decreasing' teacher and pedagogical practices variables, column (4) adds the school related 'gap decreasing' variables. We will discuss the explanatory value of these covariates as a whole and individually in the next section.\\
-...
- 
-\subsection{The estimated impact of 'Vietnam' on Mathematics PISA test scores}
+We estimate a weighted least squares regression of student level test scores as follows\footnote{This is a simplification for presentation of the main idea. In PISA, the test score is not provided as a single value but as a set of five plausible values for each student, and complex algorithms have to be used for weighting based on a method called Fay's variant of Balanced Repeated Replication (BRR). The details are provided in the PISA technical manual. In this paper, we utilize the R $intsvy$ package for implementation.}:-
+\begin{equation}
+\mathit{TESTSCORE}_{i} = VIETNAM ' _{i}\gamma + X '_{i}\Theta + \epsilon_{i}        
+\end{equation}
+A key estimate of interest is $\gamma$, the coefficient on $VIETNAM$, a 0 or 1 dummy variable. Regressions are run in a sequence, starting from one without any covariates in $X$, and then adding variables in groups to expand $X$ in consecutive columns in Table 10. Column (1) in Table 10 shows that the Vietnam dummy had a coefficient of 128.05. By construction, this is the absolute difference in means between Vietnam and the Dev7 countries. Now we want to see the extent to which observable variables included in the PISA dataset can help to explain this large gap of 128.05. The first set of variables included in the regression reported in column (2) concern the students themselves. The student characteristics were - whether they went to Pre-School, repeated a grade in the past, and how often they are late for school (ST08Q01) or skipped classes(ST115Q01). With these variables included, the coefficient on the dummy or the Vietnamese advantage or gap, comes down by nearly 20 points, or roughly 0.2 standard deviation units, to 108.91. In other words, one key reason that the Vietnam gap is so high is because of these student related variables - this result was hinted at in the endowment comparison presented earlier in Section 2. Note that of the four student variables used in column (2), only two are statistically significant. The method used for variable selection depends on whether or not, within each group of variables (students, parents etc.) the inclusion of the variable leads to a reduction of the coefficient on the Vietnam dummy. 
+
 	\begin{table}[H]
 		\tiny
 		\def\arraystretch{1}
@@ -651,61 +662,96 @@ where \textit{i} indexes students. VIETNAM captures the differential between Vie
 			Variables & \multicolumn{2}{c}{(1)} & \multicolumn{2}{c}{(2)} & \multicolumn{2}{c}{(3)} & \multicolumn{2}{c}{(4)} & \multicolumn{2}{c}{(5)} \\
 			\hline
 			&       &       &       &       &       &       &       &       &       &  \\
-			VIETNAM & 128.05 & (5.65) & 108.91 & (5.32) & 97.46 & (5.48) & 95.13 & (5.87) & 77.26 & (7.84) \\[0.2em]
-			PRESCHOOL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 45.86 & (3.92) & 40.54 & (3.95) & 39.21 & (4.09) & 24.90 & (3.80) \\[0.2em]
-			REPEAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -50.57 & (2.59) & -47.55 & (2.56) & -45.05 & (3.19) & -36.96 & (3.00) \\[0.2em]
-			ST08Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -8.59 & (1.20) & -8.41 & (1.18) & -8.38 & (1.33) & -7.84 & (1.32) \\[0.2em]
-			ST115Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -4.94 & (1.70) & -4.57 & (1.73) & -6.10 & (1.80) & -5.40 & (1.86) \\[0.2em]
-			BOOK\_N & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.09  & (0.01) & 0.08  & (0.01) & 0.07  & (0.01) \\[0.2em]
-			PARPRESSURE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.73 & (5.01) & 12.51 & (4.78) & 10.02 & (4.40) \\[0.2em]
-			FUNDMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.27  & (0.06) & 0.24  & (0.06) & 0.19  & (0.07) \\[0.2em]
-			COUNCILMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.14 & (0.06) & -0.18 & (0.06) & -0.10 & (0.07) \\[0.2em]
-			DUTYMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.07 & (0.06) & -0.12 & (0.07) & -0.10 & (0.07) \\[0.2em]
-			PROPCERT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 16.08 & (5.50) & 16.32 & (6.87) \\[0.2em]
-			SMRATIO & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.01 & (0.01) & -0.03 & (0.01) \\[0.2em]
-			TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.91 & (1.97) & 2.24  & (1.87) \\[0.2em]
-			TCFOCST & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.30  & (2.19) & -1.45 & (1.88) \\[0.2em]
-			TCM\_STUASS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.85 & (7.45) & -0.18 & (7.85) \\[0.2em]
-			TCM\_PEER & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.53 & (6.59) & -5.61 & (5.65) \\[0.2em]
-			TCH\_INCENTV & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.92 & (2.73) & -2.75 & (2.72) \\[0.2em]
-			ASS\_PROG & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.51 & (15.51) & -22.58 & (8.04) \\[0.2em]
-			ASS\_PROM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 7.60  & (6.11) & 14.09 & (5.80) \\[0.2em]
-			ASS\_SCH & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.51  & (6.51) & 0.51  & (7.31) \\[0.2em]
-			STU\_FEEDB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.66  & (5.27) & 2.20  & (5.07) \\[0.2em]
-			PCGIRLS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 14.59 & (13.65) \\[0.2em]
-			COMP\_USE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.57 & (5.30) \\[0.2em]
-			TXT\_BOOK & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.51 & (7.05) \\[0.2em]
-			TOWN  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.53 & (3.76) \\[0.2em]
-			CLSIZE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.81  & (0.23) \\[0.2em]
-			COMPWEB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 15.28 & (6.31) \\[0.2em]
-			SCMATEDU & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.58  & (2.94) \\[0.2em]
-			SCMATBUI & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.46  & (2.45) \\[0.2em]
-			EXC2\_PLAY & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 8.69  & (3.96) \\[0.2em]
-			EXC6\_MATHCOMP & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.70 & (5.37) \\[0.2em]
-			EXC10\_SPORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -5.65 & (9.15) \\[0.2em]
-			EXC11\_UNICORN & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.81  & (5.59) \\[0.2em]
-			SCL\_EXTR\_CL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.90 & (5.08) \\[0.2em]
-			SCORE\_PUBLIC & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.10 & (4.75) \\[0.2em]
-			QUAL\_RECORD & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.99  & (6.77) \\[0.2em]
-			SCHSEL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.57  & (3.29) \\[0.2em]
-			R2    & \multicolumn{2}{c}{27.21} & \multicolumn{2}{c}{37.24} & \multicolumn{2}{c}{40.03} & \multicolumn{2}{c}{43.15} & \multicolumn{2}{c}{43.93} \\[0.2em]
-			N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{c}{44046} & \multicolumn{2}{c}{30051} & \multicolumn{2}{c}{25612} \\[0.2em]
-			\bottomrule
-			\\
+\rowcolor{Yellow}
+VIETNAM & 128.05 & (5.65) & 108.91 & (5.32) & 97.46 & (5.48) & 95.13 & (5.87) & 77.26 & (7.84) \\[0.2em]
+\rowcolor{LightCyan}
+PRESCHOOL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 45.86 & (3.92) & 40.54 & (3.95) & 39.21 & (4.09) & 24.90 & (3.80) \\[0.2em]
+\rowcolor{LightCyan}
+REPEAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -50.57 & (2.59) & -47.55 & (2.56) & -45.05 & (3.19) & -36.96 & (3.00) \\[0.2em]
+\rowcolor{LightCyan}
+ST08Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -8.59 & (1.20) & -8.41 & (1.18) & -8.38 & (1.33) & -7.84 & (1.32) \\[0.2em]
+\rowcolor{LightCyan}
+ST115Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -4.94 & (1.70) & -4.57 & (1.73) & -6.10 & (1.80) & -5.40 & (1.86) \\[0.2em]
+\rowcolor{PaleGreen}
+BOOK\_N & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.09  & (0.01) & 0.08  & (0.01) & 0.07  & (0.01) \\[0.2em]
+\rowcolor{PaleGreen}
+PARPRESSURE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.73 & (5.01) & 12.51 & (4.78) & 10.02 & (4.40) \\[0.2em]
+\rowcolor{PaleGreen}
+FUNDMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.27  & (0.06) & 0.24  & (0.06) & 0.19  & (0.07) \\[0.2em]
+\rowcolor{PaleGreen}
+COUNCILMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.14 & (0.06) & -0.18 & (0.06) & -0.10 & (0.07) \\[0.2em]
+\rowcolor{PaleGreen}
+DUTYMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.07 & (0.06) & -0.12 & (0.07) & -0.10 & (0.07) \\[0.2em]
+\rowcolor{Gray}
+PROPCERT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 16.08 & (5.50) & 16.32 & (6.87) \\[0.2em]
+\rowcolor{Gray}
+SMRATIO & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.01 & (0.01) & -0.03 & (0.01) \\[0.2em]
+\rowcolor{Gray}
+TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.91 & (1.97) & 2.24  & (1.87) \\[0.2em]
+\rowcolor{Gray}
+TCFOCST & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.30  & (2.19) & -1.45 & (1.88) \\[0.2em]
+\rowcolor{Gray}
+TCM\_STUASS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.85 & (7.45) & -0.18 & (7.85) \\[0.2em]
+\rowcolor{Gray}
+TCM\_PEER & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.53 & (6.59) & -5.61 & (5.65) \\[0.2em]
+\rowcolor{Gray}
+TCH\_INCENTV & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.92 & (2.73) & -2.75 & (2.72) \\[0.2em]
+\rowcolor{Gray}
+ASS\_PROG & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.51 & (15.51) & -22.58 & (8.04) \\[0.2em]
+\rowcolor{Gray}
+ASS\_PROM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 7.60  & (6.11) & 14.09 & (5.80) \\[0.2em]
+\rowcolor{Gray}
+ASS\_SCH & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.51  & (6.51) & 0.51  & (7.31) \\[0.2em]
+\rowcolor{Gray}
+STU\_FEEDB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.66  & (5.27) & 2.20  & (5.07) \\[0.2em]
+\rowcolor{NavajoWhite}
+PCGIRLS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 14.59 & (13.65) \\[0.2em]
+\rowcolor{NavajoWhite}
+COMP\_USE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.57 & (5.30) \\[0.2em]
+\rowcolor{NavajoWhite}
+TXT\_BOOK & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.51 & (7.05) \\[0.2em]
+\rowcolor{NavajoWhite}
+TOWN  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.53 & (3.76) \\[0.2em]
+\rowcolor{NavajoWhite}
+CLSIZE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.81  & (0.23) \\[0.2em]
+\rowcolor{NavajoWhite}
+COMPWEB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 15.28 & (6.31) \\[0.2em]
+\rowcolor{NavajoWhite}
+SCMATEDU & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.58  & (2.94) \\[0.2em]
+\rowcolor{NavajoWhite}
+SCMATBUI & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 3.46  & (2.45) \\[0.2em]
+\rowcolor{NavajoWhite}
+EXC2\_PLAY & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 8.69  & (3.96) \\[0.2em]
+\rowcolor{NavajoWhite}
+EXC6\_MATHCOMP & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.70 & (5.37) \\[0.2em]
+\rowcolor{NavajoWhite}
+EXC10\_SPORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -5.65 & (9.15) \\[0.2em]
+\rowcolor{NavajoWhite}
+EXC11\_UNICORN & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.81  & (5.59) \\[0.2em]
+\rowcolor{NavajoWhite}
+SCL\_EXTR\_CL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.90 & (5.08) \\[0.2em]
+\rowcolor{NavajoWhite}
+SCORE\_PUBLIC & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.10 & (4.75) \\[0.2em]
+\rowcolor{NavajoWhite}
+QUAL\_RECORD & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.99  & (6.77) \\[0.2em]
+\rowcolor{NavajoWhite}
+SCHSEL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.57  & (3.29) \\[0.2em]
+R2    & \multicolumn{2}{c}{27.21} & \multicolumn{2}{c}{37.24} & \multicolumn{2}{c}{40.03} & \multicolumn{2}{c}{43.15} & \multicolumn{2}{c}{43.93} \\[0.2em]
+N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{c}{44046} & \multicolumn{2}{c}{30051} & \multicolumn{2}{c}{25612} \\[0.2em]
+\multicolumn{11}{l}{Figures in parentheses are t-values for null hypothesis of coefficent being statistically significantly different from zero} \\
+   	\bottomrule
+		\\
 		\end{tabular}%
 		\label{tab:addlabel}%
 	\end{table}%
 
-Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
-(2/Students): PRESCHOOL, REPEAT, ST08Q01, FUNDMOM (!), COUNCILMOM (!)\\
-(3/Teachers \& Ped Practices): SMRATIO, TCM\_STUASS,  \\
-(4/School): TOWN, CLSIZE, SCMATEDU,SCORE\_PUBLIC \\
-(5/all plus rotated 1): INSTMOT, SUBNORM (!!), MATHEFF (!), MATINTFC (!) \\
-(6/all plus rotated 2): OUTMATH, EXPUREM, \textbf{FAMCONC (!! by -30\%)} \\
-(7/all plus rotated 3): BKGR\_FAMPROB, ANXMAT, TCHQUAL\_DIFF, TCHBEHSO \\
+The second set of variables, included cumulatively while retaining the earlier variables, relates to the home background and parents of the student. In the earlier section on endowments, it was explained that Vietnam has the lowest per capita income of the eight countries included in the sample and it is natural that PISA indices on family wealth or parental education are much lower for Vietnam as compared to the other 7 countries. Inclusion of these variables increase the coefficient on the Vietnam dummy and would take us away from our objective. So the parent variables that are retained and presented in column (3) are only those variables that reduce the Vietnam dummy. The reduction is only 11 points as compared to the nearly 20 point reduction for student variables. Only the variable PARPRESSURE is statistically significant in this group and indeed has a sizeable impact on the score - this variable reports on principals claiming that ``there is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.''
 
-\subsection{The estimated impact of 'Vietnam' on Reading PISA test scores}
+The third set of variables, related to teachers, is presented in column (4) and result in a reduction of the Vietnam dummy only by 3 points to a level of 95.13. This does not mean that teachers are unimportant as a reason for Vietnam's superior performance in mathematics, only that the observed teacher related variables in the PISA dataset do not collectively help as an explanation. In the regression itself, one can see that PROPCERT, proportion of certified teachers affects mathematics scores positively. The same goes for a slew of student assessment related variables, including TCM\_STUASS and STU\_FEEDB, that relate to the use of student assessment and student written feedback for assessing teachers. 
 
+The final set of variables, related to schools is presented in column (5), that results in a further reduction in the dummy coefficient by 12 points, to a level of 77.26. Interestingly, all the school variables with just one exception are statistically significant. There are interesting insights from some of the school variables. COMP\_USE does not have a positive effect on the mathematics score, but COMPWEB does - recall that Vietnam does relatively better on internet connectivity as compared to mere availability of computers. The presence of SCMATEDU and SCMATBUI - quality of school educational resources and quality of physical infrastructure - helps explain the gap, recall from Table 9 the superior endowments in Vietnam compared to the Dev7 countries. Table 10 shows that Extra classes organized by the school (SCL\_EXTR\_CL), and the ``systematic recording of data including teacher and student attendance and graduation rates, test results and professional development of teachers'' (QUAL\_RECORD) are also part of the story. Public dissemination by the school of testing results (SCORE\_PUBLIC) has a positive coefficient, which is also one of the variable where Vietnam appears to have twice as many schools following the practice. 
+
+Note that as we successively add variables in the regression equation, the number of observations in the regressions drops because of missing values. Comparing available observable values on other variables (not reported) for the dropped observations does not seem to indicate a systematic bias in this attrition. The 2012 round of the PISA included a so called 'rotated' module for the student's questionnaire. The idea of the rotated module was to ask additional sets of questions in a systematic division that increases the overall data available without burdening the respondents with excessively long questionnaires. Appendix Table 1 reports the regression results that includes the 'rotated' variables related to different factors such as parents, teachers and the school. It can be seen from Appendi Tablex 1 that the lowest possible alue for the Vietnam dummy was 46.2. This means that after accounting for a range of variables, there is still a substantive (half a standard deviation) score gap that is left uneplained from the PISA data. It is quite likely that this unexplained factor is a combination of cultural effects beyond the discipline and effort related variables covered by PISA. We now turn to an examination of the science and reading results.
 	\begin{table}[H]
 		\tiny
 		\def\arraystretch{1}
@@ -720,40 +766,75 @@ Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
 			Variables & \multicolumn{2}{c}{(1)} & \multicolumn{2}{c}{(2)} & \multicolumn{2}{c}{(3)} & \multicolumn{2}{c}{(4)} & \multicolumn{2}{c}{(5)} \\
 			\hline
 			&       &       &       &       &       &       &       &       &       &  \\
+\rowcolor{Yellow}
 			VIETNAM & 105.16 & (5.03) & 85.03 & (4.33) & 75.49 & (4.69) & 74.13 & (4.59) & 60.31 & (6.06) \\[0.2em]
+\rowcolor{LightCyan}
 			FEMALE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 25.84 & (1.69) & 25.24 & (1.74) & 26.65 & (1.87) & 23.02 & (1.60) \\[0.2em]
+\rowcolor{LightCyan}
 			PRESCHOOL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 41.47 & (3.67) & 37.82 & (3.78) & 34.86 & (3.83) & 23.68 & (3.40) \\[0.2em]
+\rowcolor{LightCyan}
 			REPEAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -58.46 & (2.79) & -55.65 & (3.03) & -52.78 & (3.50) & -43.16 & (3.24) \\[0.2em]
+\rowcolor{LightCyan}
 			ST08Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -8.6  & (1.29) & -8.31 & (1.25) & -8.03 & (1.38) & -7.67 & (1.43) \\[0.2em]
+\rowcolor{LightCyan}
 			ST115Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -7.9  & (1.66) & -7.82 & (1.68) & -9.63 & (1.78) & -8.37 & (1.80) \\[0.2em]
+\rowcolor{PaleGreen}
 			BOOK\_N & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.08  & (0.01) & 0.06  & (0.01) & 0.05  & (0.01) \\[0.2em]
+\rowcolor{PaleGreen}
 			PARPRESSURE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.72 & (4.32) & 11.21 & (4.24) & 3.69  & (4.18) \\[0.2em]
+\rowcolor{PaleGreen}
 			VOLUMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.05 & (0.06) & -0.06 & (0.05) & -0.03 & (0.06) \\[0.2em]
+\rowcolor{PaleGreen}
 			FUNDMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.2   & (0.06) & 0.17  & (0.05) & 0.1   & (0.06) \\[0.2em]
+\rowcolor{PaleGreen}
 			COUNCILMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.12 & (0.06) & -0.16 & (0.06) & -0.09 & (0.07) \\[0.2em]
+\rowcolor{PaleGreen}
 			DUTYMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.05 & (0.06) & -0.08 & (0.06) & -0.1  & (0.07) \\[0.2em]
+\rowcolor{Gray}
 			PROPCERT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 9.14  & (4.84) & 3.14  & (5.59) \\[0.2em]
-			TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -3.93 & (1.84) & 0.47  & (1.91) \\[0.2em]
+\rowcolor{Gray}
+      	TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -3.93 & (1.84) & 0.47  & (1.91) \\[0.2em]
+\rowcolor{Gray}
 			TCM\_STUASS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 15.91 & (7.67) & 7.35  & (8.22) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_PROG & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 4.31  & (16.68) & -15.85 & (10.44) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_PROM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 6.25  & (5.45) & 13.94 & (5.92) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_NAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.71  & (5.41) & 1.44  & (5.91) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_CUR & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -2.15 & (7.50) & -3.81 & (9.14) \\[0.2em]
+\rowcolor{Gray}
 			STU\_FEEDB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 4.95  & (4.67) & 6.12  & (4.28) \\[0.2em]
+\rowcolor{NavajoWhite}
 			PCGIRLS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 23.11 & (10.88) \\[0.2em]
+\rowcolor{NavajoWhite}
 			TOWN  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -6.88 & (3.71) \\[0.2em]
+\rowcolor{NavajoWhite}
 			CLSIZE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.95  & (0.23) \\[0.2em]
+\rowcolor{NavajoWhite}
 			COMPWEB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 16.08 & (5.56) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCMATEDU & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.16  & (2.52) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCMATBUI & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.98  & (2.35) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC2\_PLAY & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 13.05 & (3.92) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC6\_MATHCOMP & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 7.65  & (5.02) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC10\_SPORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -4.43 & (10.86) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC11\_UNICORN & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 10.61 & (5.11) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCORE\_PUBLIC & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.24  & (4.22) \\[0.2em]
+\rowcolor{NavajoWhite}
 			LEADINST & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.54  & (2.03) \\[0.2em]
+\rowcolor{NavajoWhite}
 			QUAL\_RECORD & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -6.06 & (7.10) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCHSEL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.39  & (3.05) \\[0.2em]
+\rowcolor{NavajoWhite}
 			TEACCLIM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.3  & (2.63) \\[0.2em]
 			R2    & \multicolumn{2}{c}{19.61} & \multicolumn{2}{c}{34.5} & \multicolumn{2}{c}{36.45} & \multicolumn{2}{c}{39.63} & \multicolumn{2}{c}{41.84} \\[0.2em]
 			N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{c}{44046} & \multicolumn{2}{c}{35442} & \multicolumn{2}{c}{27331} \\[0.2em]
@@ -761,15 +842,9 @@ Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
 				
 		\end{tabular}%
 		\end{table}%
-	
-Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
-(2/Students): PRESCHOOL, REPEAT, ST08Q01, FUNDMOM (!), COUNCILMOM (!) \\
-(3/Teachers \& Ped Practices): TCM\_STUASS,   \\
-(4/School): CLSIZE, SCMATEDU, (EXC2\_PLAY + EXC6\_MATHCOMP + EXC10\_SPORT + EXC11\_UNICORN),  \\
-(5/all plus rotated 1): none significantly \\
-(6/all plus rotated 2): none significantly \\
-(7/all plus rotated 3): BKGR\_FAMPROB (!),  ATTLNACT, TCHQUAL\_DIFF  \\
 
+For scores in reading (Table 11), the gap is lower to begin with: 105.16 compared to 128.05 for mathematics. The pattern revealed by the regessions is quite similar: the student specific variables brings down the Vietnam dummy coeffcient to 85; the parent related variables accounts for a further 9 points, with only PARPRESSURE being statistically significant; teacher related varaibles only account for a further decline of 2 points, and school variables reduced the dummy by 14 points to a level of 60.31 reported in column (5). Annex Table 2 reports the regressions with rotated variables included that brings down the dummy coefficient to a lowest level of 52.04. Finally we look at the Science results. 
+	\
 \subsection{The estimated impact of 'Vietnam' on Science PISA test scores}
 
 	\begin{table}[H]
@@ -786,41 +861,77 @@ Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
 			Variables & \multicolumn{2}{c}{(1)} & \multicolumn{2}{c}{(2)} & \multicolumn{2}{c}{(3)} & \multicolumn{2}{c}{(4)} & \multicolumn{2}{c}{(5)} \\
 			\hline
 			&       &       &       &       &       &       &       &       &       &  \\
+\rowcolor{Yellow}
 			VIETNAM & 134.56 & (4.91) & 115.45 & (4.37) & 103.85 & (4.56) & 101.83 & (4.63) & 88.54 & (5.99) \\[0.2em]
+\rowcolor{LightCyan}
 			FEMALE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -2.21 & (1.61) & -3.08 & (1.58) & -1.95 & (1.78) & -4.93 & (1.46) \\[0.2em]
+\rowcolor{LightCyan}
 			PRESCHOOL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 43.06 & (3.42) & 37.94 & (3.60) & 36.09 & (3.65) & 24.36 & (3.57) \\[0.2em]
+\rowcolor{LightCyan}
 			REPEAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -53.8 & (2.63) & -50.74 & (2.86) & -48.77 & (3.26) & -40.6 & (3.24) \\[0.2em]
+\rowcolor{LightCyan}
 			ST08Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -9.28 & (1.11) & -9.02 & (1.16) & -8.76 & (1.28) & -8.45 & (1.26) \\[0.2em]
+\rowcolor{LightCyan}
 			ST115Q01 & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -5.95 & (1.68) & -5.55 & (1.72) & -6.88 & (1.81) & -6.18 & (1.89) \\[0.2em]
+\rowcolor{PaleGreen}
 			BOOK\_N & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.08  & (0.01) & 0.06  & (0.01) & 0.06  & (0.01) \\[0.2em]
+\rowcolor{PaleGreen}
 			PARPRESSURE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.87  & (3.94) & 6.42  & (3.96) & -0.27 & (3.76) \\[0.2em]
+\rowcolor{PaleGreen}
 			FUNDMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.25  & (0.05) & 0.22  & (0.05) & 0.17  & (0.06) \\[0.2em]
+\rowcolor{PaleGreen}
 			COUNCILMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.18 & (0.05) & -0.2  & (0.05) & -0.12 & (0.06) \\[0.2em]
+\rowcolor{PaleGreen}
 			DUTYMOM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.02 & (0.05) & -0.04 & (0.06) & -0.06 & (0.07) \\[0.2em]
+\rowcolor{Gray}
 			PROPCERT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 11.67 & (4.91) & 5.35  & (5.47) \\[0.2em]
+\rowcolor{Gray}
 			TCSHORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.68 & (1.82) & 2.7   & (1.83) \\[0.2em]
+\rowcolor{Gray}
 			TCM\_STUASS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 16.04 & (6.86) & 9.43  & (7.39) \\[0.2em]
+\rowcolor{Gray}
 			TCM\_PEER & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -2.65 & (6.05) & -5.68 & (5.79) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_PROG & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -5.42 & (16.65) & -23.01 & (9.17) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_PROM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 4.23  & (5.79) & 12.41 & (6.68) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_NAT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 7.33  & (4.71) & 1.49  & (4.93) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_SCH & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 2.63  & (6.01) & 0.66  & (6.72) \\[0.2em]
+\rowcolor{Gray}
 			ASS\_CUR & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -6.33 & (7.54) & -4.87 & (8.73) \\[0.2em]
+\rowcolor{Gray}
 			STU\_FEEDB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 4.59  & (4.48) & 5.90  & (4.68) \\[0.2em]
+\rowcolor{NavajoWhite}
 			PCGIRLS & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 18.92 & (11.11) \\[0.2em]
+\rowcolor{NavajoWhite}
 			PRIVATESCL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.03 & (5.34) \\[0.2em]
+\rowcolor{NavajoWhite}
 			TOWN  & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -8.25 & (3.16) \\[0.2em]
+\rowcolor{NavajoWhite}
 			CLSIZE & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 0.83  & (0.20) \\[0.2em]
+\rowcolor{NavajoWhite}
 			COMPWEB & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 17.22 & (5.61) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCMATEDU & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 5.38  & (1.75) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC2\_PLAY & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 8.52  & (3.34) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC6\_MATHCOMP & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.5   & (4.53) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC10\_SPORT & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.73 & (9.13) \\[0.2em]
+\rowcolor{NavajoWhite}
 			EXC11\_UNICORN & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 8.56  & (5.04) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCORE\_PUBLIC & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 11.28 & (3.75) \\[0.2em]
+\rowcolor{NavajoWhite}
 			LEADINST & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.57  & (1.95) \\[0.2em]
+\rowcolor{NavajoWhite}
 			QUAL\_RECORD & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -0.92 & (5.55) \\[0.2em]
+\rowcolor{NavajoWhite}
 			SCHSEL & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & 1.52  & (3.11) \\[0.2em]
+\rowcolor{NavajoWhite}
 			TEACCLIM & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & \multicolumn{1}{c}{-} & -1.82 & (2.46) \\[0.2em]
 			R2    & \multicolumn{2}{c}{30.75} & \multicolumn{2}{c}{41.14} & \multicolumn{2}{c}{43.35} & \multicolumn{2}{c}{46.11} & \multicolumn{2}{c}{47.35} \\[0.2em]
 			N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{c}{44046} & \multicolumn{2}{c}{35302} & \multicolumn{2}{c}{27224} \\[0.2em]
@@ -829,6 +940,7 @@ Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
 		\end{tabular}%
 		\label{tab:addlabel}%
 	\end{table}%
+
 
 Just notes: 'strong' ie \textbf{'largely' decrease the gap}:\\
 (2/Students): FEMALE, PRESCHOOL, REPEAT, ST08Q01, FUNDMOM, COUNCILMOM\\
@@ -1088,7 +1200,7 @@ Recommendations for Mathematics Curriculum Development in Vietnam,
 Amy Chua
 \emph{Battle Hymn of the Tiger Mother} 2011 Penguin Press, New York
 
-\bibitem[Hsin and Xie, 2014]{HsinXie14}
+\bibitem[Hsin and Xie, 2014]{HsinXie14} 
 Amy Hsin and Yu Xie
 Explaining Asian Americans’ academic advantage over whites
 \emph{Proceedings of the National Academy of Sciences}, May 2014
