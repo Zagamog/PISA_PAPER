@@ -97,6 +97,8 @@ PISA_TH <- subset(DEVCON8z,CNT==c("THA"))
 PISA_TU <- subset(DEVCON8z,CNT==c("TUN")) 
 PISA_DEV7 <- rbind(PISA_AL,PISA_CO,PISA_ID,PISA_JO,PISA_PE,PISA_TH,PISA_TU) 
 
+
+
 #################### For Math  ##############
 ################################################# ###########################
 
@@ -197,6 +199,10 @@ ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
 
 
 # Testing package oaxaca 
+PISA_VNAL <- rbind(PISA_AL,PISA_VN)
+PISA_VNAL$OTHER <- factor(-(PISA_VNAL$VIETNAM-1))
+PISA_VNAL$NOREPEAT <- as.numeric(-(PISA_VNAL$REPEAT-1))
+
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
 results2 <- oaxaca(PV1MATH ~ VIETNAM + PRESCHOOL + NOREPEAT +
                      NOLATE + NOMISS + NOSKIP | OTHER,
