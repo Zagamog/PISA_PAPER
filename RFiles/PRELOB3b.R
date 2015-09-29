@@ -76,28 +76,30 @@ DEVCON8a$NOSKIP[DEVCON8a$ST115Q01==4] <- 4
 
 DEVCON8a$MSRATIO <- 100/DEVCON8a$SMRATIO
 
+#DEVCON8a$NUMGIRLS <- DEVCON8a$PCGIRLS*DEVCON8a$SCHSIZE
 
 
-T1b <- DEVCON8a[, c("VIETNAM","PRESCHOOL","NOREPEAT","NOLATE",
-                    "NOMISS","NOSKIP",
-                    "OUTMATH","OUTREAD","OUTSCIE",
-                    "PARPRESSURE","TIGERMOM"
-                    )]
-N1 <- NROW(na.omit(T1b)) 
-N1 
+#T1b <- DEVCON8a[, c("VIETNAM","PRESCHOOL","REPEAT",
+#                    "ST08Q01","ST09Q01","ST115Q01",
+#                    "OUTMATH","OUTREAD","OUTSCIE",
+#                    "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+#                   "TCH_INCENTV","TCM_INSPE","COMP_USE", "STU_FEEDB"
+#                    )]
+#N1 <- NROW(na.omit(T1b)) 
+#N1 
 # N0-N1 
-DEVCON8z <- DEVCON8a[complete.cases(T1b),]
+#DEVCON8z <- DEVCON8a[complete.cases(T1b),]
 
 
 
 PISA_VN <- subset(DEVCON8a,CNT==c("VNM")) 
 PISA_AL <- subset(DEVCON8a,CNT==c("ALB")) 
-PISA_CO <- subset(DEVCON8z,CNT==c("COL")) 
-PISA_ID <- subset(DEVCON8z,CNT==c("IDN")) 
-PISA_JO <- subset(DEVCON8z,CNT==c("JOR")) 
-PISA_PE <- subset(DEVCON8z,CNT==c("PER")) 
-PISA_TH <- subset(DEVCON8z,CNT==c("THA")) 
-PISA_TU <- subset(DEVCON8z,CNT==c("TUN")) 
+PISA_CO <- subset(DEVCON8a,CNT==c("COL")) 
+PISA_ID <- subset(DEVCON8a,CNT==c("IDN")) 
+PISA_JO <- subset(DEVCON8a,CNT==c("JOR")) 
+PISA_PE <- subset(DEVCON8a,CNT==c("PER")) 
+PISA_TH <- subset(DEVCON8a,CNT==c("THA")) 
+PISA_TU <- subset(DEVCON8a,CNT==c("TUN")) 
 PISA_DEV7 <- rbind(PISA_AL,PISA_CO,PISA_ID,PISA_JO,PISA_PE,PISA_TH,PISA_TU) 
 
 PISA_VNAL <- rbind(PISA_AL,PISA_VN)
@@ -106,33 +108,26 @@ PISA_VNAL$NOREPEAT <- as.numeric(-(PISA_VNAL$REPEAT-1))
 
 
 
-T1b <- PISA_VNAL[, c("VIETNAM","PRESCHOOL","NOREPEAT","NOLATE",
-                    "NOMISS","NOSKIP",
+T1b <- PISA_VNAL[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                     "OUTMATH","OUTREAD","OUTSCIE",
-                    "PARPRESSURE","TIGERMOM"
+                    "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                    "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                     )]
 PISA_VNAL2 <- PISA_VNAL[complete.cases(T1b),]
 
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
-results2 <- oaxaca(PV1MATH ~ PRESCHOOL+NOREPEAT+NOLATE+NOMISS+NOSKIP+
-                  OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM| OTHER,
+results2 <- oaxaca(PV1MATH ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
+                  OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
+                  + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
                    data=PISA_VNAL2, R=2,reg.fun=Marek) 
 plot(results2,
-     variables=c("PRESCHOOL","NOREPEAT","NOLATE",
-                 "NOMISS","NOSKIP",
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                  "OUTMATH","OUTREAD","OUTSCIE",
-                 "PARPRESSURE","TIGERMOM"
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                 ), decomposition="twofold",
-     weight=1)
-
-
-
-
-+
-  COMP_USE+STU_FEEDB+SCMATEDU+EXC2_PLAY+SCORE_PUBLIC
-
-
-OUTMATH+OUTREAD+OUTSCIE+
-  PARPRESSURE+TIGERMOM+PROPCERT+MSRATIO+SC35Q02+TCH_INCENTV+TCM_INSPE
+     weight=0,title="Vietnam compared to Albania: Vietnam as reference",
+     component.labels = c("unexplained"="xA-xB.BetaA", "explained"="xB.BetaA-BetaB")
+             )
 
