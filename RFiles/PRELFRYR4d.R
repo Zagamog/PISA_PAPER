@@ -48,7 +48,9 @@ library(lme4)# To run mixed-effects models using Eigen and S4
 # Please be aware that many packages (eg. tables, intsvy) require additional packages to run. When trying to load
 # the package, R will tell you which ones are missing. Overall you may need to download around 40 packages.
 
-load("DEVCON8a.RDA")
+load("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8a.rda")
+
+DEVCON8a <- DEVCON8a.rda
 
 ############### 6. REGRESSION ANALYSIS FOR MATH OF A MODIFIED FRYER & LEVITT (2004) APPROACH ################
 
@@ -278,7 +280,7 @@ DEVCON8z$LHRS <- (DEVCON8z$LMINS)/60
 
 # Let's support R and create an intermediate file we will just load when we come back here, so that the
 # R memory does not get all worked up:
-save(DEVCON8z, file = "C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/DEVCON8z.rda") 
+save(DEVCON8z, file = "C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8z.rda") 
 
 # First, remember, we have a smaller data set (12670 data points) compared to when we first regressed the Vietnam PISA Math score
 # (48483 data points); hence we regress again to get the correct size of the Vietnam dummy. 

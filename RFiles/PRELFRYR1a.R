@@ -49,8 +49,8 @@ library(lme4)# To run mixed-effects models using Eigen and S4
 # OECD-PISA Report: "PISA 2012 Results: What Makes a School Successful?" (Volume IV, Chapter 3, Table IV.3.2)
 # Original data downloaded from: http://pisa2012.acer.edu.au/downloads.php (txt files, spss or sas)
 
-student.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
-school.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
+student.rda <- read.dta("C:/Country/Vietnam/Data/PISA/STATADATA/stu.dta")
+school.rda <- read.dta("C:/Country/Vietnam/Data/PISA/STATADATA/sch.dta")
 
 # Please refer to the questionnaires, codebooks and the technical manual (pages 396-398) about the specific
 # variables included in the data files and their abbreviations  
@@ -231,13 +231,13 @@ names(DEVCON8) <- toupper(names(DEVCON8))
 
 # Let's save it for now
 
-save(DEVCON8, file = "C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/DEVCON8.rda") 
+save(DEVCON8, file = "C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8.rda") 
 
 # Get summary of the DEVCON file (variables, mean, sd, etc.) in LATEX via use of the 'stargazer' package
 # This will give you a neat ouptut of all variables and you can use it as an overview of all variables in the data set
 
 stargazer(DEVCON8,
-          type="latex", out="C:/Users/WB484284/Desktop/PISAlatestversions/WPLatex/DescriptiveStats/DEVCON8.tex",
+          type="latex", out="C:/Country/Vietnam/Data/PISA/PISA_PAPER/Latex/DEVCON8.tex",
           style="default",
           align=TRUE,
           digit.separator="",
@@ -330,7 +330,7 @@ arrows(400, 0.0052, 496, 0.0052)
 
 # We will keep DEVCON8 as a master file, so we create a new version for the subsequent steps
 
-save(DEVCON8a, file = "C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/DEVCON8a.rda")
+save(DEVCON8, file = "C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8a.rda")
 
 ############################################## 3. PISA SCORES  ##############################################
 
@@ -400,7 +400,7 @@ READ0
 # Since we will now alter most of the initial file (delete missing cases, etc.) we create a new file (DEVON8a) and 
 # to have the masterfile (DEVCON8) as a back-up. 
 
-save(DEVCON8a, file = "C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/DEVCON8a.rda") 
+save(DEVCON8, file = "C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/DEVCON8a.rda") 
 
 
 #############################################################################################################
