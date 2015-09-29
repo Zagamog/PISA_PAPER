@@ -128,6 +128,16 @@ plot(results2,
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                 ), decomposition="twofold",
      weight=0,title="Vietnam compared to Albania: Vietnam as reference",
-     component.labels = c("unexplained"="xA-xB.BetaA", "explained"="xB.BetaA-BetaB")
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
              )
 
+plot(results2,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Albania: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
