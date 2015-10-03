@@ -1,7 +1,7 @@
-# PRELOB3h.R # Shanghai
+# PRELOB3h.R # Tunisia
 # Unraveling a secret: Vietnam's outstanding performance on the PISA test 2012 following the Oaxaca-Blinder approach
 
-# Revised on October 1,2015
+# Revised on October 2,2015
 
 # Admin packages
 library(foreign)# To import and export data to and from R (eg. txt files)
@@ -42,21 +42,6 @@ library(gmodels) # For PROC FREQ like tables
 library(dplyr)
 library(data.table)
 library(oaxaca)
-
-
-SHA_T <- filter(student2012, cnt == "China-Shanghai") # filter by "cnt" and create a new student file just for 'Albania'
-ALB_S <- filter(school.rda, cnt == "ALB") # filter by "cnt" and create a new school file just for 'Albania'
-ALB_P <- merge(ALB_T, ALB_S, by = "schoolid") # merge both files into one file just for 'Albania'
-ALB_P$cnt <- ALB_P$cnt.x # we duplicate "cnt.x" as "cnt" (it is only called "cnt.x" since we merged ALB_S and ALB_T, not that in ALB_S and ALB_T it was called "cnt")
-ALB_P$cnt.x <- NULL # we delete the column "cnt.x"
-ALB_P$subnatio <- ALB_P$subnatio.x # we duplicate "subnatio.x" as "subnatio" (to have the same nomenclature as in the original data!)
-ALB_P$subnatio.x <- NULL # we delete the column "subnatio.x"
-ALB_P$stratum <- ALB_P$stratum.x # same as above
-ALB_P$stratum.x <- NULL # same as above
-ALB_P$oecd <- ALB_P$oecd.x # same as above
-ALB_P$oecd.x <- NULL # same as above
-ALB_P$nc <- ALB_P$nc.x  # same as above
-ALB_P$nc.x <- NULL # same as above
 
 
 # DEVCON8a <- DEVCON8
@@ -136,32 +121,32 @@ PISA_PE <- subset(DEVCON8a,CNT==c("PER"))
 PISA_TH <- subset(DEVCON8a,CNT==c("THA")) 
 PISA_TU <- subset(DEVCON8a,CNT==c("TUN")) 
 
-PISA_VNTH <- rbind(PISA_TH,PISA_VN)
-PISA_VNTH$OTHER <- factor(-(PISA_VNTH$VIETNAM-1))
-PISA_VNTH$NOREPEAT <- as.numeric(-(PISA_VNTH$REPEAT-1))
+PISA_VNTU <- rbind(PISA_TU,PISA_VN)
+PISA_VNTU$OTHER <- factor(-(PISA_VNTU$VIETNAM-1))
+PISA_VNTU$NOREPEAT <- as.numeric(-(PISA_VNTU$REPEAT-1))
 
 
 
-T1b <- PISA_VNTH[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+T1b <- PISA_VNTU[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                     "OUTMATH","OUTREAD","OUTSCIE",
                     "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
                     "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                     )]
-PISA_VNTH2 <- PISA_VNTH[complete.cases(T1b),]
+PISA_VNTU2 <- PISA_VNTU[complete.cases(T1b),]
 
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
 results2 <- oaxaca(PV1MATH ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
                   OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
-                   data=PISA_VNTH2, R=2,reg.fun=Marek) 
+                   data=PISA_VNTU2, R=2,reg.fun=Marek) 
 plot(results2,
      variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                  "OUTMATH","OUTREAD","OUTSCIE",
                  "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                 ), decomposition="twofold",
-     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
      component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
              )
 
@@ -171,7 +156,7 @@ plot(results2,
                  "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
      ), decomposition="twofold",
-     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
      component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
      type="overall"
 )

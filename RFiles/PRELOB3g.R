@@ -1,7 +1,7 @@
-# PRELOB3h.R # Shanghai
+# PRELOB3g.R # Thailand
 # Unraveling a secret: Vietnam's outstanding performance on the PISA test 2012 following the Oaxaca-Blinder approach
 
-# Revised on October 1,2015
+# Revised on October 2,2015
 
 # Admin packages
 library(foreign)# To import and export data to and from R (eg. txt files)
@@ -42,22 +42,6 @@ library(gmodels) # For PROC FREQ like tables
 library(dplyr)
 library(data.table)
 library(oaxaca)
-
-
-SHA_T <- filter(student2012, cnt == "China-Shanghai") # filter by "cnt" and create a new student file just for 'Albania'
-ALB_S <- filter(school.rda, cnt == "ALB") # filter by "cnt" and create a new school file just for 'Albania'
-ALB_P <- merge(ALB_T, ALB_S, by = "schoolid") # merge both files into one file just for 'Albania'
-ALB_P$cnt <- ALB_P$cnt.x # we duplicate "cnt.x" as "cnt" (it is only called "cnt.x" since we merged ALB_S and ALB_T, not that in ALB_S and ALB_T it was called "cnt")
-ALB_P$cnt.x <- NULL # we delete the column "cnt.x"
-ALB_P$subnatio <- ALB_P$subnatio.x # we duplicate "subnatio.x" as "subnatio" (to have the same nomenclature as in the original data!)
-ALB_P$subnatio.x <- NULL # we delete the column "subnatio.x"
-ALB_P$stratum <- ALB_P$stratum.x # same as above
-ALB_P$stratum.x <- NULL # same as above
-ALB_P$oecd <- ALB_P$oecd.x # same as above
-ALB_P$oecd.x <- NULL # same as above
-ALB_P$nc <- ALB_P$nc.x  # same as above
-ALB_P$nc.x <- NULL # same as above
-
 
 # DEVCON8a <- DEVCON8
 
