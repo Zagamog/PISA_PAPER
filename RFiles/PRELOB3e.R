@@ -15,6 +15,7 @@ library(TDMR)# Need this for tuning data mining in R - eg. detect column of cons
 
 library(intsvy) # For PISA analysis with PVs and BRRs
 library(xlsx)# To generate MS-Excel output
+library(psych) # for the rescaling of TCH_INCENTIV variable
 
 library(ggplot2) # For graphs 
 library(reshape2)
@@ -90,7 +91,8 @@ DEVCON8a$MSRATIO <- 100/DEVCON8a$SMRATIO
 # N0-N1 
 #DEVCON8z <- DEVCON8a[complete.cases(T1b),]
 
-
+# Additionally, need to create variables OUTMATH, OUTREAD, OUTSCIE, TIGERMOM, 
+# TCH_INCENTV, TCM_INSPE, COMP_USE
 
 PISA_VN <- subset(DEVCON8a,CNT==c("VNM")) 
 PISA_AL <- subset(DEVCON8a,CNT==c("ALB")) 
@@ -114,6 +116,7 @@ T1b <- PISA_VNJO[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q
                     )]
 PISA_VNJO2 <- PISA_VNJO[complete.cases(T1b),]
 
+###### MATHEMATICS ######
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
 results2 <- oaxaca(PV1MATH ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
@@ -137,6 +140,62 @@ plot(results2,
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
      ), decomposition="twofold",
      weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+###### READING ######
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1READ ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
+                     OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
+                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
+                   data=PISA_VNJO2, R=2,reg.fun=Marek) 
+plot(results3,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan (reading): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan (reading): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+###### SCIENCE ######
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results4 <- oaxaca(PV1SCIE ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
+                     OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
+                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
+                   data=PISA_VNJO2, R=2,reg.fun=Marek) 
+plot(results4,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan (science): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results4,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan (science): Vietnam as reference",
      component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
      type="overall"
 )
