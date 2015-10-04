@@ -34,6 +34,7 @@ library(TDMR)# Need this for tuning data mining in R - eg. detect column of cons
 
 library(intsvy) # For PISA analysis with PVs and BRRs
 library(xlsx)# To generate MS-Excel output
+library(psych) # for the rescaling of TCH_INCENTIV variable
 
 library(ggplot2) # For graphs 
 library(reshape2)
@@ -43,6 +44,8 @@ library(dplyr)
 library(data.table)
 library(oaxaca)
 
+#stu <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
+#sch <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
 
 QCN_T <- filter(stu, cnt == "QCN") # filter by "cnt" and create a new student file just for 'Albania'
 QCN_S <- filter(sch, cnt == "QCN") # filter by "cnt" and create a new school file just for 'Albania'
@@ -60,11 +63,9 @@ QCN_P$nc.x <- NULL # same as above
 QCN_P$COUNTRY <-9
 QCN_P$NEWID <- (QCN_P$COUNTRY*10000000)+((as.numeric(QCN_P$schoolid))*10000)+(as.numeric(QCN_P$stidstd))
 
-
 save(DEVCON8a, file="C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/Devcon8a.rda")
 
-
-DEVCON9a <- rbind(DEVCON8,QCN_P)
+DEVCON9a <- rbind(DEVCON8a,QCN_P)
 
 DEVCON9a$VIETNAM[DEVCON9a$COUNTRY==8] <- 1 # dummy takes value = 1, if the country is Vietnam
 DEVCON9a$VIETNAM[DEVCON9a$COUNTRY!=8] <- 0 # dummy takes value = 0, if the country is not Vietnam
@@ -73,7 +74,6 @@ DEVCON9a$VIETNAM[DEVCON9a$COUNTRY!=8] <- 0 # dummy takes value = 0, if the count
 # you might have noticed how we put all newly created variables already in upper case; no we convert all 
 
 names(DEVCON9a) <- toupper(names(DEVCON9a)) 
-
 
 T0 <- DEVCON9a[, c("VIETNAM")] # create a vector only of "VIETNAM" or any other variable you want to look at
 N0<- NROW(na.omit(T0)) # tell R to delete any rows with missing variables 
@@ -139,7 +139,39 @@ DEVCON9a$MSRATIO <- 100/DEVCON9a$SMRATIO
 # N0-N1 
 #DEVCON8z <- DEVCON9a[complete.cases(T1b),]
 
+# Additionally, need to create variables OUTMATH, OUTREAD, OUTSCIE, TIGERMOM, 
+# TCH_INCENTV, TCM_INSPE, COMP_USE
 
+DEVCON9a$TIGERMOM  <- DEVCON9a$SC25Q01+DEVCON9a$SC25Q03
+DEVCON9a$TIGERMOM[DEVCON9a$TIGERMOM>100] <- 100
+
+DEVCON9a$TCM_INSPE[DEVCON9a$SC30Q04==1] <- 1
+DEVCON9a$TCM_INSPE[DEVCON9a$SC30Q04==2] <- 0
+
+SC31DAT9OUT.rda <- read.csv("C:/Users/WB484284/Desktop/PISA_PAPER/Excel/SC31DAT9OUT.csv")
+DEVCON9a <- merge(DEVCON9a,SC31DAT9OUT.rda,by="NEWID")
+DEVCON9a$TCH_INCENTV <- rescale(DEVCON9a$WMLE, mean = 0, sd = 1,df=FALSE)
+
+DEVCON9a$COMP_USE[DEVCON9a$SC40Q01==1] <- 1
+DEVCON9a$COMP_USE[DEVCON9a$SC40Q01==2] <- 0
+
+DEVCON9a$OUTMATH[DEVCON9a$ST55Q02==1] <- 0
+DEVCON9a$OUTMATH[DEVCON9a$ST55Q02==2] <- 1
+DEVCON9a$OUTMATH[DEVCON9a$ST55Q02==3] <- 3
+DEVCON9a$OUTMATH[DEVCON9a$ST55Q02==4] <- 5
+DEVCON9a$OUTMATH[DEVCON9a$ST55Q02==5] <- 7
+
+DEVCON9a$OUTREAD[DEVCON9a$ST55Q01==1] <- 0
+DEVCON9a$OUTREAD[DEVCON9a$ST55Q01==2] <- 1
+DEVCON9a$OUTREAD[DEVCON9a$ST55Q01==3] <- 3
+DEVCON9a$OUTREAD[DEVCON9a$ST55Q01==4] <- 5
+DEVCON9a$OUTREAD[DEVCON9a$ST55Q01==5] <- 7
+
+DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==1] <- 0
+DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==2] <- 1
+DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==3] <- 3
+DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==4] <- 5
+DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==5] <- 7
 
 PISA_VN <- subset(DEVCON9a,CNT==c("VNM")) 
 PISA_AL <- subset(DEVCON9a,CNT==c("ALB")) 
@@ -149,14 +181,11 @@ PISA_JO <- subset(DEVCON9a,CNT==c("JOR"))
 PISA_PE <- subset(DEVCON9a,CNT==c("PER")) 
 PISA_TH <- subset(DEVCON9a,CNT==c("THA")) 
 PISA_TU <- subset(DEVCON9a,CNT==c("TUN")) 
-PISA_TU <- subset(DEVCON9a,CNT==c("TUN")) 
 PISA_SH <- subset(DEVCON9a,CNT==c("QCN"))
 
 PISA_VNSH <- rbind(PISA_SH,PISA_VN)
 PISA_VNSH$OTHER <- factor(-(PISA_VNSH$VIETNAM-1))
 PISA_VNSH$NOREPEAT <- as.numeric(-(PISA_VNSH$REPEAT-1))
-
-
 
 T1b <- PISA_VNSH[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                     "OUTMATH","OUTREAD","OUTSCIE",
@@ -165,19 +194,24 @@ T1b <- PISA_VNSH[, c("VIETNAM","PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q
                     )]
 PISA_VNSH2 <- PISA_VNSH[complete.cases(T1b),]
 
+########### MATHEMATICS ##########
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
 results2 <- oaxaca(PV1MATH ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
                   OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
                    data=PISA_VNSH2, R=2,reg.fun=Marek) 
+
+# Error message: oaxaca: oaxaca() performing analysis. Please wait.
+# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
+
 plot(results2,
      variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                  "OUTMATH","OUTREAD","OUTSCIE",
                  "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
                 ), decomposition="twofold",
-     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     weight=0,title="Vietnam compared to Shanghai: Vietnam as reference",
      component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
              )
 
@@ -187,7 +221,73 @@ plot(results2,
                  "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
                  "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
      ), decomposition="twofold",
-     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     weight=0,title="Vietnam compared to Shanghai: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+########### READING ##########
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1READ ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
+                     OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
+                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
+                   data=PISA_VNSH2, R=2,reg.fun=Marek) 
+
+# Error message: oaxaca: oaxaca() performing analysis. Please wait.
+# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
+
+
+plot(results3,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Shanghai (reading): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Shanghai (reading): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+########### SCIENCE ##########
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results4 <- oaxaca(PV1SCIE ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
+                     OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
+                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
+                   data=PISA_VNSH2, R=2,reg.fun=Marek) 
+
+# Error message: oaxaca: oaxaca() performing analysis. Please wait.
+# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
+
+
+plot(results4,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Shanghai (science): Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results4,
+     variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
+                 "OUTMATH","OUTREAD","OUTSCIE",
+                 "PARPRESSURE","TIGERMOM","PROPCERT","SC35Q02",
+                 "TCH_INCENTV","TCM_INSPE","COMP_USE","STU_FEEDB"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Shanghai (science): Vietnam as reference",
      component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
      type="overall"
 )
