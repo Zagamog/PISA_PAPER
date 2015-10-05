@@ -3,13 +3,13 @@
 #### DATA CREATION FILE FOR DEVCON9a ####
 
 
-
 student.rda <- stu
 school.rda <- sch
 
 
-student.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestverstions/RFiles/PISA_2012/stu.dta")
-school.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestverstions/RFiles/PISA_2012/sch.dta")
+student.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
+school.rda <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
+
 
 # Albania 
 
