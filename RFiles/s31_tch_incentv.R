@@ -1,5 +1,8 @@
 # s31_tch_incentv.R
 
+# Comment Elisabeth: changed SC31DAT9OUT.csv to SC31DAT9OUT2.csv, as the first had a flawed
+# NEWID (with 'y' at the end of each number), that made rbind not possible
+
 # S31  teacher incentives
 # __________________________________________________________________________________________
 # How many non-missing values ?
@@ -15,7 +18,7 @@ SC31DAT9 <- DEVCON9b[,c("NEWID","W_FSCHWT","W_FSTUWT","SC31Q01", "SC31Q02","SC31
 write.csv(SC31DAT9, "SC31DAT9.csv")
 # Generated Winsteps output using Winsteps control+data file SC31a9.txt
 # Person file Output read back into R
-SC31OUTN.rda <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/Excel/SC31DAT9OUT.csv")
+SC31OUTN.rda <- read.csv("C:/Users/WB484284/Desktop/PISA_PAPER/Excel/SC31DAT9OUT2.csv")
 # I merge back to the PISA data, except now I have to give it a c suffix.
 # merge school and student datasets 
 DEVCON9c <- merge(DEVCON9b,SC31OUTN.rda,by="NEWID")
