@@ -44,8 +44,8 @@ library(dplyr)
 library(data.table)
 library(oaxaca)
 
-#stu <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
-#sch <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
+stu <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/stu.dta")
+sch <- read.dta("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/sch.dta")
 
 QCN_T <- filter(stu, cnt == "QCN") # filter by "cnt" and create a new student file just for 'Albania'
 QCN_S <- filter(sch, cnt == "QCN") # filter by "cnt" and create a new school file just for 'Albania'
@@ -82,7 +82,6 @@ N0
 DEVCON9a$PRESCHOOL[DEVCON9a$ST05Q01==1] <- 0
 DEVCON9a$PRESCHOOL[DEVCON9a$ST05Q01==2] <- 1
 DEVCON9a$PRESCHOOL[DEVCON9a$ST05Q01==3] <- 1
-
 
 DEVCON9a$PARPRESSURE[DEVCON9a$SC24Q01==1] <- 1
 DEVCON9a$PARPRESSURE[DEVCON9a$SC24Q01==2] <- 0
@@ -148,6 +147,13 @@ DEVCON9a$TIGERMOM[DEVCON9a$TIGERMOM>100] <- 100
 DEVCON9a$TCM_INSPE[DEVCON9a$SC30Q04==1] <- 1
 DEVCON9a$TCM_INSPE[DEVCON9a$SC30Q04==2] <- 0
 
+T1b <- DEVCON9a[, c("SC31Q01", "SC31Q02","SC31Q03","SC31Q04","SC31Q05","SC31Q06","SC31Q07")]
+N1 <- NROW(na.omit(T1b)) 
+N1 # 51,315
+N0-N1 # 2345
+# Data set with non NAs 
+DEVCON9a <- DEVCON9a[complete.cases(T1b),]
+
 SC31DAT9OUT.rda <- read.csv("C:/Users/WB484284/Desktop/PISA_PAPER/Excel/SC31DAT9OUT.csv")
 DEVCON9a <- merge(DEVCON9a,SC31DAT9OUT.rda,by="NEWID")
 DEVCON9a$TCH_INCENTV <- rescale(DEVCON9a$WMLE, mean = 0, sd = 1,df=FALSE)
@@ -172,6 +178,8 @@ DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==2] <- 1
 DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==3] <- 3
 DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==4] <- 5
 DEVCON9a$OUTSCIE[DEVCON9a$ST55Q03==5] <- 7
+
+#### Also see DEVCON9a.R for separate way of creating DEVCON9a #####
 
 PISA_VN <- subset(DEVCON9a,CNT==c("VNM")) 
 PISA_AL <- subset(DEVCON9a,CNT==c("ALB")) 
@@ -202,9 +210,6 @@ results2 <- oaxaca(PV1MATH ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
                   + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
                    data=PISA_VNSH2, R=2,reg.fun=Marek) 
 
-# Error message: oaxaca: oaxaca() performing analysis. Please wait.
-# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
-
 plot(results2,
      variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                  "OUTMATH","OUTREAD","OUTSCIE",
@@ -234,10 +239,6 @@ results3 <- oaxaca(PV1READ ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
                    + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
                    data=PISA_VNSH2, R=2,reg.fun=Marek) 
 
-# Error message: oaxaca: oaxaca() performing analysis. Please wait.
-# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
-
-
 plot(results3,
      variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
                  "OUTMATH","OUTREAD","OUTSCIE",
@@ -266,10 +267,6 @@ results4 <- oaxaca(PV1SCIE ~ PRESCHOOL+REPEAT+ST08Q01+ST09Q01+ST115Q01+
                      OUTMATH+OUTREAD+OUTSCIE+ST57Q04+PARPRESSURE + TIGERMOM+PROPCERT+SC35Q02
                    + TCH_INCENTV+TCM_INSPE+COMP_USE+STU_FEEDB| OTHER,
                    data=PISA_VNSH2, R=2,reg.fun=Marek) 
-
-# Error message: oaxaca: oaxaca() performing analysis. Please wait.
-# Error in xj[i, , drop = FALSE] : (subscript) logical subscript too long --- need to investigate
-
 
 plot(results4,
      variables=c("PRESCHOOL","REPEAT", "ST08Q01","ST09Q01","ST115Q01",
