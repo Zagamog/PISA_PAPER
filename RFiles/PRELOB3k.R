@@ -150,7 +150,7 @@ blaxB <- REG_B
 
 # Variance of the means:
 # WVar <- wtd.var(x, na.rm=TRUE, weight="W_FSTUWT")
-WVar <- function(x) stats::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT")
+WVar <- function(x) stats::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # Why is this not working?
 XAvar_ <- apply(PISA_VN[,spec1], 2, FUN=WVar)
 XBvar_ <- apply(PISA_AL[,spec1], 2, FUN=WVar)
 XAvar <- append(1,XAvar_)
