@@ -188,23 +188,26 @@ BETA_AminusBETA_B <- BETA_A-BETA_B
 S_EndowmentsA <- XA_XB_T%*%BETA_A
 EndowmentsA <- XA_XB_T*BETA_A
 # Variance of endowments:
-EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)
-# ? or EndowmentsA_var <- Var_coff_A*+(XAvar_T+XBvar_T) ?
+# EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)*BETA_A
+# or EndowmentsA_var <- Var_coff_A*+(XAvar_T+XBvar_T) 
+EndowmentsA_var <- Var_coff_A+(XAvar_T+XBvar_T)
 S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
 CoefficientsA <- XB_T*BETA_AminusBETA_B
 # Variance for coefficients:
-CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
+# CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
+CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
 
 ####### B as reference
 S_EndowmentsB <- XA_XB_T%*%BETA_B
 EndowmentsB <- XA_XB_T*BETA_B
 # Variance of endowments:
-EndowmentsB_var <- XA_XB_T*Var_coff_B*+BETA_B*(XAvar_T+XBvar_T)
+# EndowmentsB_var <- XA_XB_T*Var_coff_B*+BETA_B*(XAvar_T+XBvar_T)
+EndowmentsB_var <- Var_coff_B+(XAvar_T+XBvar_T)
 S_CoefficientsB <- XA_T%*%BETA_AminusBETA_B 
 CoefficientsB <- XA_T*BETA_AminusBETA_B 
 # Variance for coefficients:
-CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XAvar_T
-
+# CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XAvar_T
+CoefficientsB_var <- (Var_coff_A+Var_coff_B)+XAvar_T
 
 DELTA_Y <- (XA_T%*%BETA_A)-(XB_T%*%BETA_B)
 DELTA_Y  # compare with
@@ -219,9 +222,6 @@ rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
 colnames(blax) <- c("Endowments", "Endowments Variance","Coefficients","Coefficients Variance")
 flax <- melt(blax,value.name="toplots")
 
-# Var2 "not found" (when trying the ggplot below), maybe to do with the OUTPUT_A, OUTPUT_B 
-# manipulation in Excel? Added/ Created Var1 and Var2?
-
 ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
   coord_flip() + facet_wrap(~Var2,nrow=3) +
@@ -233,7 +233,6 @@ ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   guides(fill=FALSE)  +
   ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
-
 
 # Data ready for ggplot2
 blix <- rbind(EndowmentsB[2:6],EndowmentsB_var[2:6],CoefficientsB[2:6],CoefficientsB_var[2:6])
