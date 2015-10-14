@@ -216,18 +216,22 @@ XAminusXB <- XA-XB
 XA_XB_T <- t(XAminusXB) # transpose for pre-multiplication
 
 # Read the beta values in
+# blaxA <- REG_A
+# blaxB <- REG_B
 blaxA <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_A.csv",
                   header=TRUE,sep=",") # no row.names=1 for not variable
 blaxB <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_B.csv",
                   header=TRUE,sep=",") # no row.names=1 for not variable
 BETA_B <- blaxB[(1:6),2]
+# BETA_B <- blaxB[(1:6),1]
 BETA_A <- blaxA[(1:6),2]
+# BETA_A <- blaxA[(1:6),1]
 
 BETAA_BETAB <- BETA_A-BETA_B
 
 
 S_Endowments <- XA_XB_T%*%BETA_B
-Endowments <- XA_XB*BETA_B  # by component
+Endowments <- XA_XB_T*BETA_B  # by component
 S_Coefficients <- XB_T%*%BETAA_BETAB
 Coefficients <- XB_T*BETAA_BETAB
 S_interactions <- XA_XB_T%*%BETAA_BETAB
@@ -243,7 +247,8 @@ Coeff_T <- Coefficients[1,]
 Inter_T <- Interactions[1,]
 spec1_T <- t(append(1,spec1)) 
 
-blix <- rbind(End_T,Coefficients,Interactions)[,2:6]
+# blix <- rbind(End_T,Coefficients,Interactions)[,2:6]
+blix <- rbind(Endowments,Coeff_T,Inter_T)[,2:6]
 blax <- t(blix) # raw material for the bar diagrams, without standard errors. 
 colnames(blax) <- c("Endowments","Coefficients", "Interactions")
 
