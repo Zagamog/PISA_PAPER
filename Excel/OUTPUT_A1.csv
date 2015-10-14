@@ -1,0 +1,8 @@
+"","Estimate","Std. Error","t value"
+"(Intercept)",146.41,33.62,4.36
+"PRESCHOOL",47.13,9.03,5.22
+"NOREPEAT1",93.22,8.29,11.25
+"NOLATE",7.62,2.04,3.74
+"NOMISS",17.99,2.63,6.84
+"NOSKIP",-1.44,2.31,-0.63
+"R-squared",16.53,2.8,5.9
