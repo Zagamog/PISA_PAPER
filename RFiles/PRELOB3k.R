@@ -4,7 +4,7 @@
 # Prepared by Elisabeth Sedmik on October 14th 2015
 # Based on code by Suhas D. Parandekar
 
-# Revised on 
+# Revised on ...
 
 library(foreign) # to import and export data from R
 library(epicalc) # for use in descriptives
