@@ -222,6 +222,7 @@ rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
 colnames(blax) <- c("Endowments", "Endowments Variance","Coefficients","Coefficients Variance")
 flax <- melt(blax,value.name="toplots")
 
+
 ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
   coord_flip() + facet_wrap(~Var2,nrow=3) +
@@ -233,6 +234,96 @@ ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   guides(fill=FALSE)  +
   ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+########## Does not work, lets try from scratch:
+
+blix1 <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6])
+blax1 <- t(blix1)  
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+colnames(blax1) <- c("Endowments", "Endowments Variance")
+flax1 <- melt(blax1,value.name="toplots")
+colnames(flax1) <- c("col1","col2","col3")
+
+save(flax1, file="C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/flax1.csv")
+# manipulate to get variance as column (will change it in the r coding)
+
+flax2 <- read.csv("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/flax1_out.csv",
+                  header=TRUE,sep=",") # no row.names=1 for not variable
+
+# Very basic plot:
+
+ce <- subset(flax1, col2 == "Endowments")
+
+ggplot(ce, aes(x=col1, y=col3, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+# flax2 <- flax1[-c(6,7,8,9,10), ] # not needed
+
+###### HERE IT IS:
+
+ggplot(flax2, aes(x=col1, y=end, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+
+#### OLD
+ggplot(flax2, aes(x=col1, y=col2, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Data ready for ggplot2
 blix <- rbind(EndowmentsB[2:6],EndowmentsB_var[2:6],CoefficientsB[2:6],CoefficientsB_var[2:6])
