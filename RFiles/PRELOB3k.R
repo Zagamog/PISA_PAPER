@@ -1,10 +1,10 @@
-# PRELOB3a.R
+# PRELOB3k.R
 # Unraveling a secret: Vietnam's outstanding performance on the PISA test 2012 following the Oaxaca-Blinder approach
 
-# Prepared by Elisabeth Sedmik on Wednesday, September 1 2015
+# Prepared by Elisabeth Sedmik on October 14th 2015
 # Based on code by Suhas D. Parandekar
 
-# Revised on September 27  2015
+# Revised on 
 
 library(foreign) # to import and export data from R
 library(epicalc) # for use in descriptives
@@ -123,12 +123,23 @@ PISA_AL$NOREPEAT <- as.numeric(-(PISA_AL$REPEAT-1))
 WMean <- function(x) stats::weighted.mean(x, na.rm=TRUE,weight="W_FSTUWT")
 #
 
-XA_ <- apply(PISA_VN[,spec1], 2, FUN=WMean)
+XA_ <- apply(PISA_VN[,spec1], 2, FUN=WMean) 
 XB_ <- apply(PISA_AL[,spec1], 2, FUN=WMean)
 XA <- append(1,XA_)
 XB <- append(1,XB_)
 XA_T <- t(XA)
 XB_T <- t(XB)
+
+# Just to check:
+# WMean1 <- function(x) stats::weighted.mean(x, na.rm=TRUE) # same as above without weights
+# XA1_ <- apply(PISA_VN[,spec1], 2, FUN=WMean1)
+#> XA_
+#PRESCHOOL  NOREPEAT    NOLATE    NOMISS    NOSKIP 
+#0.9112559 0.9324242 9.7040505 9.8391003 9.8774679 
+#> XA1_
+#PRESCHOOL  NOREPEAT    NOLATE    NOMISS    NOSKIP 
+#0.9112559 0.9324242 9.7040505 9.8391003 9.8774679 
+# gives the same
 
 XAminusXB <- XA-XB
 XA_XB_T <- t(XAminusXB) # transpose for pre-multiplication
@@ -146,22 +157,27 @@ blaxA <- REG_A
 # instead of above:
 blaxB <- REG_B
 
-###### AS FOR THE VARIANCE: 
+###### FOR THE VARIANCE: 
 
 # Variance of the means:
-# WVar <- wtd.var(x, na.rm=TRUE, weight="W_FSTUWT")
-WVar <- function(x) stats::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # Why is this not working?
+
+# WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # not working with weights, apply without (as above with means)
+WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE)
 XAvar_ <- apply(PISA_VN[,spec1], 2, FUN=WVar)
 XBvar_ <- apply(PISA_AL[,spec1], 2, FUN=WVar)
 XAvar <- append(1,XAvar_)
 XBvar <- append(1,XBvar_)
-XAvar_T <- t(XA)
-XBvar_T <- t(XB)
+XAvar_T <- t(XAvar)
+XBvar_T <- t(XBvar)
 
 # Variance of the regression coefficients:
 
 blaxA$variance <- blaxA$`Std. Error`^2
+Var_coff_A <- blaxA[(1:6),4] 
 blaxB$variance <- blaxB$`Std. Error`^2
+Var_coff_B <- blaxB[(1:6),4] 
+
+####### Moving on: 
 
 # BETA_B <- blaxB[(1:6),2] # is this the correct column? Should be estimates, ie column 1
 BETA_B <- blaxB[(1:6),1] 
@@ -169,18 +185,27 @@ BETA_B <- blaxB[(1:6),1]
 BETA_A <- blaxA[(1:6),1] 
 BETA_AminusBETA_B <- BETA_A-BETA_B
 
-
-# A as reference
+####### A as reference
 S_EndowmentsA <- XA_XB_T%*%BETA_A
 EndowmentsA <- XA_XB_T*BETA_A
+# Variance of endowments:
+EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)
+# ? or EndowmentsA_var <- Var_coff_A*+(XAvar_T+XBvar_T) ?
 S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
 CoefficientsA <- XB_T*BETA_AminusBETA_B
+# Variance for coefficients:
+CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
 
-# B as reference
+####### B as reference
 S_EndowmentsB <- XA_XB_T%*%BETA_B
 EndowmentsB <- XA_XB_T*BETA_B
+# Variance of endowments:
+EndowmentsB_var <- XA_XB_T*Var_coff_B*+BETA_B*(XAvar_T+XBvar_T)
 S_CoefficientsB <- XA_T%*%BETA_AminusBETA_B 
 CoefficientsB <- XA_T*BETA_AminusBETA_B 
+# Variance for coefficients:
+CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XAvar_T
+
 
 DELTA_Y <- (XA_T%*%BETA_A)-(XB_T%*%BETA_B)
 DELTA_Y  # compare with
@@ -189,20 +214,21 @@ S_EndowmentsB+S_CoefficientsB # Perfect match
 
 
 # Data ready for ggplot2
-blix <- rbind(EndowmentsA[2:6],CoefficientsA[2:6])
-blax <- t(blix) # raw material for the bar diagrams, without standard errors. 
+blix <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6],CoefficientsA[2:6],CoefficientsA_var[2:6])
+blax <- t(blix)  
 rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-colnames(blax) <- c("Endowments","Coefficients")
+colnames(blax) <- c("Endowments", "Endowments Variance","Coefficients","Coefficients Variance")
 flax <- melt(blax,value.name="toplots")
 
-# I do not get a sensible flax output
-# also Var2 and var1 are "not found" (when trying the ggplot below), maybe to do with the OUTPUT_A, OUTPUT_B 
+# Var2 "not found" (when trying the ggplot below), maybe to do with the OUTPUT_A, OUTPUT_B 
 # manipulation in Excel? Added/ Created Var1 and Var2?
 
 ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
   coord_flip() + facet_wrap(~Var2,nrow=3) +
   scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_errorbar(aes(ymin=toplots-3*toplots.1, ymax=toplots+3*toplots.1), width=.2,
+                position=position_dodge(.9)) +
   geom_hline(xintercept = 0, linetype = "dashed") +
   theme_bw() +
   guides(fill=FALSE)  +
@@ -211,16 +237,18 @@ ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
 
 
 # Data ready for ggplot2
-blix <- rbind(EndowmentsB[2:6],CoefficientsB[2:6])
-blax <- t(blix) # raw material for the bar diagrams, without standard errors. 
+blix <- rbind(EndowmentsB[2:6],EndowmentsB_var[2:6],CoefficientsB[2:6],CoefficientsB_var[2:6])
+blax <- t(blix)  
 rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-colnames(blax) <- c("Endowments","Coefficients")
+colnames(blax) <- c("Endowments", "Endowments Variance","Coefficients","Coefficients Variance")
 flax <- melt(blax,value.name="toplots")
 
 ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
   coord_flip() + facet_wrap(~Var2,nrow=3) +
   scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_errorbar(aes(ymin=toplots-3*toplots.1, ymax=toplots+3*toplots.1), width=.2,
+                position=position_dodge(.9)) +
   geom_hline(xintercept = 0, linetype = "dashed") +
   theme_bw() +
   guides(fill=FALSE)  +
