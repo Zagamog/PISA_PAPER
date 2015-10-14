@@ -113,7 +113,6 @@ REG_B <- pisa.reg.pv(pvlabel="MATH",
                      weight="W_FSTUWT", data=PISA_AL,
                      export=TRUE,name="OUTPUT_B")
 
-
 spec1 <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
 
 PISA_VN$NOREPEAT <- as.numeric(-(PISA_VN$REPEAT-1))
