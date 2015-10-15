@@ -26,6 +26,7 @@ library(gmodels) # For PROC FREQ like tables
 library(dplyr)
 library(data.table)
 library(oaxaca)
+library(gcookbook)
 
 # DEVCON8a <- DEVCON8
 
@@ -184,65 +185,173 @@ BETA_B <- blaxB[(1:6),1]
 BETA_A <- blaxA[(1:6),1] 
 BETA_AminusBETA_B <- BETA_A-BETA_B
 
-####### A as reference
+####### A as reference (vietnam as refernce)
 S_EndowmentsA <- XA_XB_T%*%BETA_A
 EndowmentsA <- XA_XB_T*BETA_A
 # Variance of endowments:
 # EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)*BETA_A
 # or EndowmentsA_var <- Var_coff_A*+(XAvar_T+XBvar_T) 
-EndowmentsA_var <- Var_coff_A+(XAvar_T+XBvar_T)
+# EndowmentsA_var <- Var_coff_A+(XAvar_T+XBvar_T)
+EndowmentsA_var <- XAvar_T
 S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
 CoefficientsA <- XB_T*BETA_AminusBETA_B
 # Variance for coefficients:
 # CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
-CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
+# CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
+CoefficientsA_var <- Var_coff_A
 
-####### B as reference
+# I have tried around for some time (see different formulae), but keeping 'Var_coff_A', 'XAvar_T' as teh estimates for explained/unexplained 
+# variance brings us the closest to the oaxaca package estimations of the variances; not ideal, but we can easily change
+# it. I will go on prepare the graphs now
+
+####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
 EndowmentsB <- XA_XB_T*BETA_B
 # Variance of endowments:
 # EndowmentsB_var <- XA_XB_T*Var_coff_B*+BETA_B*(XAvar_T+XBvar_T)
-EndowmentsB_var <- Var_coff_B+(XAvar_T+XBvar_T)
+# EndowmentsB_var <- Var_coff_B+(XAvar_T+XBvar_T)
+EndowmentsB_var <- XBvar_T
 S_CoefficientsB <- XA_T%*%BETA_AminusBETA_B 
 CoefficientsB <- XA_T*BETA_AminusBETA_B 
 # Variance for coefficients:
 # CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XAvar_T
-CoefficientsB_var <- (Var_coff_A+Var_coff_B)+XAvar_T
+# CoefficientsB_var <- (Var_coff_A+Var_coff_B)+XAvar_T
+CoefficientsB_var <- Var_coff_B
 
 DELTA_Y <- (XA_T%*%BETA_A)-(XB_T%*%BETA_B)
 DELTA_Y  # compare with
 S_EndowmentsA+S_CoefficientsA # Perfect match 
 S_EndowmentsB+S_CoefficientsB # Perfect match 
 
+########## Data is now ready for ggplot2
 
-# Data ready for ggplot2
-blix <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6],CoefficientsA[2:6],CoefficientsA_var[2:6])
-blax <- t(blix)  
-rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-colnames(blax) <- c("Endowments", "Endowments Variance","Coefficients","Coefficients Variance")
-flax <- melt(blax,value.name="toplots")
+###### Vietnam as reference
 
+# Vietnam as reference - Endowments/explained
 
-ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
-  geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
-  coord_flip() + facet_wrap(~Var2,nrow=3) +
-  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
-  geom_errorbar(aes(ymin=toplots-3*toplots.1, ymax=toplots+3*toplots.1), width=.2,
-                position=position_dodge(.9)) +
-  geom_hline(xintercept = 0, linetype = "dashed") +
-  theme_bw() +
-  guides(fill=FALSE)  +
-  ylab(NULL) + xlab(NULL) +
-  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
-
-########## Does not work, lets try from scratch:
-
-blix1 <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6])
+blix1 <- rbind(EndowmentsA[2:6])
 blax1 <- t(blix1)  
 rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-colnames(blax1) <- c("Endowments", "Endowments Variance")
+# colnames(blax1) <- c("Endowments")
 flax1 <- melt(blax1,value.name="toplots")
-colnames(flax1) <- c("col1","col2","col3")
+flax1$X2 <- NULL
+colnames(flax1) <- c("variable","end")
+
+blix2 <- rbind(EndowmentsA_var[2:6])
+blax2 <- t(blix2)  
+rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+# colnames(blax2) <- c("Endowments variance")
+flax2 <- melt(blax2,value.name="toplots")
+flax2$X2 <- NULL 
+colnames(flax2) <- c("variable1","endvar")
+
+flax3 <- cbind(flax1,flax2)
+flax3$variable1 <- NULL
+
+ggplot(flax3, aes(x=variable, y=end, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Endowments") 
+
+# Vietnam as reference - Coefficients/unexplained
+
+blix1 <- rbind(CoefficientsA[2:6])
+blax1 <- t(blix1)  
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+# colnames(blax1) <- c("Endowments")
+flax1 <- melt(blax1,value.name="toplots")
+flax1$X2 <- NULL
+colnames(flax1) <- c("variable","end")
+
+blix2 <- rbind(CoefficientsA_var[2:6])
+blax2 <- t(blix2)  
+rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+# colnames(blax2) <- c("Endowments variance")
+flax2 <- melt(blax2,value.name="toplots")
+flax2$X2 <- NULL 
+colnames(flax2) <- c("variable1","endvar")
+
+flax3 <- cbind(flax1,flax2)
+flax3$variable1 <- NULL
+
+ggplot(flax3, aes(x=variable, y=end, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Endowments") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################ OLD BUT KEEP AS REFERENCE ##############################
+
+blix1 <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6]) 
+blax1 <- t(blix1)   
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP") 
+colnames(blax1) <- c("Endowments", "Endowments Variance") 
+flax1 <- melt(blax1,value.name="toplots") 
+colnames(flax1) <- c("col1","col2","col3") 
+
+save(flax1, file="C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/flax1.csv") 
+# manipulate to get variance as column (will change it in the r coding) 
+
+flax2 <- read.csv("C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/flax1_out.csv", 
+                  header=TRUE,sep=",") # no row.names=1 for not variable 
+# Very basic plot: 
+
+ce <- subset(flax1, col2 == "Endowments") 
+
+ggplot(ce, aes(x=col1, y=col3, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() + 
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) + 
+  geom_hline(xintercept = 0, linetype = "dashed") + 
+  theme_bw() + 
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) + 
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference")  
+
+# flax2 <- flax1[-c(6,7,8,9,10), ] # not needed 
+
+###### HERE IT IS: 
+
+ggplot(flax2, aes(x=col1, y=end, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() + 
+  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) + 
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) + 
+  geom_hline(xintercept = 0, linetype = "dashed") + 
+  theme_bw() + 
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) + 
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+
+############################################# OLD ##########################################################
 
 save(flax1, file="C:/Users/WB484284/Desktop/PISAlatestversions/RFiles/PISA_2012/flax1.csv")
 # manipulate to get variance as column (will change it in the r coding)
@@ -263,69 +372,19 @@ ggplot(ce, aes(x=col1, y=col3, fill=col1)) + geom_bar(stat="identity",width=0.75
 
 # flax2 <- flax1[-c(6,7,8,9,10), ] # not needed
 
-###### HERE IT IS:
-
-ggplot(flax2, aes(x=col1, y=end, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
-  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
-  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
-  geom_hline(xintercept = 0, linetype = "dashed") +
-  theme_bw() +
-  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
-  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
-
-
-#### OLD
-ggplot(flax2, aes(x=col1, y=col2, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
-  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
-  geom_hline(xintercept = 0, linetype = "dashed") +
-  theme_bw() +
-  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
-  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+blix1 <- rbind(EndowmentsA[2:6],EndowmentsA_var[2:6])
+blax1 <- t(blix1)  
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+colnames(blax1) <- c("Endowments", "Endowments Variance")
+flax1 <- melt(blax1,value.name="toplots")
+colnames(flax1) <- c("col1","col2","col3")
 
 
 
 
 
 # Data ready for ggplot2
+# Albania as reference
 blix <- rbind(EndowmentsB[2:6],EndowmentsB_var[2:6],CoefficientsB[2:6],CoefficientsB_var[2:6])
 blax <- t(blix)  
 rownames(blax) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
@@ -343,6 +402,33 @@ ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
   guides(fill=FALSE)  +
   ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: AL Reference") 
+
+
+
+
+############################################ OLD ########################################################
+ggplot(flax2, aes(x=col1, y=col2, fill=col1)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+###### OLD
+ggplot(flax,aes(x=Var1, y=toplots,fill=Var1)) +
+  geom_bar(stat="identity",position = position_dodge(0.9),width=0.75)  + 
+  coord_flip() + facet_wrap(~Var2,nrow=3) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  geom_errorbar(aes(ymin=toplots-3*toplots.1, ymax=toplots+3*toplots.1), width=.2,
+                position=position_dodge(.9)) +
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  guides(fill=FALSE)  +
+  ylab(NULL) + xlab(NULL) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN Reference") 
+
+
+
 
 
 
