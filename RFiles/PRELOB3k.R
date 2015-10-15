@@ -191,7 +191,7 @@ S_EndowmentsA <- XA_XB_T%*%BETA_A
 EndowmentsA <- XA_XB_T*BETA_A
 # Variance of endowments:
 # EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)*BETA_A
-# or EndowmentsA_var <- Var_coff_A*+(XAvar_T+XBvar_T) 
+# or EndowmentsA_var <- Var_coff_A+XAvar_T+XBvar_T 
 # EndowmentsA_var <- Var_coff_A+(XAvar_T+XBvar_T)
 EndowmentsA_var <- XAvar_T
 S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
@@ -199,8 +199,11 @@ CoefficientsA <- XB_T*BETA_AminusBETA_B
 # Variance for coefficients:
 # CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
 # CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
-CoefficientsA_var <- Var_coff_A
+# CoefficientsA_var <- Var_coff_A
+CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B) 
 
+# so ... the endowment std = XAvar_T (just the square root of the mean variance, taken from the sample)
+# ... the coefficient std finally follows the oaxaca 'pattern', when we use the formula XB_T*(Var_coff_A+Var_coff_B) 
 
 ####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
@@ -214,7 +217,8 @@ CoefficientsB <- XA_T*BETA_AminusBETA_B
 # Variance for coefficients:
 # CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XAvar_T
 # CoefficientsB_var <- (Var_coff_A+Var_coff_B)+XAvar_T
-CoefficientsB_var <- Var_coff_B
+# CoefficientsB_var <- Var_coff_B
+CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B) # closest!
 
 DELTA_Y <- (XA_T%*%BETA_A)-(XB_T%*%BETA_B)
 DELTA_Y  # compare with
@@ -281,8 +285,7 @@ ggplot(flax3, aes(x=variable, y=coeff, fill=variable)) + geom_bar(stat="identity
   guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Coefficients") 
 
-# OK so still not close enough to the variance that the oaxaca package creates, so need to think about the 
-# calculation again!
+
 
 
 
