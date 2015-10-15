@@ -229,6 +229,80 @@ S_EndowmentsB+S_CoefficientsB # Perfect match
 
 ###### Vietnam as reference
 
+###### Trying both Endowments and Coefficients together in one ggplot, trying with facet grid 
+
+blix1 <- rbind(EndowmentsA[2:6], CoefficientsA[2:6])
+blax1 <- t(blix1) 
+colnames(blax1) <- c("Endowments","Coefficients")
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax1 <- melt(blax1,value.name="toplots")
+# flax1$X2 <- NULL
+colnames(flax1) <- c("variable","des","col1")
+
+blix2 <- rbind(EndowmentsA_var[2:6], CoefficientsA_var[2:6])
+blax2 <- t(blix2)  
+colnames(blax2) <- c("Endowments","Coefficients")
+rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax2 <- melt(blax2,value.name="toplots")
+# flax2$X2 <- NULL 
+colnames(flax2) <- c("variable1","des1","col2")
+
+flax3 <- cbind(flax1,flax2)
+flax3$variable1 <- NULL
+flax3$des1 <- NULL
+
+flax3$des <- factor(flax3$des, levels = c("Endowments","Coefficients"))
+
+ggplot(flax3, aes(x=variable, y=col1, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=col1-col2, ymax=col1+col2), width=.2) +
+  geom_point(size=2.5) + 
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  facet_wrap(~ des, ncol=1) +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Endowments & Coefficients") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################# OLD #############################################
+
 # Vietnam as reference - Endowments/explained
 
 blix1 <- rbind(EndowmentsA[2:6])
@@ -284,32 +358,6 @@ ggplot(flax3, aes(x=variable, y=coeff, fill=variable)) + geom_bar(stat="identity
   theme_bw() +
   guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Coefficients") 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
