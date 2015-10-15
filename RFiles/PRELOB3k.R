@@ -201,8 +201,8 @@ CoefficientsA <- XB_T*BETA_AminusBETA_B
 CoefficientsA_var <- Var_coff_A
 
 # I have tried around for some time (see different formulae), but keeping 'Var_coff_A', 'XAvar_T' as the estimates for explained/unexplained 
-# variance brings us the closest to the oaxaca package estimations of the variances; not ideal, but we can easily change
-# it. I will go on and prepare the graphs now:
+# variance brings us the closest to the oaxaca package estimations of the variances; not ideal, we should look at it again. 
+# I will go on and prepare the graphs now:
 
 ####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
@@ -283,7 +283,7 @@ ggplot(flax3, aes(x=variable, y=coeff, fill=variable)) + geom_bar(stat="identity
   guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
   labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Coefficients") 
 
-# OK so still not close enough to the variance that the oaxaca package creates, so might need to think about the 
+# OK so still not close enough to the variance that the oaxaca package creates, so need to think about the 
 # calculation again!
 
 
