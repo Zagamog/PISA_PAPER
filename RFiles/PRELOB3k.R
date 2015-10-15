@@ -232,7 +232,6 @@ S_EndowmentsB+S_CoefficientsB # Perfect match
 blix1 <- rbind(EndowmentsA[2:6])
 blax1 <- t(blix1)  
 rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-# colnames(blax1) <- c("Endowments")
 flax1 <- melt(blax1,value.name="toplots")
 flax1$X2 <- NULL
 colnames(flax1) <- c("variable","end")
@@ -240,7 +239,6 @@ colnames(flax1) <- c("variable","end")
 blix2 <- rbind(EndowmentsA_var[2:6])
 blax2 <- t(blix2)  
 rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-# colnames(blax2) <- c("Endowments variance")
 flax2 <- melt(blax2,value.name="toplots")
 flax2$X2 <- NULL 
 colnames(flax2) <- c("variable1","endvar")
@@ -261,31 +259,30 @@ ggplot(flax3, aes(x=variable, y=end, fill=variable)) + geom_bar(stat="identity",
 blix1 <- rbind(CoefficientsA[2:6])
 blax1 <- t(blix1)  
 rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-# colnames(blax1) <- c("Endowments")
 flax1 <- melt(blax1,value.name="toplots")
 flax1$X2 <- NULL
-colnames(flax1) <- c("variable","end")
+colnames(flax1) <- c("variable","coeff")
 
 blix2 <- rbind(CoefficientsA_var[2:6])
 blax2 <- t(blix2)  
 rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
-# colnames(blax2) <- c("Endowments variance")
 flax2 <- melt(blax2,value.name="toplots")
 flax2$X2 <- NULL 
-colnames(flax2) <- c("variable1","endvar")
+colnames(flax2) <- c("variable1","coeffvar")
 
 flax3 <- cbind(flax1,flax2)
 flax3$variable1 <- NULL
 
-ggplot(flax3, aes(x=variable, y=end, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
-  geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
+ggplot(flax3, aes(x=variable, y=coeff, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=coeff-coeffvar, ymax=coeff+coeffvar), width=.2) +
   scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
   geom_hline(xintercept = 0, linetype = "dashed") +
   theme_bw() +
   guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
-  labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Endowments") 
+  labs(title = " VIETNAM with Albania - Mathematics: VN as Reference - Coefficients") 
 
-
+# OK so still not close enough to the variance that the oaxaca package creates, so might need to think about the 
+# calculation again!
 
 
 
