@@ -200,9 +200,9 @@ CoefficientsA <- XB_T*BETA_AminusBETA_B
 # CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
 CoefficientsA_var <- Var_coff_A
 
-# I have tried around for some time (see different formulae), but keeping 'Var_coff_A', 'XAvar_T' as teh estimates for explained/unexplained 
+# I have tried around for some time (see different formulae), but keeping 'Var_coff_A', 'XAvar_T' as the estimates for explained/unexplained 
 # variance brings us the closest to the oaxaca package estimations of the variances; not ideal, but we can easily change
-# it. I will go on prepare the graphs now
+# it. I will go on and prepare the graphs now:
 
 ####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
@@ -248,6 +248,7 @@ flax3$variable1 <- NULL
 
 ggplot(flax3, aes(x=variable, y=end, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
   geom_errorbar(aes(ymin=end-endvar, ymax=end+endvar), width=.2) +
+  geom_point(size=2.5) + 
   scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
   geom_hline(xintercept = 0, linetype = "dashed") +
   theme_bw() +
@@ -275,6 +276,7 @@ flax3$variable1 <- NULL
 
 ggplot(flax3, aes(x=variable, y=coeff, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
   geom_errorbar(aes(ymin=coeff-coeffvar, ymax=coeff+coeffvar), width=.2) +
+  geom_point(size=2.5) +
   scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
   geom_hline(xintercept = 0, linetype = "dashed") +
   theme_bw() +
