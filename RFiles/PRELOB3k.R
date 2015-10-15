@@ -170,12 +170,13 @@ XBvar <- append(1,XBvar_)
 XAvar_T <- t(XAvar)
 XBvar_T <- t(XBvar)
 
-# Variance of the regression coefficients:
+XAvar_T <- sqrt(XAvar_T)
+XBvar_T <- sqrt(XBvar_T)
 
-blaxA$variance <- blaxA$`Std. Error`^2
-Var_coff_A <- blaxA[(1:6),4] 
-blaxB$variance <- blaxB$`Std. Error`^2
-Var_coff_B <- blaxB[(1:6),4] 
+# Variance/Standard Errors of the regression coefficients:
+
+Var_coff_A <- blaxA[(1:6),2] # this is the Standard Error
+Var_coff_B <- blaxB[(1:6),2] # this is the Standard Error
 
 ####### Moving on: 
 
@@ -200,9 +201,6 @@ CoefficientsA <- XB_T*BETA_AminusBETA_B
 # CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
 CoefficientsA_var <- Var_coff_A
 
-# I have tried around for some time (see different formulae), but keeping 'Var_coff_A', 'XAvar_T' as the estimates for explained/unexplained 
-# variance brings us the closest to the oaxaca package estimations of the variances; not ideal, we should look at it again. 
-# I will go on and prepare the graphs now:
 
 ####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
