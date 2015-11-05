@@ -1,7 +1,7 @@
 # PRELOB3k.R
 # Unraveling a secret: Vietnam's outstanding performance on the PISA test 2012 following the Oaxaca-Blinder approach
 
-### GGPLOT for all other countries (except Albania) ###
+### GGPLOT for all (except Albania Math) ###
 
 # Prepared by Elisabeth Sedmik on October 14th 2015
 # Based on code by Suhas D. Parandekar
@@ -95,6 +95,222 @@ PISA_PE <- subset(DEVCON8z,CNT==c("PER"))
 PISA_TH <- subset(DEVCON8z,CNT==c("THA")) 
 PISA_TU <- subset(DEVCON8z,CNT==c("TUN")) 
 PISA_DEV7 <- rbind(PISA_AL,PISA_CO,PISA_ID,PISA_JO,PISA_PE,PISA_TH,PISA_TU) 
+
+###############################################
+############ Albania - Reading  ###############
+###############################################
+
+REG_A <- pisa.reg.pv(pvlabel="READ", 
+                     x=c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP"), 
+                     weight="W_FSTUWT", data=PISA_VN,
+                     export=TRUE,name="OUTPUT_A")
+
+REG_B <- pisa.reg.pv(pvlabel="READ", 
+                     x=c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP"), 
+                     weight="W_FSTUWT", data=PISA_AL,
+                     export=TRUE,name="OUTPUT_B")
+
+spec1 <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+
+PISA_VN$NOREPEAT <- as.numeric(-(PISA_VN$REPEAT-1))
+PISA_AL$NOREPEAT <- as.numeric(-(PISA_AL$REPEAT-1))
+
+# From file PRELOB1c:
+WMean <- function(x) stats::weighted.mean(x, na.rm=TRUE,weight="W_FSTUWT")
+
+XA_ <- apply(PISA_VN[,spec1], 2, FUN=WMean) 
+XB_ <- apply(PISA_AL[,spec1], 2, FUN=WMean)
+XA <- append(1,XA_)
+XB <- append(1,XB_)
+XA_T <- t(XA)
+XB_T <- t(XB)
+
+XAminusXB <- XA-XB
+XA_XB_T <- t(XAminusXB) # transpose for pre-multiplication
+
+blaxA <- REG_A
+
+blaxB <- REG_B
+
+# SE of the means:
+
+# WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # not working with weights, apply without (as above with means)
+WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE)
+XAvar_ <- apply(PISA_VN[,spec1], 2, FUN=WVar)
+XBvar_ <- apply(PISA_AL[,spec1], 2, FUN=WVar)
+XAvar <- append(1,XAvar_)
+XBvar <- append(1,XBvar_)
+XAvar_T <- t(XAvar)
+XBvar_T <- t(XBvar)
+
+XAvar_T <- sqrt(XAvar_T)
+XBvar_T <- sqrt(XBvar_T)
+
+# SE of the regression coefficients:
+
+Var_coff_A <- blaxA[(1:6),2] # this is the Standard Error
+Var_coff_B <- blaxB[(1:6),2] # this is the Standard Error
+
+BETA_B <- blaxB[(1:6),1] 
+BETA_A <- blaxA[(1:6),1] 
+BETA_AminusBETA_B <- BETA_A-BETA_B
+
+# A as reference (vietnam as refernce)
+
+S_EndowmentsA <- XA_XB_T%*%BETA_A
+EndowmentsA <- XA_XB_T*BETA_A
+EndowmentsA_var <- XAvar_T
+S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
+CoefficientsA <- XB_T*BETA_AminusBETA_B
+CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B) 
+
+# B as reference (Albania as reference)
+S_EndowmentsB <- XA_XB_T%*%BETA_B
+EndowmentsB <- XA_XB_T*BETA_B
+EndowmentsB_var <- XBvar_T
+S_CoefficientsB <- XA_T%*%BETA_AminusBETA_B 
+CoefficientsB <- XA_T*BETA_AminusBETA_B 
+CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B) 
+
+######## ggplot: A as reference (Vietnam)
+
+blix1 <- rbind(EndowmentsA[2:6], CoefficientsA[2:6])
+blax1 <- t(blix1) 
+colnames(blax1) <- c("Endowments","Coefficients")
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax1 <- melt(blax1,value.name="toplots")
+colnames(flax1) <- c("variable","des","col1")
+
+blix2 <- rbind(EndowmentsA_var[2:6], CoefficientsA_var[2:6])
+blax2 <- t(blix2)  
+colnames(blax2) <- c("Endowments","Coefficients")
+rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax2 <- melt(blax2,value.name="toplots")
+colnames(flax2) <- c("variable1","des1","col2")
+
+flax3 <- cbind(flax1,flax2)
+flax3$variable1 <- NULL
+flax3$des1 <- NULL
+
+flax3$des <- factor(flax3$des, levels = c("Endowments","Coefficients"))
+
+ggplot(flax3, aes(x=variable, y=col1, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=col1-col2, ymax=col1+col2), width=.2) +
+  geom_point(size=2.5) + 
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  facet_wrap(~ des, ncol=1) +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  labs(title = " VIETNAM with Albania - Reading: VN as Reference") 
+
+###############################################
+############ Albania - Science  ###############
+###############################################
+
+REG_A <- pisa.reg.pv(pvlabel="SCIE", 
+                     x=c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP"), 
+                     weight="W_FSTUWT", data=PISA_VN,
+                     export=TRUE,name="OUTPUT_A")
+
+REG_B <- pisa.reg.pv(pvlabel="SCIE", 
+                     x=c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP"), 
+                     weight="W_FSTUWT", data=PISA_AL,
+                     export=TRUE,name="OUTPUT_B")
+
+spec1 <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+
+PISA_VN$NOREPEAT <- as.numeric(-(PISA_VN$REPEAT-1))
+PISA_AL$NOREPEAT <- as.numeric(-(PISA_AL$REPEAT-1))
+
+# From file PRELOB1c:
+WMean <- function(x) stats::weighted.mean(x, na.rm=TRUE,weight="W_FSTUWT")
+
+XA_ <- apply(PISA_VN[,spec1], 2, FUN=WMean) 
+XB_ <- apply(PISA_AL[,spec1], 2, FUN=WMean)
+XA <- append(1,XA_)
+XB <- append(1,XB_)
+XA_T <- t(XA)
+XB_T <- t(XB)
+
+XAminusXB <- XA-XB
+XA_XB_T <- t(XAminusXB) # transpose for pre-multiplication
+
+blaxA <- REG_A
+
+blaxB <- REG_B
+
+# SE of the means:
+
+# WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # not working with weights, apply without (as above with means)
+WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE)
+XAvar_ <- apply(PISA_VN[,spec1], 2, FUN=WVar)
+XBvar_ <- apply(PISA_AL[,spec1], 2, FUN=WVar)
+XAvar <- append(1,XAvar_)
+XBvar <- append(1,XBvar_)
+XAvar_T <- t(XAvar)
+XBvar_T <- t(XBvar)
+
+XAvar_T <- sqrt(XAvar_T)
+XBvar_T <- sqrt(XBvar_T)
+
+# SE of the regression coefficients:
+
+Var_coff_A <- blaxA[(1:6),2] # this is the Standard Error
+Var_coff_B <- blaxB[(1:6),2] # this is the Standard Error
+
+BETA_B <- blaxB[(1:6),1] 
+BETA_A <- blaxA[(1:6),1] 
+BETA_AminusBETA_B <- BETA_A-BETA_B
+
+# A as reference (vietnam as refernce)
+
+S_EndowmentsA <- XA_XB_T%*%BETA_A
+EndowmentsA <- XA_XB_T*BETA_A
+EndowmentsA_var <- XAvar_T
+S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
+CoefficientsA <- XB_T*BETA_AminusBETA_B
+CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B) 
+
+# B as reference (Albania as reference)
+S_EndowmentsB <- XA_XB_T%*%BETA_B
+EndowmentsB <- XA_XB_T*BETA_B
+EndowmentsB_var <- XBvar_T
+S_CoefficientsB <- XA_T%*%BETA_AminusBETA_B 
+CoefficientsB <- XA_T*BETA_AminusBETA_B 
+CoefficientsB_var <- XA_T*(Var_coff_A+Var_coff_B) 
+
+######## ggplot: A as reference (Vietnam)
+
+blix1 <- rbind(EndowmentsA[2:6], CoefficientsA[2:6])
+blax1 <- t(blix1) 
+colnames(blax1) <- c("Endowments","Coefficients")
+rownames(blax1) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax1 <- melt(blax1,value.name="toplots")
+colnames(flax1) <- c("variable","des","col1")
+
+blix2 <- rbind(EndowmentsA_var[2:6], CoefficientsA_var[2:6])
+blax2 <- t(blix2)  
+colnames(blax2) <- c("Endowments","Coefficients")
+rownames(blax2) <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
+flax2 <- melt(blax2,value.name="toplots")
+colnames(flax2) <- c("variable1","des1","col2")
+
+flax3 <- cbind(flax1,flax2)
+flax3$variable1 <- NULL
+flax3$des1 <- NULL
+
+flax3$des <- factor(flax3$des, levels = c("Endowments","Coefficients"))
+
+ggplot(flax3, aes(x=variable, y=col1, fill=variable)) + geom_bar(stat="identity",width=0.75) + coord_flip() +
+  geom_errorbar(aes(ymin=col1-col2, ymax=col1+col2), width=.2) +
+  geom_point(size=2.5) + 
+  geom_hline(xintercept = 0, linetype = "dashed") +
+  theme_bw() +
+  facet_wrap(~ des, ncol=1) +
+  guides(fill=FALSE) + ylab(NULL) + xlab(NULL) +
+  scale_x_discrete(limits=c("NOSKIP","NOMISS","NOLATE","NOREPEAT","PRESCHOOL")) +
+  labs(title = " VIETNAM with Albania - Science: VN as Reference") 
 
 ###############################################
 ############ COLOMBIA - MATH  #################
