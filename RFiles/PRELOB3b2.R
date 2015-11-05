@@ -73,6 +73,8 @@ PISA_VNAL$NOREPEAT <- as.numeric(-(PISA_VNAL$REPEAT-1))
 T1b <- PISA_VNAL[, c("VIETNAM","PRESCHOOL","NOREPEAT", "NOLATE", "NOMISS", "NOSKIP")]
 PISA_VNAL2 <- PISA_VNAL[complete.cases(T1b),]
 
+# write.csv(PISA_VNAL2, file ="C:/Users/Wb484284/Desktop/PISAlatestversions/PISA_VNAL2.csv")
+
 ######### MATHEMATICS ########
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
