@@ -4,7 +4,7 @@
 # Prepared by Elisabeth Sedmik on October 14th 2015
 # Based on code by Suhas D. Parandekar
 
-# Revised on ...
+# Revised by Suhas on November 3, 2015
 
 library(foreign) # to import and export data from R
 library(epicalc) # for use in descriptives
@@ -115,7 +115,7 @@ spec1 <- c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP")
 PISA_VN$NOREPEAT <- as.numeric(-(PISA_VN$REPEAT-1))
 PISA_AL$NOREPEAT <- as.numeric(-(PISA_AL$REPEAT-1))
 
-# From file PRELOB1c:
+
 WMean <- function(x) stats::weighted.mean(x, na.rm=TRUE,weight="W_FSTUWT")
 
 XA_ <- apply(PISA_VN[,spec1], 2, FUN=WMean) 
@@ -125,32 +125,16 @@ XB <- append(1,XB_)
 XA_T <- t(XA)
 XB_T <- t(XB)
 
-# Just to check:
-# WMean1 <- function(x) stats::weighted.mean(x, na.rm=TRUE) # same as above without weights
-# XA1_ <- apply(PISA_VN[,spec1], 2, FUN=WMean1)
-#> XA_
-#PRESCHOOL  NOREPEAT    NOLATE    NOMISS    NOSKIP 
-#0.9112559 0.9324242 9.7040505 9.8391003 9.8774679 
-#> XA1_
-#PRESCHOOL  NOREPEAT    NOLATE    NOMISS    NOSKIP 
-#0.9112559 0.9324242 9.7040505 9.8391003 9.8774679 
-# gives the same
 
 XAminusXB <- XA-XB
 XA_XB_T <- t(XAminusXB) # transpose for pre-multiplication
 
-# Read the beta values in
-# blaxA <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_A.csv",
-#                  header=TRUE,sep=",") # no row.names=1 for not variable
+blaxA <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_A.csv",
+                  header=TRUE,sep=",") # no row.names=1 for not variable
 
-# instead of above:
-blaxA <- REG_A
+blaxB <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_B.csv",
+                  header=TRUE,sep=",") # no row.names=1 for not variable
 
-# blaxB <- read.csv("C:/Country/Vietnam/Data/PISA/PISA_PAPER/RFiles/OUTPUT_B.csv",
-#                  header=TRUE,sep=",") # no row.names=1 for not variable
-
-# instead of above:
-blaxB <- REG_B
 
 # FOR THE SE: 
 
@@ -158,6 +142,7 @@ blaxB <- REG_B
 
 # WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE, weight="W_FSTUWT") # not working with weights, apply without (as above with means)
 WVar <- function(x) Hmisc::wtd.var(x, na.rm=TRUE)
+
 XAvar_ <- apply(PISA_VN[,spec1], 2, FUN=WVar)
 XBvar_ <- apply(PISA_AL[,spec1], 2, FUN=WVar)
 XAvar <- append(1,XAvar_)
@@ -165,40 +150,44 @@ XBvar <- append(1,XBvar_)
 XAvar_T <- t(XAvar)
 XBvar_T <- t(XBvar)
 
-XAvar_T <- sqrt(XAvar_T)
-XBvar_T <- sqrt(XBvar_T)
 
-# SE of the regression coefficients:
+SE_coff_A <- blaxA[(1:6),3] # this is the Standard Error
+SE_coff_B <- blaxB[(1:6),3] # this is the Standard Error
 
-Var_coff_A <- blaxA[(1:6),2] # this is the Standard Error
-Var_coff_B <- blaxB[(1:6),2] # this is the Standard Error
+Var_coff_A <- SE_coff_A^2
+Var_coff_B <- SE_coff_B^2
 
-# Moving on: 
 
-# BETA_B <- blaxB[(1:6),2] # is this the correct column? Should be estimates, ie column 1
-BETA_B <- blaxB[(1:6),1] 
-# BETA_A <- blaxA[(1:6),2] # is this the correct column? Should be estimates, ie column 1
-BETA_A <- blaxA[(1:6),1] 
+BETA_A <- blaxA[(1:6),2] 
+BETA_A_T <- t(BETA_A)
+BETA_B <- blaxB[(1:6),2] 
+BETA_B_T <- t(BETA_B)
+
 BETA_AminusBETA_B <- BETA_A-BETA_B
 
 ####### A as reference (vietnam as refernce)
 S_EndowmentsA <- XA_XB_T%*%BETA_A
 EndowmentsA <- XA_XB_T*BETA_A
-# Variance of endowments:
-# EndowmentsA_var <- XA_XB_T*Var_coff_A*+BETA_A*(XAvar_T+XBvar_T)*BETA_A
-# or EndowmentsA_var <- Var_coff_A+XAvar_T+XBvar_T 
-# EndowmentsA_var <- Var_coff_A+(XAvar_T+XBvar_T)
-EndowmentsA_var <- XAvar_T
+
+
 S_CoefficientsA <- XB_T%*%BETA_AminusBETA_B
 CoefficientsA <- XB_T*BETA_AminusBETA_B
-# Variance for coefficients:
-# CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B)+(BETA_AminusBETA_B)*XBvar_T
-# CoefficientsA_var <- (Var_coff_A+Var_coff_B)+XBvar_T
-# CoefficientsA_var <- Var_coff_A
-CoefficientsA_var <- XB_T*(Var_coff_A+Var_coff_B) 
 
-# so ... the endowment std = XAvar_T (just the square root of the mean variance, taken from the sample)
-# ... the coefficient std finally follows the oaxaca 'pattern', when we use the formula XB_T*(Var_coff_A+Var_coff_B) 
+XAvarVV <- append(0,XAvar_)
+XBvarVV <- append(0,XBvar_)
+
+XAVarVVPlusXBVarVV <- diag(XAvarVV+XBvarVV)
+VarbDIAG <- diag(Var_coff_B)
+
+
+Var_EndowmentsA <- (XA_XB_T%*%VarbDIAG%*%XAminusXB) + (BETA_A_T)%*%(XAVarVVPlusXBVarVV)%*%(BETA_A)
+SE_endowmentsA <- sqrt(Var_EndowmentsA)
+
+Var_Endowment_A <- crossprod(XAminusXB,VarbDIAG)*XAminusXB + crossprod(BETA_A,XAVarVVPlusXBVarVV)*(BETA_A)
+SE_endowmentA <- sqrt(Var_Endowment_A)
+
+
+
 
 ####### B as reference (Albania as reference)
 S_EndowmentsB <- XA_XB_T%*%BETA_B
