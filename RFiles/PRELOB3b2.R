@@ -77,7 +77,8 @@ PISA_VNAL2 <- PISA_VNAL[complete.cases(T1b),]
 
 Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
 results2 <- oaxaca(PV1MATH ~ PRESCHOOL+NOREPEAT+NOLATE+NOMISS+NOSKIP| OTHER,
-                   data=PISA_VNAL2, R=2,reg.fun=Marek) 
+                   data=PISA_VNAL2, R=30,reg.fun=Marek) 
+
 plot(results2,
      variables=c("PRESCHOOL","NOREPEAT","NOLATE","NOMISS","NOSKIP"
      ), decomposition="twofold",
