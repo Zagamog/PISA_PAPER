@@ -172,4 +172,488 @@ plot(results3,
      type="overall"
 )
 
+####### VIETNAM & COLOMBIA #######
+
+PISA_VNCO <- rbind(PISA_CO,PISA_VN)
+PISA_VNCO$OTHER <- factor(-(PISA_VNCO$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNCO[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNCO1 <- PISA_VNCO[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNCO[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNCO2 <- PISA_VNCO[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNCO[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNCO3 <- PISA_VNCO[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNCO1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNCO2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNCO3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Colombia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+####### VIETNAM & Indonesia #######
+
+PISA_VNID <- rbind(PISA_ID,PISA_VN)
+PISA_VNID$OTHER <- factor(-(PISA_VNID$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNID[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNID1 <- PISA_VNID[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNID[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNID2 <- PISA_VNID[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNID[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNID3 <- PISA_VNID[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNID1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNID2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNID3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Indonesia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+
+####### VIETNAM & Jordan #######
+
+PISA_VNJO <- rbind(PISA_JO,PISA_VN)
+PISA_VNJO$OTHER <- factor(-(PISA_VNJO$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNJO[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNJO1 <- PISA_VNJO[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNJO[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNJO2 <- PISA_VNJO[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNJO[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNJO3 <- PISA_VNJO[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNJO1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNJO2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNJO3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Jordan: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+####### VIETNAM & Peru #######
+
+PISA_VNPE <- rbind(PISA_PE,PISA_VN)
+PISA_VNPE$OTHER <- factor(-(PISA_VNPE$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNPE[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNPE1 <- PISA_VNPE[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNPE[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNPE2 <- PISA_VNPE[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNPE[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNPE3 <- PISA_VNPE[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNPE1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNPE2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNPE3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Peru: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+
+####### VIETNAM & Thailand #######
+
+PISA_VNTH <- rbind(PISA_TH,PISA_VN)
+PISA_VNTH$OTHER <- factor(-(PISA_VNTH$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNTH[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNTH1 <- PISA_VNTH[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNTH[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNTH2 <- PISA_VNTH[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNTH[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNTH3 <- PISA_VNTH[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNTH1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNTH2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNTH3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Thailand: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+
+####### VIETNAM & Tunisia #######
+
+PISA_VNTU <- rbind(PISA_TU,PISA_VN)
+PISA_VNTU$OTHER <- factor(-(PISA_VNTU$VIETNAM-1))
+
+# First set
+T1b <- PISA_VNTU[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_VNTU1 <- PISA_VNTU[complete.cases(T1b),]
+
+# Second set
+T1b <- PISA_VNTU[, c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNTU2 <- PISA_VNTU[complete.cases(T1b),]
+
+# Third set (first & second)
+T1b <- PISA_VNTU[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM")]
+PISA_VNTU3 <- PISA_VNTU[complete.cases(T1b),]
+
+#### First set
+
+Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results1 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N| OTHER,
+                   data=PISA_VNTU1, R=30,reg.fun=Marek) 
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results1,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Second set
+
+#Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results2 <- oaxaca(PV1MATH ~ OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNTU2, R=30,reg.fun=Marek) 
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results2,
+     variables=c("OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+#### Third Set (First & second)
+
+# Marek <- function(formula,data,weights) stats::lm(formula=formula,data=data,weights=W_FSTUWT)
+results3 <- oaxaca(PV1MATH ~ HISEI+MISCED+WEALTH+CULTPOS+HEDRES+BOOK_N+OUTMATH+PARPRESSURE+TIGERMOM+TEACHMOM| OTHER,
+                   data=PISA_VNTU3, R=30,reg.fun=Marek) 
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB")
+)
+
+plot(results3,
+     variables=c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N","OUTMATH","PARPRESSURE","TIGERMOM","TEACHMOM"
+     ), decomposition="twofold",
+     weight=0,title="Vietnam compared to Tunisia: Vietnam as reference",
+     component.labels = c("explained"="xA-xB.BetaA", "unexplained"="xB.BetaA-BetaB"),
+     type="overall"
+)
+
+
 
