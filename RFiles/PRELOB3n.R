@@ -95,8 +95,13 @@ PISA_DEV7 <- rbind(PISA_AL,PISA_CO,PISA_ID,PISA_JO,PISA_PE,PISA_TH,PISA_TU)
 PISA_VNAL <- rbind(PISA_AL,PISA_VN)
 PISA_VNAL$OTHER <- factor(-(PISA_VNAL$VIETNAM-1))
 
+# Double check
+T1b <- PISA_AL[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+PISA_AL1 <- PISA_AL[complete.cases(T1b),]
+summary(T1b)
+
 # First set
-T1b <- PISA_VNAL[, c("MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
+T1b <- PISA_VNAL[, c("HISEI","MISCED", "WEALTH", "CULTPOS", "HEDRES","BOOK_N")]
 PISA_VNAL1 <- PISA_VNAL[complete.cases(T1b),]
 
 # including "HISEI" does not work to be included for Albania since all NA's (gives error message "0 (non-NA) cases)
