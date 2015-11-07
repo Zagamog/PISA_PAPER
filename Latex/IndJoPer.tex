@@ -1,0 +1,93 @@
+
+\documentclass[10pt]{article}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{times}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[12hr]{datetime}
+\usepackage{longtable}
+\usepackage[DIV=16]{typearea}
+\usepackage{scrextend,booktabs}
+\usepackage{tabulary}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[font=small]{caption}
+
+\begin{document}
+	
+	\begin{table}[htbp]
+		\footnotesize
+		\def\arraystretch{1}
+		\def\tabcolsep{4}
+		\centering
+		\caption{Add caption}
+    \begin{tabular}{llrrrrrr}
+    \toprule
+     \midrule
+          &       & \multicolumn{2}{c}{\textbf{Indonesia}} & \multicolumn{2}{c}{\textbf{Jordan}} & \multicolumn{2}{c}{\textbf{Peru}} \\
+          \cline{3-8} \\
+    \textbf{Ed wealth} &       & \multicolumn{1}{c}{\textit{Endowments}} & \multicolumn{1}{c}{\textit{Coefficients}} & \multicolumn{1}{c}{\textit{Endowments}} & \multicolumn{1}{c}{\textit{Coefficients}} & \multicolumn{1}{c}{\textit{Endowments}} & \multicolumn{1}{c}{\textit{Coefficients}} \\[0.4em]
+    \cline{3-8} \\
+    \textbf{} & INTERCEPT &       & 181.3475 &       & 232.8262 &       & 247.8394 \\[0.4em]
+    Students & PRESCHOOL & 6.2309 & 6.0373 & 2.9304 & 8.8395 & 0.8096 & 6.8201 \\[0.4em]
+          & LATESCHOOL & 1.3545 & 0.1656 & 4.0339 & -17.9123 & 5.3749 & -6.8398 \\[0.4em]
+          & NOREPEAT & 3.0327 & 15.4797 & -0.5863 & -0.5305 & 5.1146 & 8.7662 \\[0.4em]
+          & SHRS  & 3.6461 & 3.2498 & -3.4578 & -1.8296 & 2.56  & 19.0496 \\[0.4em]
+    Parents & OUTMATH & 9.9458 & 3.9547 & 8.4886 & 12.3205 & 3.6561 & 14.5438 \\[0.4em]
+          & PARPRESSURE  & 0.2358 & 7.19  & 2.9216 & 8.3922 & 1.9524 & 4.8938 \\[0.4em]
+          & TIGERMOM & -1.4622 & -5.0425 & -1.456 & 0.7928 & -0.6088 & 3.4834 \\[0.4em]
+          & TEACHMOM & 2.1566 & 1.7254 & 2.0207 & 0.5374 & 1.4841 & 3.9414 \\[0.4em]
+    Teachers & PROPCERT & 1.0728 & 7.8387 & -     & -     & -     & - \\[0.4em]
+          & MATHPROFDEV & -0.0778 & -4.2427 & 0.1404 & 0.0539 & 0.0423 & -3.9528 \\[0.4em]
+          & TCH\_INCENTV & 0.2442 & 0.6929 & -0.3897 & 1.002 & 2.6139 & -1.3882 \\[0.4em]
+          & TCM\_INSPE & -1.7713 & -7.5635 & 2.0905 & 4.5083 & -6.3926 & -11.6551 \\[0.4em]
+          & TCM\_OBSER & -0.0742 & 11.6516 & 0.0738 & -11.522 & -1.9658 & -37.8481 \\[0.4em]
+          & COMP\_USE & -0.6291 & 1.714 & 0.1317 & -6.769 & -0.3406 & 1.8251 \\[0.4em]
+          & STU\_FEEDB & 0.0796 & 7.9599 & -0.4144 & -4.888 & -0.6405 & 5.056 \\[0.4em]
+    Schools & EXC6\_MATHCOMP & -0.3133 & 1.5705 & -0.8381 & -2.5399 & 0.0019 & -10.8913 \\[0.4em]
+          & SCMATBUI & 0.0048 & -1.1337 & 0.2473 & -3.7528 & -0.0379 & -0.7149 \\[0.4em]
+          & SCL\_EXTR\_CL & -2.9043 & -20.2148 & -4.3968 & -9.0748 & -8.1854 & -11.5939 \\[0.4em]
+          & SCORE\_PUBLIC & 5.7895 & 1.2721 & 5.9804 & 4.7486 & 7.0514 & 2.4778 \\[0.4em]
+          	\cline{3-8} \\
+          &       & 26.5611 & 32.305 & 17.5202 & -17.6237 & 12.4896 & -14.0269 \\[0.4em]
+    \textbf{Wealth} &       & 19\%  & 23\%  & 15\%  & -15\% & 10\%  & -11\% \\
+       \cline{3-8} \\
+    Students & EXAPPLM & 1.2618 & -0.0988 & 2.5477 & -1.9561 & 1.7418 & -0.0448 \\[0.4em]
+          & EXPUREM & 2.1991 & 0.1956 & 2.1748 & 2.0725 & -0.0688 & -1.3801 \\[0.4em]
+          & LHRS  & -2.0941 & -29.3342 & 15.7577 & -58.088 & 14.0996 & -56.6772 \\[0.4em]
+          & MHRS  & 1.0459 & 14.6798 & -0.1466 & 43.9865 & -4.8692 & 13.7176 \\[0.4em]
+    Parents & HISEI & -1.7446 & -0.6415 & -     & -     & -3.7414 & 3.6262 \\[0.4em]
+          & MISCED & -0.4967 & 6.245 & -5.2108 & -3.2033 & -1.2325 & -10.9724 \\[0.4em]
+          & WEALTH & -0.5319 & -1.6968 & 1.5112 & 0.8037 & 1.4103 & 17.2629 \\[0.4em]
+          & CULTPOS & -0.3684 & 0.7266 & -0.1767 & 0.9315 & 0.4633 & 1.8325 \\[0.4em]
+          & HEDRES & 2.5025 & -8.659 & -5.509 & -3.607 & -6.0766 & -3.1882 \\[0.4em]
+          & BOOK\_N & -0.062 & 1.7571 & -0.2911 & -0.1599 & 0.0089 & -6.5238 \\[0.4em]
+    Teachers & TXT\_BOOK & 1.2766 & -17.5263 & 3.5046 & -16.7213 & 0.629 & -14.3821 \\[0.4em]
+          & CLSIZE & -4.7921 & -13.5878 & -5.4853 & -59.9741 & -9.4773 & -36.5348 \\[0.4em]
+          & TCFOCST & 4.5553 & -4.0316 & 1.1106 & -0.8656 & 1.4043 & -0.7333 \\[0.4em]
+          & TCMORALE & -9.9416 & 1.028 & -0.4259 & -1.4027 & -1.9897 & -0.2643 \\[0.4em]
+          & TCHPARTI & 18.5498 & -10.6116 & 0.5336 & 8.9057 & 14.9263 & -0.3443 \\[0.4em]
+    Schools & TOWN  & 5.1411 & -1.5651 & 2.5742 & -2.1225 & 1.4527 & -6.9018 \\[0.4em]
+          & VILLAGE & -7.3432 & -1.496 & -10.417 & -1.5033 & -8.1092 & -1.6368 \\[0.4em]
+          & PRIVATESCL & 2.0065 & 0.0116 & 6.1701 & -12.8976 & 10.9349 & -11.4833 \\[0.4em]
+          & STU\_FEES & 11.4805 & -29.6824 & -     & -     & -     & - \\[0.4em]
+          & RATCMP15 & -1.56 & -11.0681 & 3.8324 & -25.5703 & 3.6968 & -11.777 \\[0.4em]
+          & SCHAUTON & -17.2045 & 8.6425 & 1.6804 & 5.5624 & -10.3639 & 0.5217 \\[0.4em]
+          & EXC1\_BAND & 0.4597 & -7.9357 & 0.0348 & -2.8344 & -0.118 & 0.1559 \\[0.4em]
+          \cline{3-8} \\
+          &       & 4.3397 & -104.6487 & 13.7697 & -128.6438 & 4.7213 & -125.7274 \\[0.4em]
+          &       & 3\%   & -75\% & 12\%  & -109\% & 4\%   & -100\% \\[0.4em]
+          &       & 30.9008 & -72.3437 & 31.2899 & -146.2675 & 17.2109 & -139.7543 \\[0.4em]
+          \cline{2-8} \\
+          &      \textbf{Total} & \textbf{} & \textbf{139.9046} & \textbf{} & \textbf{117.8486} & \textbf{} & \textbf{125.2960} \\
+    \bottomrule
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+\end{document}
