@@ -158,12 +158,12 @@ points(36030,519,col="red",bg="red",pch=19)
 points(4638,375,col="blue",bg="blue",pch=19)
 points(9350,368,col="blue",bg="blue",pch=19)
 
-# Finally the loess fit line
+# Lastly, we add the loess fit line
 temp1 <- filter(gdp_math_scatter, gdp_math_scatter$country != "vietnam" & gdp_math_scatter$country != "Shanghai_China"
                 & gdp_math_scatter$country != "luxembourg" & gdp_math_scatter$country != "Qatar")
 
 loess_fit <- loess(pisa_m ~ gdp, data=temp1, span=2)
-lines(temp1$gdp, predict(loess_fit), col = "purple",lwd=2, lty=2,add=T)
+lines(temp1$gdp, predict(loess_fit), col = "purple",lwd=2, lty=2)
 
 # We save the data for later use
 save(gdp_math_scatter, file ="gdp_math_scatter.rda") 
