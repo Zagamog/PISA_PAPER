@@ -12,9 +12,9 @@
 
 ##################################################################################
 # Outline:
-#### S0_Prelims   Generating data sets (merging, cleaning) 
+### S0_Prelims    Generating data sets (merging, cleaning) 
 # S1_Figures      SECTION 1: Introduction (Descriptive statistics, plots, etc)
-# S2_Endowments   SECTION 2: Mean tables
+# S2_Endowments   SECTION 2: Endowments tables
 # S3_FryerLevitt  SECTION 3: Regressions following Fryer & Levitt (2004)
 # S4_OaxacaBlin   SECTION 4: Regressions following Oaxaca-Blinder approach
 ##################################################################################

@@ -13,8 +13,8 @@
 ##################################################################################
 # Outline:
 # S0_Prelims      Generating data sets (merging, cleaning) 
-#### S1_Figures   SECTION 1: Introduction (Descriptive statistics, plots, etc)
-# S2_Endowments   SECTION 2: Mean tables
+### S1_Figures    SECTION 1: Introduction (Descriptive statistics, plots, etc)
+# S2_Endowments   SECTION 2: Endowments tables
 # S3_FryerLevitt  SECTION 3: Regressions following Fryer & Levitt (2004)
 # S4_OaxacaBlin   SECTION 4: Regressions following Oaxaca-Blinder approach
 ##################################################################################
@@ -249,10 +249,7 @@ arrows(400, 0.0052, 496, 0.0052)
 # all 8 countries. 
 # For a very basic overview we recommend: http://www.statmethods.net/graphs/density.html 
 
-# Since we will now alter most of the initial file (delete missing cases, etc.) we create a new file (DEVON8a) and 
-# to have the masterfile (DEVCON8) as a back-up. 
-
-save(DEVCON8, file = "DEVCON8a.rda")
+save(DEVCON8, file = "DEVCON8.rda")
 
 #### Figure 3: Conceptual scheme based on available comparative variables from PISA 2012
 # Please see accompanying S1_TIKZ.tex file
