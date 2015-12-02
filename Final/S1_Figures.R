@@ -20,7 +20,7 @@
 ##################################################################################
 
 # We create initital descriptive statistics, the GDP plot (Figure 1) and Kernel density plot (Figure 2).
-# For the tikz plot (Figure 3), please see the accompanying .tex file
+# For the tikz plot (Figure 3), please see the accompanying S1_TIKZ.tex file
 
 # Loading R packages to process PISA data:
 
@@ -123,6 +123,51 @@ READ0
 
 #### Figure 1: PISA 2012 results compared with GDP per capita
 
+# We created a simple txt file with a list of countries, their GDP per capita (2010 in PPP) and PISA math score in 2012
+# The data is sorted in order of increaseing GDP per capita
+
+# Loading the .txt file (S1_GDP_MATH.txt) into R:
+gdp_math_scatter <- read.table("S1_GDP_MATH.txt",
+                                     header=TRUE, sep="", na.strings="NA", dec=".", strip.white=TRUE)
+
+attach(gdp_math_scatter) # This is just so that we can avoid referring to the datframe name each time that we invoke a variable
+plot(pisa_m~gdp, 
+     xlim=c(0,65000), ylim=c(300,700), xaxs="i", yaxs="i",  #xaxs = i instead of r to eliminate offset
+     pch=19,col="indianred4",
+     xlab='GDP per Capita in PPP 2010', ylab= 'PISA Math Average Score 2012', font.lab=1,
+     data=gdp_math_scatter)
+
+# We want Vietnam to stand out in the plot
+points(4098,511,col="blue",bg="red",pch=24)
+points(4098,511,col="blue",bg="red",pch=25)
+
+text(4098,511,labels="Vietnam (511)",pos=4,cex=0.75,col="red") # pos=4 means to the side
+
+# Key other countries
+points(9555,376,col="blue",bg="blue",pch=19)
+text(9555,376,labels="Colombia (376)",pos=4,cex=0.75,col="blue") # pos=4 means to the side
+text(4700,375,labels="Indonesia",pos=1,cex=0.75,col="blue") # pos=1 means to the bottom
+text(9400,360,labels="Peru",pos=4,cex=0.75,col="blue") # pos=4 means to the right side
+text(18805,613,labels="Shanghai-China",pos=1,cex=0.75) # pos=1 means to the bottom
+text(48962,531,labels="Switzerland",pos=1,cex=0.75,col="red") # pos=1 means to the bottom
+text(36030,519,labels="Finland",pos=2,cex=0.75,col="red") # pos=2 means to the left side
+
+# Additional countries/points
+points(48962,531,col="red",bg="red",pch=19)
+points(36030,519,col="red",bg="red",pch=19)
+points(4638,375,col="blue",bg="blue",pch=19)
+points(9350,368,col="blue",bg="blue",pch=19)
+
+# Finally the loess fit line
+temp1 <- filter(gdp_math_scatter, gdp_math_scatter$country != "vietnam" & gdp_math_scatter$country != "Shanghai_China"
+                & gdp_math_scatter$country != "luxembourg" & gdp_math_scatter$country != "Qatar")
+
+loess_fit <- loess(pisa_m ~ gdp, data=temp1, span=2)
+lines(temp1$gdp, predict(loess_fit), col = "purple",lwd=2, lty=2,add=T)
+
+# We save the data for later use
+save(gdp_math_scatter, file ="gdp_math_scatter.rda") 
+
 #### Figure 2: Kernel Density comparison between Vietnam and other Developing Countries
 
 # We generate Kernel plots (comparison of non-parametric univariate density estimates) for Math, Science and Reading scores 
@@ -210,9 +255,7 @@ arrows(400, 0.0052, 496, 0.0052)
 save(DEVCON8, file = "DEVCON8a.rda")
 
 #### Figure 3: Conceptual scheme based on available comparative variables from PISA 2012
-# Please see accompanying .tex file
+# Please see accompanying S1_TIKZ.tex file
 
 #### End of S1_Figures.R
-
-
 
