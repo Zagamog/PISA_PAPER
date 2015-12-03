@@ -2185,7 +2185,7 @@ R87
 MATH0 <- pisa.reg.pv(pvlabel="MATH", 
                      x=c("VIETNAM"),
                      weight="W_FSTUWT",
-                     data=DEVCON8a,export=FALSE)
+                     data=DEVCON8,export=FALSE)
 MATH0
 
 ######################################
@@ -2194,11 +2194,11 @@ MATH0
 
 # "PRESCHOOL","REPEAT", "ST08Q01","ST115Q01"
 
-T1b <- DEVCON8a[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01")]
+T1b <- DEVCON8[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01")]
 N1 <- NROW(na.omit(T1b)) 
 N1 #
 N0-N1 # NA's
-DEVCON8i <- DEVCON8a[complete.cases(T1b),]
+DEVCON8i <- DEVCON8[complete.cases(T1b),]
 
 # ST05Q01
 #_________________________________________________________________________________________________________
@@ -2221,12 +2221,12 @@ write.csv(R1, "Math_stu.csv")
 # "PRESCHOOL","REPEAT", "ST08Q01","ST115Q01"
 # "BOOK_N", "PARPRESSURE","FUNDMOM", "COUNCILMOM","DUTYMOM"
 
-T1b <- DEVCON8a[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01","ST28Q01","SC24Q01")]
+T1b <- DEVCON8[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01","ST28Q01","SC24Q01")]
 N1 <- NROW(na.omit(T1b)) 
 N1 #
 N0-N1 # NA's
 
-DEVCON8i <- DEVCON8a[complete.cases(T1b),]
+DEVCON8i <- DEVCON8[complete.cases(T1b),]
 
 #ST05Q01
 #_________________________________________________________________________________________________________
@@ -2274,7 +2274,7 @@ write.csv(R2, "Math_stu_par.csv")
 # "PROPCERT","SMRATIO","TCSHORT","TCFOCST","TCM_STUASS","TCM_PEER","TCH_INCENTV", "ASS_PROG","ASS_PROM",
 # "ASS_SCH","STU_FEEDB"
 
-T1b <- DEVCON8a[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01","ST28Q01","SC24Q01",
+T1b <- DEVCON8[, c("VIETNAM","ST05Q01","REPEAT","ST08Q01","ST115Q01","ST28Q01","SC24Q01",
                     "PROPCERT","SMRATIO","TCSHORT","TCFOCST","SC30Q01","SC30Q02",
                     "SC31Q01","SC31Q02","SC31Q03","SC31Q04","SC31Q05","SC31Q06","SC31Q07",
                     "SC18Q01","SC18Q02","SC18Q05","SC39Q07")]
@@ -2282,7 +2282,7 @@ N1 <- NROW(na.omit(T1b))
 N1 #
 N0-N1 # NA's
 
-DEVCON8i <- DEVCON8a[complete.cases(T1b),]
+DEVCON8i <- DEVCON8[complete.cases(T1b),]
 
 #ST05Q01
 #_________________________________________________________________________________________________________
@@ -2366,7 +2366,7 @@ write.csv(R3, "Math_stu_par_teach.csv")
 # "PCGIRLS","COMP_USE","TXT_BOOK","TOWN","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI","EXC2_PLAY","EXC6_MATHCOMP","EXC10_SPORT",
 # "EXC11_UNICORN","SCL_EXTR_CL","SCORE_PUBLIC","QUAL_RECORD","SCHSEL"
 
-T1b <- DEVCON8a[, c("VIETNAM","PROPCERT","SMRATIO","TCSHORT","TCFOCST","SC30Q01","SC30Q02","SC31Q01",
+T1b <- DEVCON8[, c("VIETNAM","PROPCERT","SMRATIO","TCSHORT","TCFOCST","SC30Q01","SC30Q02","SC31Q01",
                     "SC31Q02","SC31Q03","SC31Q04","SC31Q05","SC31Q06","SC31Q07","ST05Q01","REPEAT",
                     "ST08Q01","ST115Q01","ST28Q01","SC24Q01","PCGIRLS","SC18Q01","SC18Q02","SC18Q05",
                     "SC39Q07","SC40Q01","SC40Q02","SC03Q01","CLSIZE","COMPWEB","SCMATEDU","SCMATBUI",
@@ -2375,7 +2375,7 @@ N1 <- NROW(na.omit(T1b))
 N1 #15660
 N0-N1 #32823 NA's
 
-DEVCON8i <- DEVCON8a[complete.cases(T1b),]
+DEVCON8i <- DEVCON8[complete.cases(T1b),]
 
 #ST05Q01
 #_________________________________________________________________________________________________________
