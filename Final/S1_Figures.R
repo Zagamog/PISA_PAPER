@@ -249,8 +249,6 @@ arrows(400, 0.0052, 496, 0.0052)
 # all 8 countries. 
 # For a very basic overview we recommend: http://www.statmethods.net/graphs/density.html 
 
-save(DEVCON8, file = "DEVCON8.rda")
-
 #### Figure 3: Conceptual scheme based on available comparative variables from PISA 2012
 # Please see accompanying S1_TIKZ.tex file
 
