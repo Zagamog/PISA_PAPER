@@ -91,12 +91,12 @@ load("DEVCON8.rda")
 DEVCON8a <- DEVCON8
 
 # How big is our initital sample size?
-T0 <- DEVCON8a[, c("VIETNAM")] # create a vector only of "VIETNAM" or any other variable you want to look at
+T0 <- DEVCON8[, c("VIETNAM")] # create a vector only of "VIETNAM" or any other variable you want to look at
 N0<- NROW(na.omit(T0)) # tell R to delete any rows with missing variables 
 N0 # we find that we have 48483 data points, which is a good sample size to start with
 
 # How many non-missing values for all non-rotated student variables (excl SC25)?
-T1b <- DEVCON8a[, c("VIETNAM","ST04Q01","ST05Q01","REPEAT","ST08Q01","ST09Q01","ST115Q01", "HISEI", "HISCED", "MISCED", "FISCED",
+T1b <- DEVCON8[, c("VIETNAM","ST04Q01","ST05Q01","REPEAT","ST08Q01","ST09Q01","ST115Q01", "HISEI", "HISCED", "MISCED", "FISCED",
                     "WEALTH", "CULTPOS", "HEDRES", "ST28Q01", "SC24Q01", "PCGIRLS")]
 N1 <- NROW(na.omit(T1b)) 
 N1 # 34405

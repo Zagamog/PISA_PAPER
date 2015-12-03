@@ -54,12 +54,12 @@ DEVCON8a <- DEVCON8
 # 1.A DATA PREPARATION - STUDENT & PARENTS-RELATED VARIABLES
 ###########################################################
 
-T0 <- DEVCON8a[, c("VIETNAM")] 
+T0 <- DEVCON8[, c("VIETNAM")] 
 N0<- NROW(na.omit(T0))
 N0 # 48483 data points
 
 # How many non-missing values for all non-rotated student variables (excl SC25)?
-T1b <- DEVCON8a[, c("VIETNAM","ST04Q01","ST05Q01","REPEAT","ST08Q01","ST09Q01","ST115Q01","MISCED", "HISEI",
+T1b <- DEVCON8[, c("VIETNAM","ST04Q01","ST05Q01","REPEAT","ST08Q01","ST09Q01","ST115Q01","MISCED", "HISEI",
                     "WEALTH", "CULTPOS", "HEDRES", "ST28Q01", "SC24Q01", "PCGIRLS")]
 N1 <- NROW(na.omit(T1b)) 
 N1 # 35345
@@ -1935,5 +1935,3 @@ R8
 write.csv(R8, "Read_stu_par_tea_school.csv")
 
 #### End of S3_FryerLevitt2.R
-
-
