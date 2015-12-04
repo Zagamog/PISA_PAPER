@@ -425,5 +425,3 @@ results8
 
 #### End of S4_OaxacaBlin2.R
 
-
-
