@@ -142,6 +142,9 @@ DEVCON8l$FUNDMOM <-  DEVCON8l$SC25Q11
 #COUNCILMOM
 DEVCON8l$COUNCILMOM <- DEVCON8l$SC25Q10
 
+#DUTYMOM
+DEVCON8l$DUTYMOM <- DEVCON8l$SC25Q02
+
 save(DEVCON8l, file="DEVCON8l.rda") 
 
 R177 <- pisa.reg.pv(pvlabel="READ", 
@@ -352,6 +355,21 @@ R195 # FEMALE decreases, PRESCHOOL decreases, REPEAT decreases, ST08Q01 decrease
 # HEDRES increases, BOOK_N decreases, PARPRESSURE decreases, TIGERMOM increases
 # VOLUMOM decreases, TEACHMOM increases, FUNDMOM decreases, COUNCILMOM decreases
 #VIETNAM: 84.67
+
+# Please note: we only at a later stage (after having done all Fryer-Levitt analysis) decided 
+# to include the variable DUTYMOM into our analysis, hence it is not included in sequence here.
+# We tested and found that it decreases the VIETNAM dummy and thus included it in the final regressions
+# please see lines (1682), but be aware that it is not included in the sequencing up to the final regressions
+
+R195b <- pisa.reg.pv(pvlabel="READ", 
+                    x=c("VIETNAM",
+                        "FEMALE", "PRESCHOOL", "REPEAT", "ST08Q01", "ST09Q01", "ST115Q01", "HISEI",
+                        "MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N", "PARPRESSURE", 
+                        "TIGERMOM", "VOLUMOM", "TEACHMOM", "FUNDMOM", "COUNCILMOM","DUTYMOM"),
+                    weight="W_FSTUWT",
+                    data=DEVCON8l,export=FALSE)
+R195b 
+# VIETNAM: 84.38
 
 R196 <- pisa.reg.pv(pvlabel="READ", 
                     x=c("VIETNAM",

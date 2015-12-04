@@ -179,6 +179,9 @@ DEVCON8b$FUNDMOM <-  DEVCON8b$SC25Q11
 #COUNCILMOM
 DEVCON8b$COUNCILMOM <- DEVCON8b$SC25Q10
 
+#DUTYMOM
+DEVCON8b$DUTYMOM <- DEVCON8b$SC25Q02
+
 # Let's support R and create an intermediate file we will just load when we come back here
 save(DEVCON8b, file="DEVCON8b.rda") 
 
@@ -396,6 +399,21 @@ R19 # FEMALE increases, PRESCHOOL decreases, REPEAT decreases, ST08Q01 decreases
 # HEDRES increases, BOOK_N decreases, PARPRESSURE decreases, PCGIRLS decreases, TIGERMOM increases
 # VOLUMOM increases, TEACHMOM increases, FUNDMOM decreases, COUNCILMOM decreases
 #VIETNAM: 107.22
+
+# Please note: we only at a later stage (after having done all Fryer-Levitt analysis) decided 
+# to include the variable DUTYMOM into our analysis, hence it is not included in sequence here.
+# We tested and found that it decreases the VIETNAM dummy and thus included it in the final regressions
+# please see lines (2233), but be aware that it is not included in the sequencing up to the final regressions
+
+R19b <- pisa.reg.pv(pvlabel="MATH", 
+                   x=c("VIETNAM",
+                       "FEMALE", "PRESCHOOL", "REPEAT", "ST08Q01", "ST09Q01", "ST115Q01", "HISEI",
+                       "MISCED", "WEALTH", "CULTPOS", "HEDRES", "BOOK_N", "PARPRESSURE", "PCGIRLS",
+                       "TIGERMOM", "VOLUMOM", "TEACHMOM", "FUNDMOM", "COUNCILMOM","DUTYMOM"),
+                   weight="W_FSTUWT",
+                   data=DEVCON8b,export=FALSE)
+R19b
+# Vietnam: 106.79
 
 # Now testing all 9 variables that decreased the gap
 
