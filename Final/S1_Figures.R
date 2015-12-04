@@ -127,6 +127,7 @@ READ0
 # The data is sorted in order of increaseing GDP per capita
 
 # Loading the .txt file (S1_GDP_MATH.txt) into R:
+
 gdp_math_scatter <- read.table("S1_GDP_MATH.txt",
                                      header=TRUE, sep="", na.strings="NA", dec=".", strip.white=TRUE)
 
@@ -164,9 +165,6 @@ temp1 <- filter(gdp_math_scatter, gdp_math_scatter$country != "vietnam" & gdp_ma
 
 loess_fit <- loess(pisa_m ~ gdp, data=temp1, span=2)
 lines(temp1$gdp, predict(loess_fit), col = "purple",lwd=2, lty=2)
-
-# We save the data for later use
-save(gdp_math_scatter, file ="gdp_math_scatter.rda") 
 
 #### Figure 2: Kernel Density comparison between Vietnam and other Developing Countries
 
