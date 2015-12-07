@@ -1090,8 +1090,8 @@ DEVCON8za$TCHQUAL_DIFF <- DEVCON8za$DIFFTCH_SA+DEVCON8za$DIFFTCH_A
 R405 <- pisa.reg.pv(pvlabel="SCIE", 
                     x=c("VIETNAM",
                         "FEMALE","PRESCHOOL", "REPEAT", "ST08Q01","ST115Q01","BOOK_N", "PARPRESSURE",
-                        "PCGIRLS","TCM_PEER","FUNDMOM","COUNCILMOM","PROPCERT","TCSHORT",
-                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB",
+                        "TCM_PEER","FUNDMOM","COUNCILMOM","DUTYMOM","PROPCERT","TCSHORT",
+                        "TCM_STUASS","ASS_PROG","ASS_PROM","ASS_NAT","ASS_SCH","ASS_CUR","STU_FEEDB","PCGIRLS",
                         "PRIVATESCL","TOWN","CLSIZE","COMPWEB","SCMATEDU","EXC2_PLAY",
                         "EXC6_MATHCOMP","EXC10_SPORT","EXC11_UNICORN","SCORE_PUBLIC","LEADINST",
                         "QUAL_RECORD","SCHSEL","TEACCLIM","BKGR_FAMPROB","ATSCHL","ATTLNACT","STUDREL","TCHQUAL_DIFF"),
@@ -1099,5 +1099,5 @@ R405 <- pisa.reg.pv(pvlabel="SCIE",
                     data=DEVCON8za,export=FALSE)
 R405
 
-write.csv(R381, "Scie_rot3.csv")
+write.csv(R405, "Scie_rot3.csv")
 
