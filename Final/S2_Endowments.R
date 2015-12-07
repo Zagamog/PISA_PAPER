@@ -17,6 +17,7 @@
 ### S2_Endowments SECTION 2: Endowments tables
 # S3_FryerLevitt  SECTION 3: Regressions following Fryer & Levitt (2004)
 # S4_OaxacaBlin   SECTION 4: Regressions following Oaxaca-Blinder approach
+# SAppx_FryerLev  SECTION 5: Regressions following Fryer & Levitt (2004) on the rotated questionnaire
 ##################################################################################
 
 # We create the Latex output for the Endowments tables in Section 2 (Tables 1-9 and Table A1). We split it into our conceptual

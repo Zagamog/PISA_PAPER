@@ -17,6 +17,7 @@
 # S2_Endowments   SECTION 2: Endowments tables
 #### S3_FryerLevitt  SECTION 3: Regressions following Fryer & Levitt (2004)
 # S4_OaxacaBlin   SECTION 4: Regressions following Oaxaca-Blinder approach
+# SAppx_FryerLev  SECTION 5: Regressions following Fryer & Levitt (2004) on the rotated questionnaire
 ##################################################################################
 
 # We create Figure 4: PISA 2012 results compared with School Infrastructure Quality

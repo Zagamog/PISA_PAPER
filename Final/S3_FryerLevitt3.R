@@ -17,6 +17,7 @@
 # S2_Endowments   SECTION 2: Endowments tables
 #### S3_FryerLevitt  SECTION 3: Regressions following Fryer & Levitt (2004)
 # S4_OaxacaBlin   SECTION 4: Regressions following Oaxaca-Blinder approach
+# SAppx_FryerLev  SECTION 5: Regressions following Fryer & Levitt (2004) on the rotated questionnaire
 ##################################################################################
 
 # We create the regression output for Science used for Section 3: Regression Approach I: Fryer-Levitt
