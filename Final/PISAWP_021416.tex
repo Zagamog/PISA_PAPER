@@ -88,7 +88,7 @@
 \begin{document}
 
 \title{Unraveling a secret: Vietnam's outstanding performance on the PISA test 2012}
-\author{Suhas D. Parandekar\thanks{E-mail for corresponding author: \textit{sparandekar@worldbank.org}  This paper has been written using open source software: R for the econometric analysis and graphics and LaTeX for typesetting. Thanks to all who make free software possible and to OECD for making the PISA data freely and easily available to anyone. The code used in writing this paper is freely available for download at \href{http://github.com/zagamog/PISA_PAPER}{http://github.com/zagamog/PISA\_PAPER}}
+\author{Suhas D. Parandekar\thanks{E-mail for corresponding author: \textit{sparandekar@worldbank.org}  This paper has been written using open source software: R for the econometric analysis and graphics and LaTeX for typesetting. Thanks to all who make free software possible and to OECD for making the PISA data freely and easily available to anyone. The R and Latex code used in writing this paper is freely available for download at \href{http://github.com/zagamog/PISA_PAPER}{http://github.com/zagamog/PISA\_PAPER}. The authors would like to thank World Bank colleagues Amer Hasan, Marguerite Clarke, and Thanh Thi Mai for reading earlier versions of the paper and providing helpful feedback. Errors and omissions are the responsibility only of the authors.}
 \\Elisabeth K. Sedmik\medskip\\
 {\normalsize Global Practice for Education, The World Bank} 
 \date{\normalsize Date of this draft: \today }}
@@ -96,26 +96,18 @@
 
 \sloppy
 
-\textbf{Abstract:} This paper seeks to find an empirical explanation of Vietnam's outstanding performance on the PISA assessment in 2012. Sets of possible explanatory variables are explored, pertaining to students, parents, teachers, and the schools they attended. The methods used include a comparison of mean values and two kinds of regression estimates comparing the data for Vietnam with a set of seven developing countries from the PISA 2012 data set, chosen for having a per capita GDP (in PPP dollars) below \$10,000. The seven developing countries' average PISA performance lags Vietnam's by more than 100 points. The `Vietnam effect' is difficult to unscramble, and the best estimate extends to 50\% of the gap between Vietnam and the seven countries. The analysis reveals that Vietnamese students may be approaching their studies with higher diligence and discipline, their parents may have higher expectations, and the parents may be following up with teachers regarding those expectations. The teachers themselves may be working in a more disciplined environment, with tabs being kept on their own performance as teachers. Vietnam may also be benefiting from investments in pre-school education and in school infrastructure that are disproportionately higher when compared to Vietnam's per capita income level. 
+\textbf{Abstract:} This paper seeks to find an empirical explanation of Vietnam's outstanding performance on the PISA assessment in 2012. Only a few developing countries participate in PISA. Those who do, with the unique exception of Vietnam, are typically clustered at the lower end of the range of PISA scores. This paper compares PISA performance for Vietnam with a set of seven developing countries from the PISA 2012 data set, using a cut-off per capita GDP (in 2010 PPP dollars) of \$10,000. The seven developing countries' average PISA performance lags Vietnam's by more than 100 points. The `Vietnam effect' is difficult to unscramble, but the paper is able to explain about half of the gap between Vietnam and the seven countries. The analysis reveals that Vietnamese students may be approaching their studies with higher diligence and discipline, their parents may have higher expectations, and the parents may be following up with teachers regarding those expectations. The teachers themselves may be working in a more disciplined environment, with tabs being kept on their own performance as teachers. Vietnam may also be benefiting from investments in pre-school education and in school infrastructure that are disproportionately higher when compared to Vietnam's per capita income level. 
 
 \textbf{Keywords:} PISA;Vietnam;Oaxaca-Blinder Decomposition; Fryer-Levitt; Economics of Education.
 
 \textbf{JEL Classification Numbers:} I21 (Analysis of Education); I28(Government Policy); Z18(Public Policy).
 
-\newpage
-\begin{bottompar}
-\textbf{Disclaimer:} The findings, interpretations, and conclusions expressed in this paper are entirely those
-of the authors. They do not necessarily represent the views of the International Bank for Reconstruction and Development/World Bank and its affiliated organizations, or those of the Executive Directors of the World Bank or the governments they represent. The authors would like to thank Amer Hasan and Marguerite Clarke (both World Bank Group Global Practice for Education) for their review and comments.  
-\end{bottompar}
-\thispagestyle{empty}
-
-\pagebreak%
+%\pagebreak%
 \onehalfspacing
 %\doublespacing
 
 \section{Introduction}
-Vietnam participated in PISA for the first time in 2012 and its performance has been much higher than other developing countries that take part in this OECD led initiative. PISA scores of 15 year-olds in Mathematics, Reading and Science are calibrated to an OECD mean of 500 and standard deviation of 100 points. Only a few developing countries take part in PISA, perhaps because most of them have results much lower than the OECD countries. Figure 1 indicates a positive, albeit non-linear correlation between GDP per capita and PISA test scores. The figure shows that Vietnam's performance in PISA (mathematics mean score of 511) is closer to that of Finland and Switzerland rather than of Peru and Colombia. Vietnam, represented by a red star in Figure 1, lies much above the cluster of developing countries in the lower left hand corner of Figure 1.  
-
+Vietnam participated in PISA for the first time in 2012 and its performance has been much higher than other developing countries that take part in this OECD led initiative. PISA scores of 15 year-olds in Mathematics, Reading and Science are calibrated to an OECD mean of 500 and standard deviation of 100 points. Only a few developing countries take part in PISA, perhaps because most of them have results much lower than the OECD countries. In the OECD-PISA 2012 database, there are seven countries other than Vietnam with a per capita GDP (in 2010 PPP dollars) below US\$ 10,000 - Albania, Colombia, Indonesia, Jordan, Peru, Thailand and Tunisia. At US\$ 4098, Vietnam's GDP per capita is the lowest of this group. Figure 1 indicates a positive, albeit non-linear correlation between GDP per capita and PISA test scores. Vietnam, represented by a red star, lies much above the other developing countries clustered in the lower left hand corner of Figure 1. With a mathematics mean score of 511, Vietnam is more aligned to Finland (519) and Switzerland (531), rather than Peru (368) and Colombia (376). 
 \begin{figure}[H]
    \caption{\textbf{PISA 2012 results compared with GDP per capita}}
    \centering 
@@ -123,8 +115,8 @@ Vietnam participated in PISA for the first time in 2012 and its performance has 
 \scriptsize{Source: OECD-PISA database        \hspace{3in}     }
    \label{Figure 1} 
 \end{figure}
-
-In the OECD-PISA database, there are seven countries other than Vietnam with a per capita GDP (in PPP dollars) below US\$ 10,000 - Albania, Colombia, Indonesia, Jordan, Peru, Thailand and Tunisia. Vietnam's GDP per capita is the lowest in this group of countries and within the PISA 2012 country dataset. Their collective weighted average performance in mathematics has a mean score of 383. It is helpful to understand the significance of this 128 point difference with Vietnam. According to a recent OECD publication \cite{OECD2013a}, \emph{``an entire proficiency level in mathematics spans about 70 score points \textendash  
+The weighted average mathematics score of the seven developing countries is 383.
+It is helpful to understand the significance of the 128 point difference of the seven countries as compared with Vietnam. According to a recent OECD publication \cite{OECD2013a}, \emph{``an entire proficiency level in mathematics spans about 70 score points \textendash  
 a large difference in the skills and 
 knowledge students at that level possess. Such a gap represents the equivalent of about two years of schooling in the typical OECD country.''} Applying this heuristic would imply a nearly 3 year difference in educational attainment between Vietnam and the group of seven developing countries in the PISA database. It should be noted at the outset that cross-section data from one application of PISA does not permit causal inference, but correlations can still provide useful insights. The difference is not only for mathematics and not just in the mean score, but spanning the entire test distribution, as can be seen in Figure 2.
 
@@ -161,21 +153,21 @@ A range of alternative classifications are possible to organize the explanatory 
 	\label{fig:m} 
 \end{figure}
 
-The approach of this paper is as follows. We begin in Section 2 by examining closely the differences in endowments between Vietnam and the collective group of seven developing countries, termed as ``Dev7'' for this paper (not to be confused with the G-7 of wealthy countries). The word ``endowments'' is used in a general sense, referring not merely to wealth related variables such as school resources, but to the range of policy, attitudinal and reported practices in the PISA dataset. The variables can also be considered as exogenous variables for the purpose of this analysis. In this first section we examine the mean differences in the levels of these variables, following the classification of constituent variables from Figure 3 in ``Students'', ``Parents'', ``Teachers'' and ``Schools'' variables. Comparing means in this context is a first pass at understanding the performance anomaly of Vietnam on empirical grounds. Without any priors, we want to look at seemingly obvious possible explanation - that Vietnamese 15 year olds somehow enjoy better endowments - economic, social, cultural and so on. This first pass can be quite revealing. For instance, even though we know that Vietnam's GDP per capita is the lowest in this group of countries, perhaps the Vietnamese government and people have invested heavily in basic education, and schools in Vietnam enjoy a higher quality of facilities and equipment. Or the teachers have much higher levels of education, and so on. Alternatively, one could find empirically that the schools are worse equipped and teachers poorly trained. An examination of mean differences will provide us with a first set of tentative hypotheses.
+The approach of this paper is as follows. We begin in Section 2 by examining closely the mean differences between Vietnam and the collective group of seven developing countries, termed as ``Dev7'' for this paper (not to be confused with the G-7 of wealthy countries). Comparing means in this context is a first pass at understanding the performance anomaly of Vietnam on empirical grounds. Do Vietnamese 15 year olds somehow enjoy better cultural, social or civic endowments to balance their economic disadvantages? An examination of mean differences will provide us with a first set of tentative hypotheses.
 \par
-We take a second, detailed approach in Section 3 by adopting the regression methodology used by Fryer and Levitt to understand differences in test score results of black children in the first two years of schooling in the United States \cite{FryerLevitt04}. Differences in mean values of endowments leave some questions unanswered, which further analytical approaches can seek to resolve. In a multi-variate setting, we can try to understand how much of the variation can be explained by differences in observable endowments, and how much can be attributed to effects other than the observable differences. Fryer and Levitt have quite successfully followed this approach to explain what they see as evidence of a systemic difference in schools attended by black children. We adopt a similar approach to find out how much of the `Vietnam gap' could reasonably be attributed to the earlier differences in mean endowments. As a matter of fact, we show in this section that the large differences in mean endowments is important, but it explains at best only half of the test score differences. 
+The insights provided by mean differences need to be explored further by a regression of the test scores on the explanatory variables. Large differences in means may not amount to much if the associated variables are not correlated with test scores. In Section 3 we adopt the regression methodology used by Fryer and Levitt to understand differences in test score results of black children in the first two years of schooling in the United States \cite{FryerLevitt04}. Fryer and Levitt are able to explain away all of a 0.62 standard deviation negative achievement gap for black kindergarten children. In our case, we are able to explain about half of a larger 1.28 standard deviaton  positive achievement gap for Vietnam compared to Dev7 countries. The lower ability of the Fryer-Levitt method to explain the ``Vietnam gap'' is probably accounted for by the fact that per capita GDP lower than US \$ 10,000 is the only common support across diverse economic, political and educational systems.
 
-The Fryer-Levitt method deepens the understanding from mean comparisons, but what it does not reveal may be as interesting as what it does in fact reveal. Our Fryer-Levitt adaption is based on a pooled regression of eight developing countries, where we follow the fate of the magnitude of the coefficient of the dummy variable representing the Vietnamese students in the sample. However, we also need to investigate structural differences in the effects of endowments between Vietnam and Dev7 countries. In Section 4, we adopt an approach first used to explain variation in PISA performance between Germany and Finland by Andreas Ammermueller \cite{Ammermueller07}. This is an adaptation of the popular Oaxaca-Blinder decomposition of wage earnings equation to uncover evidence of discrimination on the basis of gender \cite{Blinder73} and \cite{Oaxaca73}. In this section, we examine closely the structural differences between Vietnam and the Dev7 countries, including the contribution of differences in endowments and the coefficients to the gap in test scores. 
+The Fryer-Levitt method deepens the understanding from mean comparisons, but what it does not reveal may be as interesting as what it does. Our Fryer-Levitt adaption is based on a pooled regression of eight developing countries, where we follow the fate of the magnitude of the coefficient of the dummy variable representing the Vietnamese students in the sample. However, we also need to investigate structural differences in the effects of endowments between Vietnam and Dev7 countries. In Section 4, we adopt an approach first used to explain variation in PISA performance between Germany and Finland by Andreas Ammermueller \cite{Ammermueller07}. This is an adaptation of the popular Oaxaca-Blinder decomposition of wage earnings equation to uncover evidence of discrimination on the basis of gender \cite{Blinder73} and \cite{Oaxaca73}. In this section, we examine closely the structural differences between Vietnam and the Dev7 countries, including the contribution of differences in endowments and the coefficients to the gap in test scores. 
 
-Even a multi-variate regression approach only proves correlation with nothing more than a hint regarding causation, and so far we have only one year (2012) of PISA data for Vietnam. PISA 2015 data will be available in 2016 and analytical approaches closer to establishing causality can be attempted. Even though we cannot uncover causality, there are useful policy related conclusions that we can derive from the analysis presented in this paper. There is a veritable industry of papers regarding Finland's PISA performance, directed mostly toward other OECD countries with lower scores, for instance the United States. Vietnam's superlative performance points to a similar future stream of research, with the added advantage of relevance for developing countries. Section 5 provides concluding ideas that might be amongst the first of many more such ideas for future investigations of Vietnam's performance. 
+Even a multi-variate regression approach only proves correlation with nothing more than a hint regarding causation, and so far we have only one year (2012) of PISA data for Vietnam. Even though we cannot uncover causality, there are useful policy related conclusions that we can derive from the analysis presented in this paper. There is a veritable industry of papers regarding Finland's PISA performance, directed mostly toward other OECD countries with lower scores, for instance the United States. Vietnam's superlative performance points to a similar future stream of research, with the added advantage of relevance for developing countries. Section 5 provides concluding ideas that might be amongst the first of many more such ideas for future investigations of Vietnam's performance. 
 
 \section{Endowment Differences}
 
-Following the categorization of explanatory factors presented in Figure 3, this section analyzes mean differences in explanatory factors on students, parents, teachers and schools. All variable means presented in the tables are statistically different at the 95\% significance level, unless otherwise noted in the footnotes and figures in parenthesis represent standard deviations. A useful reference for description of variables used in this and the following sections can be found in Appendix tables A5, A6 and A7.
+Utilizing the categorization of explanatory factors presented in Figure 3, this section analyzes mean differences in explanatory factors on students, parents, teachers and schools. All variable means presented in the tables are statistically different at the 95\% significance level, unless otherwise noted in the footnotes and figures in parentheses represent standard deviations. PISA documentation, especially the technical report - \cite{OECD2014a} provides rich definitions and explanations of the variables used. Appendix tables A2, A3 and A4 of this paper accordingly provide references mapping the variables used in this paper and the original PISA variable names.
 
 \subsection{Student Characteristics}
 
-Table 1 begins an exploration of differences in mean values between Vietnamese and Dev7 students.This exploration only provides us with a beginning in our task of unraveling the mystery of Vietnam's performance. Neither mean differences nor the regressions that follow can claim to uncover causality, however they do provide circumstantial evidence. Table 1 presents student characteristics, and it should be noted that the absence of differences is sometimes as important as the presence of differences. Table 1 indicates no differences by age or gender of students. The PRESCHOOL variable shows the first instance of a large statistically significant difference. While 78.88\% of Dev7 students reported attending pre-school, the number of students attending pre-school from the Vietnam sample was 91.20\% - a sizable difference that is both statistically and economically significant. The relationship between pre-school and later educational outcomes has been studied very closely over the years. Longitudinal impact evaluation studies regarding the Perry Pre-school project and Head Start in the US are amongst the most cited studies in the economics literature\footnote{For detailed meta-analysis, see \cite{Barnett95} and \cite{Schweinhartetal05}}. We can also see from the numbers of REPEAT in Table 1 that PISA takers in Vietnam were three times less likely to have repeated a grade in the past (6.79\% compared to 19.15\%).
+Table 1 begins an exploration of differences in mean values between Vietnamese and Dev7 student characteristics. The absence of differences is sometimes as important as the presence of differences. Table 1 indicates no differences by age or gender of students. The PRESCHOOL variable shows the first instance of a large statistically significant difference. While 78.88\% of Dev7 students reported attending pre-school, the number of students attending pre-school from the Vietnam sample was 91.20\% - a sizable difference that is both statistically and economically significant. The relationship between pre-school and later educational outcomes has been studied very closely over the years. Longitudinal impact evaluation studies regarding the Perry Pre-school project and Head Start in the US are amongst the most cited studies in the economics literature\footnote{For detailed meta-analysis, see \cite{Barnett95} and \cite{Schweinhartetal05}}. We can also see from the numbers of REPEAT in Table 1 that PISA takers in Vietnam were three times less likely to have repeated a grade in the past (6.79\% compared to 19.15\%).
 
 \begin{table}[H]
 	\tiny
@@ -232,7 +224,7 @@ Table 1 begins an exploration of differences in mean values between Vietnamese a
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to students in the general  
-		(non-rotated) booklet. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level,
+		(non-rotated) booklet. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level,
 		except FEMALE. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
@@ -286,7 +278,7 @@ ST57Q06 \textit{(r)} & Out-of-school time & 2.588 & 21338 & 1.8029 & 3079 \\
 \end{tabulary}
 \begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 		
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 		
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -331,20 +323,20 @@ PISA applications in each test round have a focus on one of the subjects and in 
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}	
 \end{table}
 
 The upper panel in Table 3 indicates a set of indices for which the scores of Vietnamese students are lower than the scores of Dev7 students. For example, the score for MATWKETH is 0.45 for Dev7 and 0 for Vietnam. The variable SUBNORM is supposed to measure subjective norms regarding mathematics. This construct relates to a student's perceptions regarding how other people in the student's life value mathematics. It includes items such as ``my friends enjoy taking mathematics tests'' and ``my parents believe it's important for me to study mathematics.'' Presumably, when this measure is high, the student has a high subjective norm for mathematics. Table 3 shows that the resulting mean for Dev7 countries is 0.72 and the corresponding value for Vietnam is -0.09. The index SCMAT includes items such as ``I learn mathematics quickly'' and ``I have always believed that mathematics is one of my best subjects''. Vietnamese students, who scored more than 1 standard deviation above the Dev7 students on the PISA math test, scored half a standard deviation lower on SCMAT. What is going on here?
 
-This mini-mystery within the overall mystery can possibly be resolved by looking at some further indices.  The lower panel of Table 3 reports on indices where the balance tips to the other side - these are indices where Vietnamese students have a higher mean value than Dev7 students. These three indices bear close examination. PERSEV consists of items that purport to capture perseverance with a task or a problem to resolve; ANXMAT is a negative index (less is better) that deals with mathematics anxiety (for example, an item included in this index states that ``I get very nervous doing mathematics problems''); MATINTFC relates to future mathematics intention, including items such as ``I am planning on majoring in a subject in college that requires lots of mathematics''. 
+This mini-mystery within the overall mystery of Vietnam's PISA performance can possibly be resolved by looking at some further indices.  The lower panel of Table 3 reports on indices where the balance tips to the other side - these are indices where Vietnamese students have a higher mean value than Dev7 students. These three indices bear close examination. PERSEV consists of items that purport to capture perseverance with a task or a problem to resolve; ANXMAT is a negative index (less is better) that deals with mathematics anxiety (for example, an item included in this index states that ``I get very nervous doing mathematics problems''); MATINTFC relates to future mathematics intention, including items such as ``I am planning on majoring in a subject in college that requires lots of mathematics''. 
 
 One possible explanation, as indicated in the heading of the Table 3 panels, is that Vietnamese students are brought up in a culture that stresses the importance of modesty and humility as a pathway to learning. They may find it difficult to say great things about themselves, because of cultural norms against bragging or boasting. The lower panel in Table 3, on the other hand includes items that are less prone for an immodest interpretation. To say that you are not afraid of mathematics may not be perceived as bragging. In this context, the Vietnamese students are less anxious and more confident about the future role of mathematics in their life.\footnote{It will be straightforward to examine this hypothesis more closely by performing an IRT scaling of the underlying items for the indices. We can then test for differences between Vietnam and the Dev7 countries in values of the  location parameters linking the items to the index. Systematic differences will tend to support the hypothesis laid out here.}
 
 \subsection{Mathematics Curriculum}
 
-In addition to beliefs and perceptions of students regarding mathematics in general, PISA also seeks to closely investigate the issues related to the content of mathematics instructions. PISA incorporates a very interesting approach to avoid or minimize the bragging or over-claiming problem referred to in the previous sub-section. The index FAMCON is constructed out of a response to a question about mathematical concepts for which students are asked ``How familiar are you with the following items?'' The list of items includes items such as `Linear Equation', `Quadratic Function' and `Cosine.' The list of items also includes three nonsensical items or pseudo-concepts that sound relatable: `Proper Number',`Subjunctive Scaling' and Declarative Fraction'. These items are termed as ``FOIL'', and are used as trick items to calibrate the response for over-claiming on part of the students. The index without correction is presented as FAMCON, and the index with correction is presented as FAMCONC. It is quite fascinating that with FAMCON, the "uncorrected" version, Dev7 students come out apparently better than Vietnam students, with a mean value of 0.26 as compared to 0.12. However, this also included familiarity with non-existent items like `subjunctive scaling' - or bragging. With the corrected version, FAMCONC, the Vietnamese students turn out to do much better, with a mean value of 0.43 as compared -0.54 for Dev7, as can be seen in table 4. 
+In addition to beliefs and perceptions of students regarding mathematics in general, PISA also seeks to closely investigate the issues related to the content of mathematics instructions. PISA incorporates a very interesting approach to avoid or minimize the bragging or over-claiming problem referred to in the previous sub-section. The index FAMCON is constructed out of a response to a question about mathematical concepts for which students are asked ``How familiar are you with the following items?'' The list of items includes items such as `Linear Equation', `Quadratic Function' and `Cosine.' The list of items also includes three nonsensical items or pseudo-concepts that sound fancy: `Proper Number',`Subjunctive Scaling' and `Declarative Fraction'. These items are termed as ``FOIL'', and are used as trick items to calibrate the response for over-claiming on part of the students. The index without correction is presented as FAMCON, and the index with correction is presented as FAMCONC. It is quite fascinating that with FAMCON, the "uncorrected" version, Dev7 students come out apparently better than Vietnam students, with a mean value of 0.26 as compared to 0.12. Unfortunately, this also included familiarity with non-existent items like `subjunctive scaling' - or bragging. With the corrected version, FAMCONC, the Vietnamese students turn out to do much better, with a mean value of 0.43 as compared -0.54 for Dev7, as can be seen in Table 4. 
 
 \begin{table}[H]
 	\tiny
@@ -372,7 +364,7 @@ In addition to beliefs and perceptions of students regarding mathematics in gene
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
 \end{table}
@@ -414,7 +406,7 @@ The publication of the bestselling book \cite{Chua11} ``Battle Hymn of the Tiger
 		\hline
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
-		Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
+		Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
 \end{table}
@@ -466,7 +458,7 @@ Conventional measures regarding student-teacher ratios and teacher certification
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to schools and students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
 \end{table}
@@ -524,7 +516,7 @@ Pedagogical practices are an outcome of a complex interaction between curriculum
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to schools and students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except TXT\_BOOK. Figures in parenthesis represent standard deviations. 
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except TXT\_BOOK. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
 	\end{table}
@@ -565,7 +557,7 @@ PCGIRLS & Proportion of & 0.4900 & 36342 & 0.5282 & 4882 \\
 \hline
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
-Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
+Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level. Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}	
 	\end{table}
@@ -637,7 +629,7 @@ The comparison of Vietnam and Dev7 regarding school resources may be showing tha
 \hline
 		\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
-		Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except STUDCLIM. Figures in parenthesis represent standard deviations. 
+		Notes: The variables relate to the questionnaires administered to schools. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except STUDCLIM. Figures in parenthesis represent standard deviations. 
 			\end{tablenotes}
 			\end{threeparttable}
 	\end{table}
@@ -648,9 +640,9 @@ With regard to school leadership and autonomy, there appears to be less autonomy
 
 In summary, the mean comparisons between Vietnam and Dev7 students finds a number of potentially insightful results. Consider the four-fold classification of factors presented in the conceptual diagram of Figure 3 - students, parents, teachers and the school, the findings are summarized below. 
 
-\textbf{Students}: Students in Vietnam are more likely to have attended pre-school and less likely to have repeated grades in the past. They are likely to behave disciplined at school, skip fewer classes, and assume greater responsibility for their own learning. Vietnamese students are less likely to brag about their abilities and experience and yet work harder, especially out of school, in extra classes. They tend to have lower anxiety about mathematics and higher confidence about the usefulness of mathematics in their future.
+\textbf{Students}: Students in Vietnam are more likely to have attended pre-school and less likely to have repeated grades in the past. They are likely to behave more disciplined at school, skip fewer classes, and assume greater responsibility for their own learning. Vietnamese students are less likely to brag about their abilities and experience and yet work harder, especially out of school, in extra classes. They tend to have lower anxiety about mathematics and higher confidence about the usefulness of mathematics in their future.
 
-\textbf{Parents}: Parents in Vietnam are likely to be more involved in the school life of their children than parents of students in Dev7 countries. Though time spent on homework help is similar in both groups, Vietnamese parents are more likely to volunteer and take part in fund-raising for the school, and help the teachers as classroom assistants. Vietnamese parents are also more likely to seek to meet the teacher to discuss their child's progress or the child's behavior on their own initiative. Principals in Vietnam report higher levels of parental pressure. 
+\textbf{Parents}: Parents in Vietnam are likely to be more involved in the school life of their children than parents of students in Dev7 countries. Though time spent on homework help is similar in both groups, Vietnamese parents are more likely to volunteer and take part in fund-raising for the school and help the teachers as classroom assistants. Vietnamese parents are also more likely to seek to meet the teacher to discuss their child's progress or the child's behavior on their own initiative. Principals in Vietnam report higher levels of parental pressure. 
 
 \textbf{Teachers}: Teachers have similar levels of formal education in both groups, but Vietnamese teachers may have had more recent professional development activities. There are more specialist mathematics teachers at high schools in Vietnam, and teachers overall are also more likely to be certified. The performance of teachers is more likely to be monitored in Vietnam, with higher emphasis on student achievement and on making information about that achievement public. Teachers also tend to have lower autonomy, more likely to be subject to centralized policies and work in an environment with higher prevalence of incentives for performance. Principals report fewer problems with regard to teacher absenteeism, which squares with an explanation about a Confucian heritage culture. 
 
@@ -669,9 +661,11 @@ We estimate a weighted least squares regression of student level test scores as 
 \begin{equation}
 \mathit{TESTSCORE}_{i} = VIETNAM ' _{i}\gamma + X '_{i}\Theta + \epsilon_{i}        
 \end{equation}
-A key estimate of interest is $\gamma$, the coefficient on $VIETNAM$, a 0 or 1 dummy variable. Regressions are run in a sequence, starting from one without any covariates in $X$, and then adding variables in groups to expand $X$ in consecutive columns in Table 10. Column (1) in Table 10 shows that the Vietnam dummy has a coefficient of 128.05, when no other covariates are added. By construction, this is the absolute difference in means between Vietnam and the Dev7 countries. Next, we want to see the extent to which observable variables included in the PISA dataset can help to explain this large gap of 128.05.\footnote{For explanatory variables not discussed in the previous sections but used for the regressions here, please see Appendix Table A1 for a mean value comparison table.} The first set of variables included in the regression reported in column (2) concern the students themselves. The student characteristics were - if students went to pre-school, repeated a grade in the past, and how often they are late for school (ST08Q01) or skipped classes (ST115Q01). With these variables included, the coefficient on the dummy or ``the Vietnamese advantage'' or ``gap'', comes down by nearly 20 points, or roughly 0.2 standard deviation units, to 108.91. In other words, one key reason that the Vietnam gap is so high is because of these student related variables - this result was hinted at in the endowment comparison presented earlier in Section 2. Note that of the four student variables used in column (2), only two are statistically significant. Figures in parenthesis represent t-values. 
+A key estimate of interest is $\gamma$, the coefficient on $VIETNAM$, a 0 or 1 dummy variable. Regressions are run in a sequence, starting from one without any covariates in $X$, and then adding variables in groups to expand $X$ in consecutive columns in Table 10. Column (1) in Table 10 shows that the Vietnam dummy has a coefficient of 128.05, when no other covariates are added. By construction, this is the absolute difference in means between Vietnam and the Dev7 countries. Next, we want to see the extent to which observable variables included in the PISA dataset can help to explain this large gap of 128.05.\footnote{For explanatory variables not discussed in the previous sections but used for the regressions here, please see Appendix Table A1 for a comparison of mean values.} The first set of variables included in the regression reported in column (2) concern the students themselves. The student characteristics were - if students went to pre-school, repeated a grade in the past, and how often they are late for school (ST08Q01) or skipped classes (ST115Q01). With these variables included, the coefficient on the dummy or ``the Vietnamese advantage'' or ``gap'', comes down by nearly 20 points, or roughly 0.2 standard deviation units, to 108.91. In other words, one key reason that the Vietnam gap is so high is because of these student related variables - this result was hinted at in the endowment comparison presented earlier in Section 2. Note that of the four student variables used in column (2), only two are statistically significant. Figures in parenthesis represent t-values. 
 
-As we add variables to expand the group of covariates for Mathematics (table 10), Reading (table 11) and Science (table 12) we follow a trial and error method, depending on whether or not, within each group of variables (students, parents, teachers and schools), the inclusion of the specific variable leads to a reduction in the Vietnam dummy coefficient. This follows a long process of adding variables one-by-one and dropping them from the final regression specification if they do not lead to a decrease in the Vietnam dummy. This is done successively and cumulatively, firstly adding student variables -  retaining gap decreasing student variables - adding to those gap decreasing student variables all parents related variables - retaining the set of gap decreasing student and parental related variables and so on.\footnote{The R code for all statistical analysis undertaken in this research paper is freely available for download at \href{http://github.com/zagamog/PISA_PAPER}{http://github.com/zagamog/PISA\_PAPER}} We retain the variable if it leads to a reduction in the Vietnam dummy coefficient, even if the variable itself may or may not be statistically significant. Thus variables presented in Section 2, that  lead to an increase of the Vietnam dummy applying the Fryer-Levitt methodology, are not in the final regression specifications. Table 10, 11 and 12 represent the final set of variables, all of which accounted for a certain level decrease of the Vietnam dummy or ''the Vietnamese advantage''. This is arguably a one-sided approach in that it aims at minimizing the effect of the Vietnam dummy. Arguably this is a 'one-sided' approach, in a sense that it does not try to capture the 'total' extent of the Vietnam effect, which would mean retaining both gap-decreasing and gap-increasing variables, but rather tries to highlight the explanatory variables that lead to a reduction in the Vietnam effect. 
+As we add variables to expand the group of covariates for Mathematics (Table 10), Reading (Table 11) and Science (Table 12) we follow a trial and error method, depending on whether or not, within each group of variables (students, parents, teachers and schools), the inclusion of the specific variable leads to a reduction in the Vietnam dummy coefficient. We retain the variable if it leads to a reduction in the Vietnam dummy coefficient, even if the variable itself may or may not be statistically significant. In this approach, we are not interested in accurately capturing the size of the coefficients other than the one for the Vietnam dummy. Neither are we seeking to maximize the explanatory power of the regression. \footnote{The R code for all statistical analysis undertaken in this research paper is freely available for download at \href{http://github.com/zagamog/PISA_PAPER}{http://github.com/zagamog/PISA\_PAPER}} 
+
+After considering student related variables, the second set of variables relates to the home background and parents of students. Mean comparisons showed that PISA indices on family wealth or parental education are much lower for Vietnam compared to the other seven countries. Clearly, Vietnam's higher PISA scores  cannot be explained by higher parental wealth or prental education. Inclusion of these variables would increase the coefficient on the Vietnam dummy and would take us away from our objective. If Vietnam had enjoyed the Dev7 levels of those variables, the Vietnam gap would have turned to be larger than 128 points. Hence, the parent variables that are retained and presented in column (3) are only those variables that reduce the Vietnam dummy. The reduction amounts to only 11 points compared to the nearly 20 point reduction for student variables. Only the variable PARPRESSURE is statistically significant in this group and indeed has a sizeable impact on the score. This variable reports on principals claiming that ``there is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.''
 
 	\begin{table}[H]
 		\tiny
@@ -767,18 +761,17 @@ N     & \multicolumn{2}{c}{48483} & \multicolumn{2}{c}{46267} & \multicolumn{2}{
 \hline 
 \end{tabular}
 \begin{tablenotes}[para,flushleft]
-Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.
+Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-The second set of variables relates to the home background and parents of students. In the earlier section on endowments, we explained that Vietnam has the lowest per capita income out of the eight countries included in the sample and it is natural that PISA indices on family wealth or parental education are much lower for Vietnam compared to the other seven countries. Inclusion of these variables increase the coefficient on the Vietnam dummy and would take us away from our objective. As explained above, the parent variables that are retained and presented in column (3) are only those variables that reduce the Vietnam dummy. The reduction amounts to only 11 points compared to the nearly 20 point reduction for student variables. Only the variable PARPRESSURE is statistically significant in this group and indeed has a sizeable impact on the score. This variable reports on principals claiming that ``there is \emph{constant pressure} from many parents, who expect our school to set very high academic standards and to have our students achieve them.''
-
 The third set of variables, related to teachers is presented in column (4) and results in a reduction of the Vietnam dummy by only 3 points to a level of 95.13. This does not mean that teachers are unimportant as a reason for Vietnam's superior performance in mathematics, only that the observed teacher related variables in the PISA dataset do not collectively help as an explanation. In the regression itself, one can see that PROPCERT, proportion of certified teachers affects mathematics scores positively. The same goes for a few of student assessment related variables, including TCM\_STUASS and STU\_FEEDB, that relate to the use of student assessment and student written feedback to assess teachers. 
 
-The final set of variables, related to schools is presented in column (5), that results in a further reduction of the dummy coefficient by 12 points, to a level of 77.26. Interestingly, all the school variables with just one exception are statistically significant. There are interesting insights from some of these school variables. COMP\_USE does not have a positive effect on the mathematics score, but COMPWEB does - recall that Vietnam does relatively better on internet connectivity compared to mere availability of computers. The presence of SCMATEDU and SCMATBUI, quality of school educational resources and quality of physical infrastructure, helps explain the gap, recall from Table 9 that Vietnam has superior endowments compared to the Dev7 countries. Table 10 shows that extra classes organized by the school (SCL\_EXTR\_CL) and the ``systematic recording of data including teacher and student attendance and graduation rates, test results and professional development of teachers'' (QUAL\_RECORD) are also part of the story of explaining the Vietnam test score gap. Public dissemination by the school of test results (SCORE\_PUBLIC) has a positive coefficient, which is also one of the variables where Vietnam appears to have twice as many schools following this practice. 
+The final set of variables, related to schools is presented in column (5), that results in a further reduction of the dummy coefficient by 12 points, to a level of 77.26. There are interesting insights from some of these school variables. COMP\_USE does not have a positive effect on the mathematics score, but COMPWEB does - recall that Vietnam does relatively better on internet connectivity compared to mere availability of computers. The presence of SCMATEDU and SCMATBUI, quality of school educational resources and quality of physical infrastructure, helps explain the gap, recall from Table 9 that Vietnam has superior endowments compared to the Dev7 countries. Table 10 shows that extra classes organized by the school (SCL\_EXTR\_CL) and the ``systematic recording of data including teacher and student attendance and graduation rates, test results and professional development of teachers'' (QUAL\_RECORD) are also part of the story of explaining the Vietnam test score gap. Public dissemination by the school of test results (SCORE\_PUBLIC) has a positive coefficient, which is also one of the variables where Vietnam appears to have twice as many schools following this practice. 
 
-As we successively add variables in the regression equation, the number of observations in the regressions drops significantly due to missing values in the data set. Comparing available observable values to other variables for the dropped observations does not seem to indicate a systematic bias in this attrition. The 2012 PISA round included a so called `rotated' module for the student's questionnaire. The idea of the rotated module was to ask three additional sets of questions in a systematic division that increases the overall data available without burdening the respondents with excessively long questionnaires. The main caveat of the `rotated' design is that these additional three sets of questions/variables only cover two-thirds of students each, and any combination of two sets would only cover one-third of students. Regressing on variables of the rotated modules, thus significantly reduces the sample size. We therefore did not include additional regressions with the rotated variable sets in the main part of the paper but in the Appendix (tables A2, A3 and A4). Appendix table A2 for mathematics shows that the lowest possible value for the Vietnam dummy was 49.59, adding gap-decreasing variables from the second rotated module. This relates to a 61\% reduction of the Vietnam `gap'. A substantive, half a standard deviation, score gap  is left unexplained from the PISA data, possibly due to a combination of economic and cultural effects not measured by PISA. 
+As we successively add variables in the regression equation, the number of observations in the regressions drops significantly due to missing values in the data set. Comparing available observable values to other variables for the dropped observations does not seem to indicate a systematic bias in this attrition. The 2012 PISA round included a so called `rotated' module for the student's questionnaire. The idea of the rotated module was to ask three additional sets of questions in a systematic division that increases the overall data available without burdening the respondents with excessively long questionnaires. The main caveat of the `rotated' design is that these additional three sets of questions/variables only cover two-thirds of students each, and any combination of two sets would only cover one-third of students. Regressing on variables of the rotated modules, thus significantly reduces the sample size.
+The regression tables with rotated variables included can be downloaded from the github site for this paper. The lowest possible value for the Vietnam dummy in the Mathematics regression was 49.59, adding gap-decreasing variables from the second rotated module (appendix table A5 online). This relates to a 61\% reduction of the Vietnam `gap'. The rest of the gap is explained due to effects not measured by PISA. 
 
 \subsection{Reading}
 
@@ -872,7 +865,7 @@ As we successively add variables in the regression equation, the number of obser
 			\bottomrule
 	\end{tabular}
 	\begin{tablenotes}[para,flushleft]
-	Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.
+	Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.
 	\end{tablenotes}
 	\end{threeparttable}
 		\end{table}%
@@ -973,14 +966,14 @@ For scores on Reading (table 11), the gap is lower to begin with: 105.16 compare
 			\bottomrule
 	\end{tabular}
 	\begin{tablenotes}[para,flushleft]
-	Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix.
+	Notes: Figures in parentheses are t-values (95\% significance level). For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix.
 	\end{tablenotes}
 	\end{threeparttable}
 	\end{table}%
 
-\noindent Teacher related variables for Reading only account for a further decline of 2 points, and school variables reduced the dummy by 14 points to a level of 60.31 reported in column (5) of Table 11. Appendix Table A3 reports the regressions with rotated variables included which brings the dummy coefficient down to a lowest level of 52.04. Finally we look at the Science results. 
+\noindent Teacher related variables for Reading only account for a further decline of 2 points, and school variables reduced the dummy by 14 points to a level of 60.31 reported in column (5) of Table 11. Appendix Table A6, available on the online github repository, reports the regressions with rotated variables included which brings the dummy coefficient down to a lowest level of 52.04. Finally we look at the Science results. 
 
-The gap between Vietnam and Dev7 is largest for science scores, with column (1) in Table 12 indicating the dummy coefficient at 134.56. The pattern of reduction in the dummy is again similar to the previous two subjects - with the student specific variables accounting for the biggest decline (19 points) , followed by school (13 points), parents (11.5 points) and teacher related variables (2 points). The final specification reduces the dummy to 88.54. Together with rotated variables, presented in Appendix Table A4, the lowest value for the Vietnam dummy is 80.09, a total reduction of 55 points explained, but still leaving a large portion unattributable through the Fryer-Levitt method. 
+The gap between Vietnam and Dev7 is largest for science scores, with column (1) in Table 12 indicating the dummy coefficient at 134.56. The pattern of reduction in the dummy is again similar to the previous two subjects - with the student specific variables accounting for the biggest decline (19 points) , followed by school (13 points), parents (11.5 points) and teacher related variables (2 points). The final specification reduces the dummy to 88.54. Together with rotated variables, presented in Appendix Table A7, available on the online github repository, the lowest value for the Vietnam dummy is 80.09, a total reduction of 55 points explained, but still leaving a large portion unattributable through the Fryer-Levitt method. 
 
 \subsection{Summarized insights from Fryer-Levitt} 
 
@@ -1033,9 +1026,10 @@ Now, as the OLS error terms are of mean zero by construction, (2) can be represe
 \Delta \bar{Y} = \underbrace{(\boldsymbol{\bar{X}}_{V} - \boldsymbol{\bar{X}}_{O})'  \boldsymbol{\hat{\beta}}_{O}}_\text{endowments} + \underbrace{\boldsymbol{\bar{X}}_{V}' (\boldsymbol{\hat{\beta}}_{O} - \boldsymbol{\hat{\beta}}_{V})}_\text{coefficients}
 \end{equation}
 
-\noindent depending on which country is used as a reference country. It is not obvious which of the specifications (4) or (5) is better, and OB variations include further combinations of the two. We focus on this paper on the approach of (4), using Vietnam as the reference, and leave (5) and additional OB variations to subsequent research. 
+\noindent depending on which country is used as a reference country. We focus on this paper on the approach of (4), using Vietnam as the reference, and leave (5) and additional OB variations to subsequent research. 
 
 We base the choice of regression specification on the findings so far. In line with per capita GDP of Vietnam compared with the Dev7 variables, there are a series of income level or wealth related variables for which Vietnam does poorly in comparison with Dev7. We term these variables WEALTH related variables. We include in it all variables for which Vietnam has poorer endowments, and the term WEALTH denotes that they have higher mean values in Dev7 countries, which are wealthier than Vietnam. These variables have typically not been included in the Fryer-Levitt regressions as they would have exacerbated rather than reduced the Vietnam gap. For example, the set includes mother's highest level of education, or MISCED, which is one ISCED level higher for Dev 7 as compared to Vietnam. A second set of variables, which we term as ED WEALTH are typically variables for which Vietnam does better and are good for education results. For instance, Vietnam has a higher level for PRESCHOOL and for time spent by students in mathematics lessons after school (OUTMATH). These two sets of variables together constitute the specification of the $\boldsymbol{X}_{V}$ and $\boldsymbol{X}_{O}$ vectors. 
+
 
 Now it is an established result that the matrix decomposition reported in equation 8 also holds at the variable level, as the overall decomposition is nothing else but the sum of variable level decompositions \cite{Hlavac15}. We extend this notion further to look at aggregations by the two sets of variables - ED WEALTH and WEALTH. In the equations below, we have m variables in the EDWEALTH set and n variables in the WEALTH set: 
 
@@ -1054,7 +1048,7 @@ Now it is an established result that the matrix decomposition reported in equati
 
 \subsection{Findings from OB Decomposition} 
 
-In Tables 13 through 15 we present the mathematics score findings from the OB decomposition for Vietnam compared with each of the Dev7 countries arranged by geographic area. We present the mean differences again between Vietnam and Dev7, then countries from Latin America (Colombia and Peru), Eastern Europe \& Central Asia (Albania), Middle East \& North Africa (Jordan and Tunisia), East Asia \& Pacific's (Indonesia and Thailand) as well as Shanghai. The number ``Sum Total ED WEALTH + WEALTH'' in the bottom row indicates the mean difference between Vietnam and each of the Dev7 countries. The top panel in each of Tables 13 through 15 presents the ED WEALTH variables - these are variables related to educational performance where Vietnam does better on mean values compared to the Dev7 countries. The lower panel in each of the tables presents the WEALTH variables - typically related to a country's income level, they are variables where the Dev7 countries do better. The paired column of numbers for each country indicates a hypothetical counter-factual. The `Endowments' column shows how much of the mean difference arises from a difference in the mean values, keeping the coefficients fixed at the level of Vietnam. The `Coefficients' column indicates how much of the difference is due to the difference in coefficients between Vietnam an the compared country, keeping the characteristics fixed at the mean level of the compared country. We begin the analysis by looking at Latin American countries Colombia and Peru in table 13. 
+In Tables 13 through 15 we present the mathematics score findings from the OB decomposition for Vietnam compared with each of the Dev7 countries arranged by geographic area. We present the mean differences again between Vietnam and Dev7, then countries from Latin America (Colombia and Peru), Eastern Europe \& Central Asia (Albania), Middle East \& North Africa (Jordan and Tunisia), East Asia \& Pacific's (Indonesia and Thailand) as well as Shanghai. The number ``Sum Total ED WEALTH + WEALTH'' in the bottom row indicates the mean difference between Vietnam and each of the Dev7 countries. The top panel in each of Tables 13 through 15 presents the ED WEALTH variables - these are variables related to educational performance where Vietnam does better on mean values compared to the Dev7 countries. The lower panel in each of the tables presents the WEALTH variables - typically related to a country's income level, they are variables where the Dev7 countries do better. The paired column of numbers for each country indicates a hypothetical counter-factual. The `Endowments' column shows how much of the mean difference arises from a difference in the mean values, keeping the coefficients fixed at the level of Vietnam. The `Coefficients' column indicates how much of the difference is due to the difference in coefficients between Vietnam an the compared country, keeping the characteristics fixed at the mean level of the compared country. We begin the analysis by looking at Latin American countries Colombia and Peru in Table 13. 
 
 	\begin{table}[H]
 		\tiny
@@ -1130,7 +1124,8 @@ In Tables 13 through 15 we present the mathematics score findings from the OB de
 		\label{tab:addlabel}%
 	\end{table}%
 
-The mean difference for Colombia is positive 106 points. Interestingly, differences on ED WEALTH endowments have negligible contribution and the coefficients on ED WEALTH only account for positive 8\%. The endowments on WEALTH indicate a 14\% reduction for Colombia by adopting Vietnamese endowments, and a large 103\% reduction on grounds of coefficients. For Colombia, the difference lies in the differences on the intercept coefficient, after controlling for both ED WEALTH and WEALTH variables. The Colombia EDWEALTH coefficient column indicates some interesting results. While PRESCHOOL (students having attended PRESCHOOL) would have had a positive 21 point impact, note the negative 14 point impact on the variable called TIGERMOM (parents proactively following up with teacher regarding student's performance) and negative 10 point impact on STU\_FEEDB (teachers obtain written feedback from students). This might indicate that some of the features of countries are related to cultural factors that come together as a package - being a `Tiger Mom' may help the child in Vietnam, but perhaps not as much in Colombia!
+
+The mean difference for Colombia is positive 106 points. Interestingly, differences on ED WEALTH endowments make a negligible contribution and the coefficients on ED WEALTH only account for positive 8\% of the difference. The endowments on WEALTH indicate a 14\% reduction for Colombia by adopting Vietnamese endowments, and a large 103\% reduction from coefficients.  The Colombia EDWEALTH coefficient column indicates some interesting results. While PRESCHOOL (students having attended PRESCHOOL) would have had a positive 21 point impact, note the negative 14 point impact on the variable called TIGERMOM (parents proactively following up with teacher regarding student's performance) and negative 10 point impact on STU\_FEEDB (teachers obtain written feedback from students). This might indicate that some of the features of countries are related to cultural factors that come together as a package - being a `Tiger Mom' may help the child in Vietnam, but perhaps not as much in Colombia!
 
 A similar interpretation is possible regarding the variables TCM\_INSPE and TCM\_OBSERVER (teachers benefit from class room observation by external inspectors and principal/senior school staff) and SCL\_EXTR\_CL (extra classes at school). These have a negative value in the endowment column as well as the coefficients column. This means that if Colombian students had Vietnamese characteristics on these variables, the mean result for Colombia would have been lower than it already is. The interpretation would be that what is good for Vietnamese students, in a Vietnamese context as measured by PISA, may not be good for Colombian students. However, this finding should be taken with some caution as there are also some variables, like OUTMATH (time spent in extra classes for math outside of school) which have positive values on the endowments and the coefficients. 
 
@@ -1212,13 +1207,13 @@ Table 14 presents data from the next three countries, Albania from the Eastern E
 		\label{tab:addlabel}%
 	\end{table}%
 
-Table 14 shows that the mean difference between Albania and Vietnam for mathematics was positive 143 points, the highest Vietnam advantage amongst all Dev7 countries. The OB decomposition indicates that if Albanian 15 year olds had Vietnamese endowments on ED WEALTH variables, their score would have been higher by 18\% and if they had Vietnam's coefficients on those variables, their score would have been higher by 64\%. Looking at the bottom panel, with Vietnam's WEALTH endowments, Albania's score would have been reduced by 6\% and with Vietnam's WEALTH coefficients while retaining its own characteristics would have lowered the score by 46\%. Interpretation needs to be made with care, a big boost would have come from the coefficient values on repetition, but this is probably driven by the rarity of repetition in Vietnam.
+Table 14 shows that the mean difference between Albania and Vietnam for mathematics was positive 143 points, the highest Vietnam advantage amongst all Dev7 countries. The OB decomposition indicates that if Albanian 15 year olds had Vietnamese endowments on ED WEALTH variables, their score would have been higher by 18\% and if they had Vietnam's coefficients on those variables, their score would have been higher by 64\%. Looking at the bottom panel, with Vietnam's WEALTH endowments, Albania's score would have been reduced by 6\% and with Vietnam's WEALTH coefficients while retaining its own characteristics would have lowered the score by 46\%. Interpretation needs to be made with care, for instance, a big boost would have come from the coefficient values on repetition, but this is probably driven by the rarity of repetition in Vietnam.
 
 With Jordan, the gap to be explained is positive 118 points. On the ED WEALTH variables, endowment differences with Vietnam make for a positive 15\% contribution and the coefficients make for a negative 15\% contribution. Vietnamese endowments on ED WEALTH would make a reasonable contribution for Jordanian students, but the coefficients would pull in the opposite direction. Six variables contribute mainly to this negative direction - LATESCHOOL (number of times arriving late in the schoolday), TCM\_OBSER (teacher classroom observation by principal or senior school staff), STU\_FEEDB (written feedback from students for teacher), SCL\_EXTR\_CL, EXC6\_MATHCOMP (mathematics competition as extra-curricular activity) and SCMATBUI (index of quality of school infrastructure). On the WEALTH side, there is a positive 12\% contribution of endowments and a negative 109\% contribution of coefficients. The variables which contribute to this anomalous result include PRIVATESCL, LHRS (hours of language instruction) and RATCMP15 (available computers for 15 year olds). 
 
 The mean difference for Tunisia is positive 113 points. Tunisia indicates the highest positive value of ED WEALTH endowments amongst all countries (35\%) and also the highest negative value on the coefficients (-52\%). The results for WEALTH for Tunisia indicate a positive 7\% contribution on endowments and a negative 86\% contribution on coefficients. The constituent variables have made their appearance in the previous commentary - for example, the contributions to the negative value on ED WEALTH coefficients for Tunisia come from LATESCHOOL (-13.6), NOREPEAT (-24.3), TIGERMOM (-4.6), SCMATBUI (-13.05), and SCL\_EXTR\_CL (-17.72).
 
-Next, we turn to table 15 which includes the remaining set of Dev7 countries from the East Asia \& Pacific's region - Thailand and Indonesia as well as Shanghai.
+Next, we turn to Table 15 which includes the remaining set of Dev7 countries from the East Asia \& Pacific's region - Thailand and Indonesia as well as the additional case of Shanghai, which has much better results even than Vietnam, and is included as an East Asian counterpoint to the Dev7 countries. 
 
 \begin{table}[H]
 	\tiny
@@ -1294,23 +1289,23 @@ Next, we turn to table 15 which includes the remaining set of Dev7 countries fro
 	\label{tab:addlabel}%
 \end{table}%
 
-Table 15 indicates that in the case of Indonesia, the gap to be explained is positive 140 points. Endowments and coefficients on ED WEALTH account for positive 19\% and positive 23\% of the gap. The ED WEALTH variables explain more as was the case for Colombia. The PRESCHOOL variable has positive 6 points explanation on each of endowments and coefficients. Other ED WEALTH variables with relative large positive contributions on endowments for Indonesia include OUTMATH and SCORE\_PUBLIC. The variables TIGERMOM and SCL\_EXTR\_CL have negative contributions on endowments. On the coefficients side for ED WEALTH, we see big contributions from the coefficients on NOREPEAT, PROPCERT (Percentage of teachers who are formally certified), and TCM\_OBSERVER. There are some variables that consistently stand out, for example PRESCHOOL and SCL\_EXTR\_CL. When we look at the WEALTH related variables, we see that the endowments of Indonesia would not have made such a big impact, pointing to the fact that Indonesia is closest to Vietnam amongst the Dev7 countries on per capita income. Of a similar magnitude like Colombia, we can see that the WEALTH coefficients of Vietnam would set back Indonesian students by negative 75\%.
+Table 15 indicates that in the case of Indonesia, the gap to be explained is positive 140 points. Endowments and coefficients on ED WEALTH account for positive 19\% and positive 23\% of the gap. The ED WEALTH variables explain more as was the case for Colombia. When we look at the WEALTH related variables, we see that the endowments of Indonesia would not have made such a big impact, pointing to the fact that Indonesia is closest to Vietnam amongst the Dev7 countries on per capita income. Of a similar magnitude like Colombia, we can see that the WEALTH coefficients of Vietnam would set back Indonesian students by negative 75\%.
 
-Thailand is the country with the lowest difference in mathematics score, only positive 73 points behind Vietnam. The OB decomposition for Thailand indicates a negative 6\% contribution of endowments on EDWEALTH and a positive 25\% contribution on coefficients. On the WEALTH set of variables, the contribution for Thailand was negative 11\% on endowments and negative 177 \% on coefficients. 
+Thailand is the country with the lowest difference in mathematics score, only positive 73 points behind Vietnam. The OB decomposition for Thailand indicates a negative 6\% contribution of endowments on EDWEALTH and a positive 25\% contribution on coefficients. On the WEALTH set of variables, the contribution for Thailand was negative 11\% on endowments and negative 177 \% on coefficients. The results from Shanghai, added to the mix as a counterpoint to Dev7 countries, do not seem to provide much additional insight. The biggest exlanation of difference between Vietnam and Shanghai would the coefficients on ED WEALTH and WEALTH, with 111\% and 91\% respectively. \footnote{For all other countries we used the respective country as the basis; For Shanghai, Vietnam is the base country in terms of equation (5)}. 
 
 Overall, the OB decompositions support the previous findings. In five of the seven Dev7 countries, the ED WEALTH variables show a positive contribution on endowments - meaning that if the other countries have had Vietnam's endowments on ED WEALTH variables, their performance would have been better. On the coefficients side of ED WEALTH, we see a different picture - the contributions range from +64\% for Albania to -52\% for Tunisia, with other countries ranged in between. The two Asian countries (Indonesia and Thailand) have similar contributions of 23\% and 25\%. The predictable WEALTH set of decompositions is of less interest to us as in most cases there are small effects on endowments and large negative effects on coefficients. 
 
-With cross-section data in a non-experimental context, it is very difficult to make definitive conclusions, and only tentative ones can be made that hint at some answers. The findings on Dev7 countries indicate that it is possible that a number of advantages that Vietnam enjoys, depicted in ED WEALTH, can only function effectively in combination. One way to consider this is through a cultural lens - meaning that there is something specific to Vietnamese culture, that enables Vietnam to benefit from hard working students and teachers, with the guidance of committed and involved parents, even in cities and small towns. One way to test this hypothesis is by extending the comparison to a different comparator - Shanghai, China which has the best test scores of all PISA 2012 countries, exceeding Vietnam's high performance by 86 points on mathematics. Table 15 shows the results if Vietnamese students had obtained Shanghai's endowments and coefficients.\footnote{ For all other countries we used the respective country as the basis; here we are using Vietnam as the base country. See also equation (5)} The interesting finding here is the negative effect of ED WEALTH endowments and the roughly similar positive effects of coefficients on both ED WEALTH and WEALTH variables. 
+With cross-section data in a non-experimental context, it is very difficult to make definitive conclusions, and only tentative ones can be made that hint at some answers. The findings on Dev7 countries indicate that it is possible that a number of advantages that Vietnam enjoys, depicted in ED WEALTH, can only function effectively in combination. One way to consider this is through a cultural lens - meaning that there is something specific to Vietnamese culture, that enables Vietnam to benefit from hard working students and teachers, with the guidance of committed and involved parents, even in cities and small towns. 
 
 \section{Conclusion}
 
-This paper has sought to focus attention and find insights regarding a most remarkable PISA 2012 result - the superlative performance of Vietnam, a country with the lowest per capita income amongst all PISA participants. While there exists a long tradition of research into understanding the performance of consistent top performers on PISA, such as Finland and Singapore, the literature so far has not focused on Vietnam's PISA performance.  Vietnam, with a mean PISA math score of 511 is not one of the very top performers. However, when compared with other lower middle income countries that took part in PISA 2012, Vietnam is a clear outlier, with a nearly 100 point advantage over other countries in the sample. Using an arbitrary cut-off of US\$10,000 per capita income (for 2010 PPP estimates), this paper focused on comparing Vietnam's PISA results with seven other countries, termed as Dev7 herein: Albania, Colombia, Indonesia, Jordan, Peru, Thailand and Tunisia. The methodology used in the paper is straightforward - we distribute the available information from PISA into the following categories: students, parents, teachers, and schools and sought to understand the source of Vietnam's gap by looking at mean comparisons, a Fryer-Levitt approach and an Oaxaca-Blinder decomposition. The following three concluding points can be made as a result of the analysis presented in this paper.
+This paper has sought to focus attention and find insights regarding a most remarkable PISA 2012 result - the superlative performance of Vietnam, a country with the lowest per capita income amongst all PISA participants. Vietnam, with a mean PISA math score of 511 is not one of the very top performers. However, when compared with other lower middle income countries that took part in PISA 2012, Vietnam is a clear outlier. The following three concluding points can be made as a result of the analysis presented in this paper.
 
-\textbf{1. Half the gap can be explained:}  Even though the PISA dataset is rich and covers many aspects related to the achievement of student scores with international standardization of measures, with all the available variables, we could explain at best about 50\% of the performance gap of Vietnam. While explaining half of the gap is perhaps better than not being able to explain any of the gap, the fact does remain that it appears difficult to explain the difference using only the PISA variables. Further research can seek to supplement the PISA data with other data sources regarding education systems and the educational context. The PISA 2015 application will be especially interesting to study as it will provide another important data point and enable a trend analysis to be conducted. 
+\textbf{1. Half the gap can be explained:}  Even though the PISA dataset is rich and covers many aspects related to the achievement of student scores with international standardization of measures, with all the available variables, we could explain at best about 50\% of the performance gap of Vietnam. The PISA 2015 application will be especially interesting to study as it will provide another important data point and enable a trend analysis to be conducted. 
 
-\textbf{2. Cultural factors are likely very important:} A combination of three sets of factors appear to be the most potent explanation for Vietnam's performance: First, Vietnamese students may be working harder - we see they have less instances of skipped classes and being late for school, spend about the same time or more learning in school and substantial extra time studying after school. While at school, it is also possible that students are more disciplined and focused on their studies. Second, Vietnamese teachers appear to benefit from a closer supervision of their work by the school principal and others, and there may be a stronger harmony between the hard working students and their teachers. Third, parents may have an important role to play, by taking an active part in combining high expectations of their children, following up with their children's teachers and contributing at school. 
+\textbf{2. Cultural factors are likely very important:} A combination of three sets of factors appear to be the most potent explanation for Vietnam's performance: First, Vietnamese students work harder - we see they have less instances of skipped classes and being late for school, spend about the same time or more learning in school and substantial extra time studying after school. While at school, Vietnamese students are more disciplined and focused on their studies. Second, Vietnamese teachers appear to benefit from a closer supervision of their work by the school principal and others, and there may be a stronger harmony between the hard working students and their teachers. Third, parents may have an important role to play, by taking an active part in combining high expectations of their children, following up with their children's teachers and contributing at school. 
 
-\textbf{3. Resources do appear to matter:} When we compare PISA performances across the range from lower income non-OECD countries to the high income OECD countries, we find a clear positive trend. Vietnam has so far been the only PISA outlier, with a performance on par with much wealthier countries, and in fact one of the top performing countries in Science. The relationship between resource incentive inputs and educational test scores does not appear to be different for Vietnam - the analysis in this paper shows that Vietnam's results, extrapolating from co-variation on resources within the country, would have been much better with a higher level of resources. Turning to education resources, the analysis also indicates that Vietnam may be reaping the benefits of policies regarding investments in education - the most important factor probably being the higher level of access to pre-school. A second factor is the investment in school infrastructure, especially in cities and small towns.
+\textbf{3. Resources do appear to matter:} When we compare PISA performances across the range from lower income non-OECD countries to the high income OECD countries, we find a clear positive trend. Vietnam has so far been the only PISA outlier, with a performance on par with much wealthier countries, and in fact one of the top performing countries in Science. The analysis indicates that Vietnam may be reaping the benefits of policies regarding investments in education - the most important factor probably being the higher level of access to pre-school. A second factor is the investment in school infrastructure, especially in cities and small towns.
 
 The unique combination of focused educational investments beyond its income level and a cultural heritage that has positive behavioral implications for students appear to be part of the story behind Vietnam's educational success.
 
@@ -1397,229 +1392,11 @@ The unique combination of focused educational investments beyond its income leve
 	\end{tabulary}
 		\begin{tablenotes}[para,flushleft]
 		Notes: The variables relate to the questionnaires administered to schools and students in the rotated  
-		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A5, A6, A7 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except ATTSCHL.Figures in parenthesis represent standard deviations. 
+		booklet, marked with \textit{(r)}. For a more detailed description of variables, please see Tables A2, A3, A4 in the Appendix. The variable means of Dev7 and Vietnam are statistically different at the 95\% significance level, except ATTSCHL.Figures in parenthesis represent standard deviations. 
 		\end{tablenotes}
 		\end{threeparttable}
 \end{table}
 
-	\begin{table}[H]
-		\tiny
-		\def\arraystretch{0.9}
-		\def\tabcolsep{7}
-		\centering
-		\captionsetup{justification=centering}
-		\caption{The estimated impact of 'Vietnam' on Mathematics PISA test scores - rotated questionnaire variables}
-		\begin{threeparttable}
-			\begin{tabular}{lrlrlrl}
-				\toprule
-				\midrule
-				& \multicolumn{6}{c}{Mathematics} \\
-				\cline{2-7} \\
-				Variables & \multicolumn{2}{c}{(6)} & \multicolumn{2}{c}{(7)} & \multicolumn{2}{c}{(8)} \\
-				\hline\\  
-				VIETNAM & 60.83 & (6.97) & 49.59 & (7.32) & 64.81 & (7.73) \\[0.2em]
-				PRESCHOOL & 22.16 & (3.47) & 19.19 & (3.87) & 24.13 & (4.29) \\[0.2em]
-				REPEAT & -30.31 & (3.58) & -27.82 & (3.11) & -32.25 & (2.85) \\[0.2em]
-				ST08Q01 & -5.75 & (1.57) & -8.21 & (1.54) & -5.14 & (1.61) \\[0.2em]
-				ST115Q01 & -4.3  & (1.85) & -2.99 & (2.14) & -2.83 & (1.91) \\[0.2em]
-				BOOK\_N & 0.05  & (0.01) & 0.05  & (0.01) & 0.07  & (0.01) \\[0.2em]
-				PARPRESSURE & 8.73  & (3.95) & 9.13  & (4.21) & 6.99  & (4.43) \\[0.2em]
-				PCGIRLS & 8.97  & (12.13) & 0.16  & (0.06) & 0.2   & (0.07) \\[0.2em]
-				FUNDMOM & 0.18  & (0.06) & -0.1  & (0.07) & -0.12 & (0.07) \\[0.2em]
-				COUNCILMOM & -0.12 & (0.06) & -0.09 & (0.07) & -0.08 & (0.07) \\[0.2em]
-				DUTYMOM & -0.07 & (0.06) & 10.42 & (6.65) & 17.84 & (7.32) \\[0.2em]
-				PROPCERT & 15.7  & (6.22) & -0.02 & (0.01) & -0.02 & (0.01) \\[0.2em]
-				SMRATIO & -0.02 & (0.01) & 1.57  & (1.65) & 1.9   & (1.79) \\[0.2em]
-				TCSHORT & 1.74  & (1.68) & -0.51 & (1.89) & -2.21 & (1.87) \\[0.2em]
-				TCFOCST & 0.11  & (1.69) & -2.85 & (7.69) & 2.6   & (8.67) \\[0.2em]
-				TCM\_STUASS & -1.76 & (7.11) & -5.6  & (5.31) & -5.44 & (5.44) \\[0.2em]
-				TCM\_PEER & -5.45 & (5.43) & -2.81 & (2.61) & -3.11 & (2.63) \\[0.2em]
-				TCH\_INCENTV & -2.87 & (2.24) & -26.99 & (8.39) & -22.58 & (10.55) \\[0.2em]
-				ASS\_PROG & -16.88 & (7.84) & 9.49  & (5.81) & 10.84 & (6.39) \\[0.2em]
-				ASS\_PROM & 11.54 & (5.48) & 0.75  & (7.16) & 3.85  & (7.24) \\[0.2em]
-				ASS\_SCH & 1.29  & (7.39) & 3.62  & (5.20) & 4.24  & (4.91) \\[0.2em]
-				STU\_FEEDB & 2.23  & (4.57) & 0.74  & (13.38) & 12.2  & (14.08) \\[0.2em]
-				COMP\_USE & -0.42 & (4.95) & -0.08 & (4.83) & 0.25  & (5.42) \\[0.2em]
-				TXT\_BOOK & -7.54 & (6.21) & -8.33 & (7.15) & -9.08 & (6.99) \\[0.2em]
-				TOWN  & -6.23 & (3.28) & -6.21 & (3.42) & -8.65 & (4.06) \\[0.2em]
-				CLSIZE & 0.68  & (0.21) & 0.72  & (0.23) & 0.72  & (0.24) \\[0.2em]
-				COMPWEB & 12.71 & (5.76) & 14.02 & (5.97) & 13.84 & (6.70) \\[0.2em]
-				SCMATEDU & 4.62  & (2.67) & 4.5   & (2.73) & 6.5   & (3.01) \\[0.2em]
-				SCMATBUI & 3.16  & (2.21) & 2.57  & (2.26) & 2.41  & (2.52) \\[0.2em]
-				EXC2\_PLAY & 6     & (3.70) & 6.44  & (4.01) & 8.62  & (3.69) \\[0.2em]
-				EXC6\_MATHCOMP & -1.66 & (4.86) & -2.29 & (5.13) & -4.09 & (5.29) \\[0.2em]
-				EXC10\_SPORT & -4.92 & (9.03) & -6.91 & (8.23) & -8.72 & (9.22) \\[0.2em]
-				EXC11\_UNICORN & 6.99  & (4.79) & 6.91  & (5.63) & 6.68  & (5.95) \\[0.2em]
-				SCL\_EXTR\_CL & 11.36 & (4.95) & 8.3   & (4.75) & 6.21  & (5.08) \\[0.2em]
-				SCORE\_PUBLIC & 11.12 & (4.26) & 8.71  & (4.57) & 10.62 & (4.82) \\[0.2em]
-				QUAL\_RECORD & 11.35 & (6.32) & 10.14 & (6.72) & 5.45  & (7.03) \\[0.2em]
-				SCHSEL & 1.84  & (2.96) & 3.92  & (3.22) & 1.94  & (3.53) \\[0.2em]
-				MATWKETH & -9.72 & (1.58) & -     & -     & -     & - \\[0.2em]
-				INSTMOT & 5.66  & (1.31) & -     & -     & -     & - \\[0.2em]
-				INTMAT & -3.52 & (1.90) & -     & -     & -     & - \\[0.2em]
-				SUBNORM & -12.19 & (0.88) & -     & -     & -     & - \\[0.2em]
-				MATHEFF & 29.91 & (2.06) & -     & -     & -     & - \\[0.2em]
-				MATINTFC & 8.42  & (0.86) & -     & -     & -     & - \\[0.2em]
-				PERSEV & 4.44  & (1.10) & -     & -     & -     & - \\[0.2em]
-				OUTMATH & -     & -     & 1.73  & (0.43) & -     & - \\[0.2em]
-				EXPUREM & -     & -     & 11.88 & (0.99) & -     & - \\[0.2em]
-				FAMCONC & -     & -     & 24.1  & (1.46) & -     & - \\[0.2em]
-				BKGR\_FAMPROB & -     & -     & -     & -     & 0     & (1.72) \\[0.2em]
-				ANXMAT & -     & -     & -     & -     & -18.57 & (1.55) \\[0.2em]
-				ATSCHL & -     & -     & -     & -     & 2.52  & (1.09) \\[0.2em]
-				ATTLNACT & -     & -     & -     & -     & 0.04  & (1.20) \\[0.2em]
-				MTSUP & -     & -     & -     & -     & 4.47  & (1.13) \\[0.2em]
-				STUDREL & -     & -     & -     & -     & -6.86 & (1.20) \\[0.2em]
-				TCHQUAL\_DIFF & -     & -     & -     & -     & -9.97 & (2.02) \\[0.2em]
-				TCHBEHTD & -     & -     & -     & -     & 5.44  & (1.27) \\[0.2em]
-				TCHBEHSO & -     & -     & -     & -     & -13.25 & (1.44) \\[0.2em]
-				TCHBEHFA & -     & -     & -     & -     & 0.02  & (1.71) \\[0.2em]
-				DISCLIMA & -     & -     & -     & -     & 1.28  & (1.20) \\[0.2em]				
-				R^{2} & \multicolumn{2}{c}{49.87} & \multicolumn{2}{c}{49.36} & \multicolumn{2}{c}{48.24} \\
-				N     & \multicolumn{2}{c}{15775} & \multicolumn{2}{c}{14855} & \multicolumn{2}{c}{15539} \\
-				\bottomrule
-			\end{tabular}%
-			\begin{tablenotes}[para,flushleft]
-				Notes: The sample consists of the 'Developing 7' countries and Vietnam. Column (1) contains in addition to all non-rotated variables, relevant variables from the student rotated questionnaire 1; column (2) contains in addition relevant variables from the student rotated questionnaire 2; column (3) contains additional relevant variables from the student rotated questionnaire 3. 
-			\end{tablenotes}
-		\end{threeparttable}
-	\end{table}
-
-	\begin{table}[H]
-		\tiny
-		\def\arraystretch{0.9}
-		\def\tabcolsep{7}
-		\centering
-		\captionsetup{justification=centering}
-		\caption{The estimated impact of 'Vietnam' on Reading PISA test scores - including rotated questionnaire variables}
-		\begin{threeparttable}
-			\begin{tabular}{lrlrlrl}
-				\toprule
-				\midrule
-				& \multicolumn{6}{c}{Reading} \\
-				\cline{2-7} \\
-				Variables & \multicolumn{2}{c}{(6)} & \multicolumn{2}{c}{(7)} & \multicolumn{2}{c}{(8)} \\
-				\hline\\				
-				VIETNAM & 58.79 & (6.04) & 54    & (5.99) & 52.71 & (6.24) \\[0.2em]
-				FEMALE & 24.27 & (1.97) & 21.26 & (1.92) & 21.67 & (1.91) \\[0.2em]
-				PRESCHOOL & 24.98 & (3.39) & 22.17 & (4.10) & 21.32 & (3.91) \\[0.2em]
-				REPEAT & -39.47 & (3.39) & -42.47 & (4.35) & -39.51 & (3.70) \\[0.2em]
-				ST08Q01 & -5.81 & (1.52) & -6.21 & (1.97) & -5.96 & (1.55) \\[0.2em]
-				ST115Q01 & -7.86 & (1.85) & -10.93 & (2.34) & -7.17 & (2.12) \\[0.2em]
-				BOOK\_N & 0.05  & (0.01) & 0.04  & (0.01) & 0.05  & (0.01) \\[0.2em]
-				PARPRESSURE & 2.11  & (4.08) & 2.74  & (4.49) & 2.98  & (4.19) \\[0.2em]
-				VOLUMOM & -0.02 & (0.06) & -0.02 & (0.07) & 0     & (0.06) \\[0.2em]
-				FUNDMOM & 0.11  & (0.06) & 0.08  & (0.06) & 0.1   & (0.06) \\[0.2em]
-				COUNCILMOM & -0.09 & (0.07) & -0.05 & (0.08) & -0.12 & (0.07) \\[0.2em]
-				DUTYMOM & -0.1  & (0.07) & -0.11 & (0.08) & -0.11 & (0.07) \\[0.2em]
-				PROPCERT & 1.74  & (5.59) & -0.31 & (6.15) & 4.75  & (5.78) \\[0.2em]
-				TCSHORT & 0.39  & (1.91) & 0.26  & (2.00) & -0.33 & (1.82) \\[0.2em]
-				TCM\_STUASS & 8.04  & (8.83) & 4.12  & (9.23) & 8.21  & (8.48) \\[0.2em]
-				ASS\_PROG & -10.75 & (12.85) & -26.6 & (11.36) & -10   & (11.86) \\[0.2em]
-				ASS\_PROM & 14.11 & (6.00) & 11.43 & (5.84) & 11.08 & (5.95) \\[0.2em]
-				ASS\_NAT & 1.55  & (5.69) & -0.29 & (6.62) & 1     & (6.12) \\[0.2em]
-				ASS\_CUR & -3.68 & (9.13) & -4.42 & (9.30) & -0.93 & (8.94) \\[0.2em]
-				STU\_FEEDB & 6.93  & (4.28) & 7.18  & (4.53) & 5.12  & (4.36) \\[0.2em]
-				PCGIRLS & 19.14 & (10.42) & 19.64 & (11.99) & 25.36 & (11.56) \\[0.2em]
-				TOWN  & -6.02 & (3.64) & -7.8  & (3.87) & -6.64 & (3.87) \\[0.2em]
-				CLSIZE & 0.99  & (0.23) & 0.64  & (0.27) & 0.87  & (0.22) \\[0.2em]
-				COMPWEB & 14.56 & (5.55) & 18.01 & (5.78) & 15.56 & (6.03) \\[0.2em]
-				SCMATEDU & 4.47  & (2.59) & 4.8   & (2.59) & 5.1   & (2.52) \\[0.2em]
-				SCMATBUI & 1.29  & (2.46) & 1.37  & (2.54) & 0.66  & (2.36) \\[0.2em]
-				EXC2\_PLAY & 13.31 & (4.05) & 10.01 & (4.28) & 13.29 & (3.97) \\[0.2em]
-				EXC6\_MATHCOMP & 7.9   & (5.08) & 9.79  & (5.23) & 6.18  & (5.14) \\[0.2em]
-				EXC10\_SPORT & -3.61 & (11.66) & -3.21 & (11.21) & -9.26 & (11.30) \\[0.2em]
-				EXC11\_UNICORN & 11.6  & (4.98) & 12.75 & (5.69) & 10.12 & (5.61) \\[0.2em]
-				SCORE\_PUBLIC & 4.61  & (4.01) & 4.69  & (4.67) & 5.39  & (4.22) \\[0.2em]
-				LEADINST & 1.12  & (1.97) & 1.87  & (2.03) & 2.16  & (2.05) \\[0.2em]
-				QUAL\_RECORD & -6.87 & (6.93) & -9.79 & (7.68) & -6.42 & (7.04) \\[0.2em]
-				SCHSEL & 1.26  & (2.96) & -0.05 & (3.21) & 1.42  & (3.26) \\[0.2em]
-				TEACCLIM & -1.98 & (2.66) & -1.15 & (2.68) & -1.68 & (2.68) \\[0.2em]
-				PERSEV & 7.81  & (1.16) & -     & -     & -     & - \\[0.2em]
-				LHRS  & -     & -     & 0.27  & (0.60) & -     & - \\[0.2em]
-				ST72Q01 & -     & -     & 0.78  & (0.22) & -     & - \\[0.2em]
-				BKGR\_FAMPROB & -     & -     & -     & -     & -7.05 & (1.87) \\[0.2em]
-				ATSCHL & -     & -     & -     & -     & 10.16 & (1.10) \\[0.2em]
-				ATTLNACT & -     & -     & -     & -     & -0.38 & (1.13) \\[0.2em]
-				STUDREL & -     & -     & -     & -     & -6.85 & (1.07) \\[0.2em]
-				TCHQUAL\_DIFF & -     & -     & -     & -     & -13.42 & (1.94) \\[0.2em]								
-				R^{2}   & \multicolumn{2}{c}{42.84} & \multicolumn{2}{c}{40.35} & \multicolumn{2}{c}{43.8} \\
-				N     & \multicolumn{2}{c}{17611} & \multicolumn{2}{c}{14226} & \multicolumn{2}{c}{16891} \\
-				\bottomrule
-			\end{tabular}%
-			\begin{tablenotes}[para,flushleft]
-				Notes: Column (6) contains in addition to all non-rotated variables, relevant variables from the student rotated questionnaire 1; column (7) contains in addition relevant variables from the student rotated questionnaire 2; column (8) contains additional relevant variables from the student rotated questionnaire 3. 
-			\end{tablenotes}
-		\end{threeparttable}
-	\end{table}%
-
-	\begin{table}[H]
-		\tiny
-		\def\arraystretch{0.9}
-		\def\tabcolsep{7}
-		\centering
-		\captionsetup{justification=centering}
-		\caption{The estimated impact of 'Vietnam' on Science PISA test scores - including rotated questionnaire variables}
-		\begin{threeparttable}
-			\begin{tabular}{lrlrlrl}
-				\toprule
-				\midrule
-				& \multicolumn{6}{c}{Science} \\
-				\cline{2-7} \\
-				Variables & \multicolumn{2}{c}{(6)} & \multicolumn{2}{c}{(7)} & \multicolumn{2}{c}{(8)} \\
-				\hline\\							
-				VIETNAM & 85.08 & (5.86) & 86.52 & (6.02) & 81.36 & (6.25) \\[0.2em]
-				FEMALE & -5.19 & (1.72) & -4.59 & (2.00) & -5.05 & (2.02) \\[0.2em]
-				PRESCHOOL & 25.31 & (3.59) & 22.06 & (3.78) & 21.91 & (4.08) \\[0.2em]
-				REPEAT & -37.2 & (3.39) & -39   & (4.13) & -38.24 & (3.67) \\[0.2em]
-				ST08Q01 & -7.32 & (1.29) & -9.15 & (1.69) & -6.82 & (1.53) \\[0.2em]
-				ST115Q01 & -6.12 & (1.64) & -6.73 & (2.47) & -5.21 & (2.22) \\[0.2em]
-				BOOK\_N & 0.06  & (0.01) & 0.05  & (0.01) & 0.06  & (0.01) \\[0.2em]
-				PARPRESSURE & -2.07 & (3.68) & -0.44 & (3.93) & -0.73 & (3.85) \\[0.2em]
-				TCM\_PEER & -4.82 & (5.86) & -7.12 & (6.45) & -4.57 & (5.88) \\[0.2em]
-				FUNDMOM & 0.17  & (0.06) & 0.16  & (0.06) & 0.18  & (0.06) \\[0.2em]
-				COUNCILMOM & -0.13 & (0.06) & -0.12 & (0.07) & -0.12 & (0.06) \\[0.2em]
-				DUTYMOM & -0.06 & (0.06) & -0.07 & (0.07) & -0.07 & (0.07) \\[0.2em]
-				PROPCERT & 4.16  & (5.52) & 0.5   & (5.81) & 7.14  & (5.73) \\[0.2em]
-				TCSHORT & 2.82  & (1.83) & 2.73  & (2.01) & 1.95  & (1.75) \\[0.2em]
-				TCM\_STUASS & 10.18 & (7.90) & 8.56  & (7.58) & 10.83 & (8.10) \\[0.2em]
-				ASS\_PROG & -20.92 & (10.54) & -29.01 & (8.53) & -18.63 & (11.39) \\[0.2em]
-				ASS\_PROM & 13.29 & (6.96) & 10.9  & (6.97) & 12.28 & (7.36) \\[0.2em]
-				ASS\_NAT & 2.14  & (4.83) & 0.03  & (5.48) & 1.54  & (5.27) \\[0.2em]
-				ASS\_SCH & 0.6   & (6.69) & -0.41 & (7.27) & 0.78  & (7.29) \\[0.2em]
-				ASS\_CUR & -3.81 & (8.41) & 0.38  & (9.39) & -3.36 & (8.31) \\[0.2em]
-				STU\_FEEDB & 6.09  & (4.59) & 4.95  & (4.96) & 5.48  & (4.84) \\[0.2em]
-				PCGIRLS & 17.24 & (10.75) & 18.27 & (12.05) & 21.29 & (12.04) \\[0.2em]
-				PRIVATESCL & -0.94 & (5.36) & -3.85 & (5.84) & 0     & (5.74) \\[0.2em]
-				TOWN  & -7.2  & (3.20) & -7.95 & (3.18) & -8.26 & (3.39) \\[0.2em]
-				CLSIZE & 0.88  & (0.20) & 0.87  & (0.21) & 0.74  & (0.20) \\[0.2em]
-				COMPWEB & 15.23 & (5.64) & 19.29 & (5.64) & 15.83 & (6.22) \\[0.2em]
-				SCMATEDU & 5.52  & (1.82) & 4.69  & (1.73) & 5.42  & (1.93) \\[0.2em]
-				EXC2\_PLAY & 8.82  & (3.31) & 8.09  & (3.70) & 9.23  & (3.49) \\[0.2em]
-				EXC6\_MATHCOMP & 2.4   & (4.48) & 0.24  & (4.84) & -0.55 & (4.84) \\[0.2em]
-				EXC10\_SPORT & -1.63 & (9.83) & -2.83 & (8.14) & -4.44 & (10.17) \\[0.2em]
-				EXC11\_UNICORN & 8.52  & (5.04) & 10.1  & (5.36) & 8.29  & (5.67) \\[0.2em]
-				SCORE\_PUBLIC & 10.85 & (3.74) & 11.05 & (4.29) & 11.28 & (3.88) \\[0.2em]
-				LEADINST & 1.29  & (1.89) & 2     & (2.01) & 1.92  & (1.95) \\[0.2em]
-				QUAL\_RECORD & -1.4  & (5.51) & -0.25 & (5.70) & -1.29 & (5.80) \\[0.2em]
-				SCHSEL & 1.49  & (3.08) & 2.69  & (3.28) & 0.86  & (3.33) \\[0.2em]
-				TEACCLIM & -2.05 & (2.42) & -1.5  & (2.62) & -2.73 & (2.47) \\[0.2em]
-				PERSEV & 7.84  & (1.03) & -     & -     & -     & - \\[0.2em]
-				OUTSCIE & -     & -     & 2.73  & (0.56) & -     & - \\[0.2em]
-				BKGR\_FAMPROB & -     & -     & -     & -     & -7.57 & (1.59) \\[0.2em]
-				ATSCHL & -     & -     & -     & -     & 6.72  & (1.02) \\[0.2em]
-				ATTLNACT & -     & -     & -     & -     & -0.31 & (1.21) \\[0.2em]
-				STUDREL & -     & -     & -     & -     & -6.16 & (0.94) \\[0.2em]
-				TCHQUAL\_DIFF & -     & -     & -     & -     & -16.34 & (1.86) \\[0.2em]
-				R2    & \multicolumn{2}{c}{47.74} & \multicolumn{2}{c}{47.96} & \multicolumn{2}{c}{49.34} \\
-				N     & \multicolumn{2}{c}{17545} & \multicolumn{2}{c}{15960} & \multicolumn{2}{c}{16826} \\
-				\bottomrule
-			\end{tabular}%
-			\begin{tablenotes}[para,flushleft]
-				Notes: Column (6) contains in addition to all non-rotated variables, relevant variables from the student rotated questionnaire 1; column (7) contains in addition relevant variables from the student rotated questionnaire 2; column (8) contains additional relevant variables from the student rotated questionnaire 3. 
-			\end{tablenotes}
-		\end{threeparttable}
-	\end{table}%
 
 	\begin{table}[H]
 		\tiny
@@ -1680,7 +1457,7 @@ The unique combination of focused educational investments beyond its income leve
 			EXAPPLM & Experience with applied mathematics tasks at school & Student - rotated quest. 2 & OECD index \\[0.4em]
 			EXPUREM & Experience with pure mathematics tasks at school & Student - rotated quest. 2 & OECD index \\[0.4em]
 			\\
-			\multicolumn{4}{l}{\textbf{Additional student variables used in regressions/decomposition (Table 13, 14, 15, A2, A3, A4)}} \\[0.4em]     
+			\multicolumn{4}{l}{\textbf{Additional student variables used in regressions/decomposition (Table 13, 14, 15)}} \\[0.4em]     
 			\cline{1-4} \\  
 			NOREPEAT & 1 - REPEAT & Student - general quest.  & based on 'REPEAT' OECD index \\[0.4em]
 			SHRS  & Learning time (hours per week) in science & Student - rotated quest. 2 & based on 'SMINS' OECD index \\[0.4em]
@@ -1750,7 +1527,7 @@ The unique combination of focused educational investments beyond its income leve
 			CLSMAN & Teacher classroom management (in math) & Student - rotated quest. 3 & OECD index \\[0.4em] 
 			DISCLIMA & Disciplinary climate in class (in math) & Student - rotated quest. 3 & OECD index \\[0.4em] 
 			\\
-			\multicolumn{4}{l}{\textbf{Additional teacher variables used in regressions/decomposition (Table 10, 11, 12, 13, 14, 15, A2, A3, A4)}} \\[0.4em]
+			\multicolumn{4}{l}{\textbf{Additional teacher variables used in regressions/decomposition (Table 10, 11, 12, 13, 14, 15)}} \\[0.4em]
 			\cline{1-4} \\  
 			\multicolumn{4}{l}{\textit{Formative assessment used to ....}} \\[0.4em]
 			ASS\_PROG & inform parents about childs progress & School questionnaire & SC18Q01 \\[0.4em]
@@ -1780,7 +1557,7 @@ The unique combination of focused educational investments beyond its income leve
 			\\
 			\textbf{TEACHERS cntd.} &       &       &  \\
 			\\
-			\multicolumn{4}{l}{\textbf{Additional teacher variables used in regressions/decomposition (Table 10, 11, 12, 13, 14, 15, A2, A3, A4)}} \\[0.4em]
+			\multicolumn{4}{l}{\textbf{Additional teacher variables used in regressions/decomposition (Table 10, 11, 12, 13, 14, 15)}} \\[0.4em]
 			\cline{1-4} \\ 	
 			TCSHORT & Shortage of teaching staff & School questionnaire & OECD index \\[0.4em]
 			TCFOCST & Teacher focus & School questionnaire & OECD index \\[0.4em]
@@ -1843,18 +1620,18 @@ The unique combination of focused educational investments beyond its income leve
 
 \bibitem[Ammermueller, 2007]{Ammermueller07}
 Andreas Ammermueller,
-"PISA: What makes the difference? Explaining the gap in test scores between   
-Finland and Germany",
+``PISA: What makes the difference? Explaining the gap in test scores between   
+Finland and Germany'',
 \emph{Empirical Economics}, 2007, 33:263–287
 
 \bibitem[Barnett, 1995]{Barnett95}
 W.Steven Barnett,
-"Long-Term Outcomes of Early Childhood Programs",
+``Long-Term Outcomes of Early Childhood Programs'',
 \emph{The Future of Children}, 1995, 5(3):25-50
 
 \bibitem[Blinder, 1973]{Blinder73}
 Alan S. Blinder,
-"Wage Discrimination: Reduced Form and Structural Estimates", \emph{Journal of  
+``Wage Discrimination: Reduced Form and Structural Estimates'', \emph{Journal of  
 	Human Resources}, 1973, 8(4):436-455.
 
 \bibitem[Chua, 2011]{Chua11}
@@ -1863,70 +1640,70 @@ Amy Chua,
 
 \bibitem[Dalton and Ong, 2005]{DaltonOng05}
 Russell J.Dalton and Nhu-Ngoc T.Ong,
-"Authority Orientations and Democratic Attitudes: A Test of the ‘Asian Values’
-Hypothesis", \emph{Japanese Journal of Political Science}, 2005, 6(2):1-21
+``Authority Orientations and Democratic Attitudes: A Test of the ‘Asian Values’
+Hypothesis'', \emph{Japanese Journal of Political Science}, 2005, 6(2):1-21
 
 \bibitem[Dang, 2007]{Hai-Anh07}
 Hai-Anh Dang,
-"The determinants and impact of private tutoring classes in Vietnam",
+``The determinants and impact of private tutoring classes in Vietnam'',
 \emph{Economics of Education Review}, 2007, 26:684–699
 
 \bibitem[Fryer and Levitt, 2004]{FryerLevitt04}
 Roland G. Fryer Jr. and Steven D.Levitt,
-"Understanding the Black-White Test Score Gap in the First Two Years of School",
+``Understanding the Black-White Test Score Gap in the First Two Years of School'',
 \emph{The Review of Economics and Statistics}, May 2004, 86 (2):447-464
 
 \bibitem[Ha and Harpham, 2005]{HaHapharm05}
 Tran Thu Ha and Trudy Harpham,
-"Primary education in Vietnam: Extra classes and
-outcomes", \emph{International Education Journal}, 2005, 6(5):626-634
+``Primary education in Vietnam: Extra classes and
+outcomes'', \emph{International Education Journal}, 2005, 6(5):626-634
 
 \bibitem[Hlavac, 2015]{Hlavac15}
 Marek Hlavac,
-"oaxaca: Blinder-Oaxaca Decomposition in R", R package version 0.1.2., \href{http://CRAN.R-project.org/package=oaxaca}{R package: oaxaca} 
+``oaxaca: Blinder-Oaxaca Decomposition in R'', R package version 0.1.2., \href{http://CRAN.R-project.org/package=oaxaca}{R package: oaxaca} 
 
 \bibitem[Hsin and Xie, 2014]{HsinXie14} 
 Amy Hsin and Yu Xie,
-"Explaining Asian Americans’ academic advantage over whites",
+``Explaining Asian Americans’ academic advantage over whites'',
 \emph{Proceedings of the National Academy of Sciences}, May 2014,
 111 (23) 8416-8421, \href{http://www.pnas.org/cgi/doi/10.1073/pnas.1406402111}{Hsin and Xie, PNAS 2014}
 
 \bibitem[Lamport, 1994]{lamport94}
    Leslie Lamport,
-   "\emph{\LaTeX:} a document preparation system", Addison Wesley, Massachusetts, 2nd edition, 1994
+   ``\emph{\LaTeX:} a document preparation system'', Addison Wesley, Massachusetts, 2nd edition, 1994
 
 \bibitem[Tuan Anh Le, 2007]{Le07}
 Tuan Anh Le,
-"Applying realistic mathematics education in Vietnam : teaching middle school geometry", Doctoral Dissertation, Universit\"at Potsdam, 2007,  
+``Applying realistic mathematics education in Vietnam : teaching middle school geometry'', Doctoral Dissertation, Universit\"at Potsdam, 2007,  
 \href{https://publishup.uni-potsdam.de/opus4-ubp/frontdoor/index/index/year/2007/docId/1232}{Doctoral dissertation Tuan Le 2007} 
 
 \bibitem[Danh Nam Nguyen and Trung Tran, 2013]{NguyenTran13}
 Danh Nam Nguyen and Trung Tran,
-"Recommendations for Mathematics Curriculum Development in Vietnam",
-Proceedings of the 6th International Conference on Educational Reform (ICER 2013): ASEAN Education in the 21st Century, \href{https://www.researchgate.net/publication/263077203_Recommendations_for_mathematics_curriculum_development_in_Vietnam}, Conference Paper, 2013
+``Recommendations for Mathematics Curriculum Development in Vietnam'',
+Proceedings of the 6th International Conference on Educational Reform (ICER 2013): ASEAN Education in the 21st Century, \href{https://www.researchgate.net/publication/263077203_Recommendations_for_mathematics_curriculum_development_in_Vietnam}{Conference Paper, 2013}
 
 \bibitem[Oaxaca, 1973]{Oaxaca73}
 Ronald L. Oaxaca,
-"Male-Female Wage Differentials in Urban Labor Markets", \emph{International 
+``Male-Female Wage Differentials in Urban Labor Markets'', \emph{International 
 	Economic Review}, 1973, 14(3):693-709.
 
 \bibitem[OECD, 2013a]{OECD2013a}
-OECD, "PISA 2012 Results: Excellence Through Equity: Giving Every 
-Student the Chance to Succeed (Volume II)", OECD Publishing, 2013,
+OECD, ``PISA 2012 Results: Excellence Through Equity: Giving Every 
+Student the Chance to Succeed (Volume II)'', OECD Publishing, 2013,
 \href{http://www.oecd.org/pisa/keyfindings/pisa-2012-results-volume-ii.htm}{OECD PISA 2012 Results Volume II}
 
 \bibitem[OECD, 2014a]{OECD2014a}
-OECD, "PISA 2012 Technical Report", OECD Publishing, 2014,
+OECD, ``PISA 2012 Technical Report'', OECD Publishing, 2014,
 \href{http://www.oecd.org/pisa/pisaproducts/pisa2012technicalreport.htm}{OECD PISA 2012 Technical Report}
 
 \bibitem[Vu Dinh Phuong, 2014]{Phuong14}
 Vu Dinh Phuong,
-"Using Video Study to Investigate Eighth-grade Mathematics Classrooms in Vietnam", Doctoral Dissertation, Universit\"at Potsdam, 2014,
+``Using Video Study to Investigate Eighth-grade Mathematics Classrooms in Vietnam'', Doctoral Dissertation, Universit\"at Potsdam, 2014,
 \href{https://publishup.uni-potsdam.de/frontdoor/index/index/docId/6999}{Doctoral Dissertation Vu Dinh Phuong 2014}
 
 \bibitem[Schweinhart et al, 2005]{Schweinhartetal05}
 Lawrence J. Schweinhart, Jeanne Montie, Zongping Xiang, W. Steven Barnett, Clive R. Belfield, and Milagros Nores,
-"Lifetime Effects: The High/Scope Perry Preschool Study Through Age 40", \emph{Monographs of the High/Scope Educational Research Foundation, 14}, Ypsilanti, MI: High/Scope Press, 2005
+``Lifetime Effects: The High/Scope Perry Preschool Study Through Age 40'', \emph{Monographs of the High/Scope Educational Research Foundation, 14}, Ypsilanti, MI: High/Scope Press, 2005
 
 
 \end{thebibliography}

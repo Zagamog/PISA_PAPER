@@ -146,13 +146,16 @@ points(4098,511,col="blue",bg="red",pch=25)
 text(4098,511,labels="Vietnam (511)",pos=4,cex=0.75,col="red") # pos=4 means to the side
 
 # Key other countries
-points(9555,376,col="blue",bg="blue",pch=19)
+#points(9555,376,col="blue",bg="blue",pch=19)
 text(9555,376,labels="Colombia (376)",pos=4,cex=0.75,col="blue") # pos=4 means to the side
-text(4700,375,labels="Indonesia",pos=1,cex=0.75,col="blue") # pos=1 means to the bottom
-text(9400,360,labels="Peru",pos=4,cex=0.75,col="blue") # pos=4 means to the right side
+# text(4700,375,labels="Indonesia",pos=1,cex=0.75,col="blue") # pos=1 means to the bottom
+# text(4700,362,labels="(376)",pos=1,cex=0.75,col="blue") # pos=1 means to the bottom
+text(9400,360,labels="Peru (368)",pos=4,cex=0.75,col="blue") # pos=4 means to the right side
 text(18805,613,labels="Shanghai-China",pos=1,cex=0.75) # pos=1 means to the bottom
 text(48962,531,labels="Switzerland",pos=1,cex=0.75,col="red") # pos=1 means to the bottom
+text(48962,518,labels="(531)",pos=1,cex=0.75,col="red") # pos=1 means to the bottom
 text(36030,519,labels="Finland",pos=2,cex=0.75,col="red") # pos=2 means to the left side
+text(36030,506,labels="(519)",pos=2,cex=0.75,col="red") # pos=2 means to the left side
 
 # Additional countries/points
 points(48962,531,col="red",bg="red",pch=19)
